@@ -1,0 +1,86 @@
+.navbar {
+  width: 100%;
+  background-color: var(--color-primary);
+  color: var(--color-text-light);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* ===== Desktop Menu ===== */
+.menu {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+
+  @media (max-width: 768px) {
+    display: none; /* hide on mobile */
+  }
+}
+
+/* ===== Mobile Menu ===== */
+/* Mobile Menu */
+.mobileMenu {
+  display: none;
+
+  @media (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    font-size: 1.1rem;
+    background-color: var(--color-primary);
+    padding: 0 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+
+    /* animation */
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease, opacity 0.35s ease;
+    opacity: 0;
+
+    &.open {
+      max-height: 100vh;
+      height: 100vh; /* allow space */
+      opacity: 1;
+    }
+
+    /* make dropdowns full width */
+    .dropdown {
+      width: 100%;
+      .trigger {
+        justify-content: space-between;
+        padding: 0.75rem 0;
+      }
+      .menuWrapper {
+        background: var(--color-bg-light);
+        border-radius: 6px;
+      }
+    }
+  }
+}
+
+
+/* ===== Mobile Toggle Button ===== */
+.mobileToggle {
+  display: none;
+
+  @media (max-width: 768px) {
+    display: block;
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    color: var(--color-text-light);
+    cursor: pointer;
+  }
+}

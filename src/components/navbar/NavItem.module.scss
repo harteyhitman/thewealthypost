@@ -1,0 +1,12 @@
+
+.link {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.2s ease;
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  &:hover {
+    color: var(--color-accent);
+  }
+}

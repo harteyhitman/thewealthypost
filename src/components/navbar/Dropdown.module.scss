@@ -1,0 +1,113 @@
+.dropdown {
+  position: relative;
+  display: inline-block;
+
+  &.mobile {
+    display: block;
+    width: 100%;
+  }
+}
+
+.trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px;
+  width: 100%;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  color: var(--color-text-light);
+  padding: 0.6rem 1rem;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: var(--color-accent);
+  }
+}
+
+.icon {
+  transition: transform 0.3s ease;
+}
+.icon.open {
+  transform: rotate(180deg);
+}
+
+/* ===== Smooth Dropdown Animation ===== */
+.menuWrapper {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transform: translateY(-10px);
+  transition: all 0.3s ease-in-out;
+  position: absolute;
+  top: 120%;
+  left: 0;
+  width: auto;
+  z-index: 10;
+
+  &.open {
+    max-height: 500px; /* enough to fit contents */
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.menu {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  padding: 0.5rem 0;
+  min-width: 180px;
+}
+
+.menuItem {
+  display: block;
+  padding: 0.6rem 1rem;
+  text-decoration: none;
+  color: var(--color-text-dark);
+  font-size: 0.95rem;
+  transition: background 0.2s ease;
+
+  &:hover {
+    background: var(--color-secondary);
+    color: var(--color-text-light);
+  }
+}
+
+/* ===== Mobile Accordion Style ===== */
+.mobileMenuWrapper {
+  position: static;
+  max-height: 0;
+  opacity: 0;
+  transform: translateY(-8px);
+  transition: all 0.3s ease-in-out;
+
+  &.open {
+    max-height: 500px;
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.mobileMenu {
+  position: static;
+  box-shadow: none;
+  border-radius: 0;
+  padding: 0;
+  background: transparent;
+  min-width: 100%;
+
+  .menuItem {
+    padding: 0.6rem 1.5rem;
+    background: var(--color-bg-light);
+    
+    &:hover {
+      background: var(--color-secondary);
+      color: var(--color-text-light);
+    }
+  }
+}
