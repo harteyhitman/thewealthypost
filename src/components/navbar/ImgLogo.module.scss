@@ -3,8 +3,6 @@
   align-items: center;
 
   img {
-    height: 70px;
-    width: 180px;
 
     @media (max-width: 768px) {
       width: 140px; /* smaller logo on mobile */

@@ -20,7 +20,7 @@
   font-size: 16px;
   font-weight: 600;
   font-family: 'Inter', sans-serif;
-  color: var(--color-text-light);
+  color: var(--color-primary);
   padding: 0.6rem 1rem;
   transition: color 0.2s ease;
 
@@ -44,7 +44,7 @@
   transform: translateY(-10px);
   transition: all 0.3s ease-in-out;
   position: absolute;
-  top: 120%;
+  top: 130%;
   left: 0;
   width: auto;
   z-index: 10;
@@ -57,7 +57,7 @@
 }
 
 .menu {
-  background: white;
+  background: black;
   border-radius: 8px;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
   padding: 0.5rem 0;
@@ -68,8 +68,9 @@
   display: block;
   padding: 0.6rem 1rem;
   text-decoration: none;
-  color: var(--color-text-dark);
-  font-size: 0.95rem;
+  color: var(--color-accent);
+  font-size: 1.2rem;
+  font-weight: 600;
   transition: background 0.2s ease;
 
   &:hover {
