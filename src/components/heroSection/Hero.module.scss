@@ -1,14 +1,23 @@
 .hero {
-  background: linear-gradient(
-    135deg,
-    var(--color-primary),
-    var(--color-secondary),
-  );
-  color: var(--color-text-light);
   position: relative;
+  color: var(--color-text-light);
   overflow: hidden;
   padding: 6rem 2rem;
+
+  /* Add background image + gradient overlay */
+  background: 
+    linear-gradient(
+      135deg,
+      rgba(16, 159, 159, 0.85),   /* overlay color1 with opacity */
+      rgba(220, 248, 229, 0.85)   /* overlay color2 with opacity */
+    ),
+    url('../../../public/hero-bg.jpg'); /* <-- replace with your image path */
+  
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
+
 
 .bgBlob1,
 .bgBlob2 {
