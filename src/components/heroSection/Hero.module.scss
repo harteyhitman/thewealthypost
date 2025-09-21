@@ -8,7 +8,7 @@
   background: 
     linear-gradient(
       135deg,
-      rgba(16, 159, 159, 0.85),   /* overlay color1 with opacity */
+      rgba(110, 97, 255, 0.85),   /* overlay color1 with opacity */
       rgba(220, 248, 229, 0.85)   /* overlay color2 with opacity */
     ),
     url('../../../public/hero-bg.jpg'); /* <-- replace with your image path */
@@ -82,6 +82,7 @@
 .subheading {
   margin: 1rem 0 2rem;
   font-size: 1.1rem;
+  font-weight: 600;
   color: var(--color-background);
     max-width: 600px;
 }
@@ -155,32 +156,48 @@
 
 /* Floating elements */
 .card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
   position: absolute;
   top: 10%;
-  left: -3rem;
-  background: var(--color-secondary);
+  left: -4rem;
+  max-width: 180px;
+  background: var(--color-text-light);
   color: var(--color-text-dark);
   border-radius: 12px;
   padding: 1rem 1.5rem;
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
-  text-align: center;
   z-index: 2;
 
+  .cardImg{
+    width: 50px;
+    height: 50px;
+    margin-bottom: 0.5rem;
+    border-radius: 50%;
+  }
   h4 {
     font-size: 1rem;
     margin-bottom: 0.25rem;
-    color: var(--color-accent);
+    color: var(--color-primary);
+    font-weight: 600;
   }
 
   p {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--color-text-light);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-text-dark);
 
   }
 
-  small {
-    color: var(--color-primary);
+  ul{
+    li {
+    color: var(--color-secondary);
+    font-weight: 600;
+    list-style: none;
+    border-bottom: 1px solid var(--color-text-dark);
+  }
   }
 }
 
@@ -204,8 +221,8 @@
 
 .bubbleAlt {
   position: absolute;
-  top: -1.5rem;
-  right: 15%;
+  top: -1rem;
+  right: 7%;
   color: var(--color-accent);
   background: var(--color-text-dark);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);

@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import CTAButton from "../navbar/CTAButton";
 import styles from "./Hero.module.scss";
 import CEOIMg from "../../../public/CEOIMG.webp";
+import cardimg from "../../../public/card-img.webp";
 
 export default function Hero() {
   return (
@@ -94,9 +95,14 @@ export default function Hero() {
             animate={{ y: [0, -15, 0] }}
             transition={{ repeat: Infinity, duration: 4 }}
           >
-            <h4>Profit Visit</h4>
-            <p>20,334</p>
-            <small>+350%</small>
+            <Image src={cardimg} alt='cardimg' className={styles.cardImg}/>
+            <h4>Nnamdi Udeze</h4>
+            <p>The WealthyPost Founder</p>
+           <ul>
+            <li>
+            <a href="">Read More</a>  
+            </li>
+           </ul>
           </motion.div>
 
           <motion.div

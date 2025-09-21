@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200">
+  <pattern id="stripes" patternUnits="userSpaceOnUse" width="20" height="20">
+    <path d="M0,20 l20,-20 M-5,5 l10,-10 M15,25 l10,-10" stroke="currentColor" stroke-opacity="0.2" stroke-width="4"></path>
+  </pattern>
+  <rect width="200" height="200" fill="url(#stripes)"></rect>
+</svg>
