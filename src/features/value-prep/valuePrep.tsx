@@ -9,66 +9,71 @@ import bgCardImg3 from '../../../public/rings.svg'
 import bgCardImg4 from '../../../public/stripes.svg'
 import bgCardImg5 from '../../../public/dots2.svg'
 import bgCardImg6 from '../../../public/dots2.svg'
+import { AiFillCloseCircle, AiOutlineTransaction } from 'react-icons/ai';
+import { SiActualbudget } from 'react-icons/si';
+import { LiaPersonBoothSolid } from 'react-icons/lia';
+import { GiTakeMyMoney } from 'react-icons/gi';
+import { GrWorkshop } from 'react-icons/gr';
 
 export default function ValueProposition() {
   const values = [
     {
-      icon: <FaApple />,
-      title: 'Seamless Experience',
+      icon: <AiOutlineTransaction />,
+      title: 'Investing',
       description:
-        'Our platform is optimized for speed and design consistency.',
-      footer: 'Trusted Worldwide',
+        'Guiding individuals in building a diversified and profitable investment portfolio.',
+      footer: 'The Weathy Post',
       accentColor: '#3b82f6',
-      bgImage: {bgCardImg1},
-      bgPosition: 'bottom' as const,
+      bgImage: bgCardImg1,
+      bgPosition: 'top' as const,
     },
     {
-      icon: <FaGooglePlay />,
-      title: 'Cross-Platform',
-      description: 'Available across all devices for maximum accessibility.',
-      footer: '20+ Integrations',
+      icon: <AiFillCloseCircle />,
+      title: 'Debt Management',
+      description: 'Developing strategies to eliminate debt and improve financial stability.',
+      footer: 'The Weathy Post',
       accentColor: '#22c55e',
-      bgImage: {bgCardImg2},
-      bgPosition: 'bottom' as const,
+      bgImage: bgCardImg4,
+      bgPosition: 'top' as const,
     },
     {
-      icon: <FaMusic />,
-      title: 'Engaging Design',
+      icon: <SiActualbudget />,
+      title: 'Budgeting and Savings',
       description:
-        'Interactive and aesthetic UI tailored for better user experience.',
-      footer: 'Award Winning',
+        'Creating personalized budgets and implementing effective savings plans.',
+      footer: 'The Weathy Post',
       accentColor: '#ef4444',
-      bgImage: {bgCardImg3},
-      bgPosition: 'bottom' as const,
+      bgImage: bgCardImg1,
+      bgPosition: 'top' as const,
     },
     {
-      icon: <FaApple />,
-      title: 'Seamless Experience',
+      icon: <LiaPersonBoothSolid />,
+      title: 'Personal Finance',
       description:
-        'Our platform is optimized for speed and design consistency.',
-      footer: 'Trusted Worldwide',
+        'Empowering individuals and families to achieve financial independence.',
+      footer: 'The Weathy Post',
       accentColor: '#3b82f6',
-      bgImage: {bgCardImg4},
-      bgPosition: 'bottom' as const,
+      bgImage: bgCardImg4,
+      bgPosition: 'top' as const,
     },
     {
-      icon: <FaGooglePlay />,
-      title: 'Cross-Platform',
-      description: 'Available across all devices for maximum accessibility.',
-      footer: '20+ Integrations',
+      icon: <GiTakeMyMoney />,
+      title: 'Making Money',
+      description: 'Identifying and implementing strategies to increase income and generate wealth.',
+      footer: 'The Weathy Post',
       accentColor: '#22c55e',
-      bgImage: {bgCardImg5},
-      bgPosition: 'bottom' as const,
+      bgImage: bgCardImg1,
+      bgPosition: 'top' as const,
     },
     {
-      icon: <FaMusic />,
-      title: 'Engaging Design',
+      icon: <GrWorkshop />,
+      title: 'Career Planning',
       description:
-        'Interactive and aesthetic UI tailored for better user experience.',
-      footer: 'Award Winning',
+        'Navigating career choices, maximizing earning potential, and achieving professional fulfilment',
+      footer: 'The Weathy Post',
       accentColor: '#ef4444',
-      bgImage: {bgCardImg6},
-      bgPosition: 'bottom' as const,
+      bgImage: bgCardImg4,
+      bgPosition: 'top' as const,
     },
   ];
 

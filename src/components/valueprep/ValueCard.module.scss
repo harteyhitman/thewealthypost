@@ -1,7 +1,7 @@
 .card {
   position: relative;
   background: #111; // dark background like your reference
-  color: #fff;
+  color: var(--color-primary);
   border-radius: 1rem;
   padding: 1.5rem;
   overflow: hidden;
@@ -19,6 +19,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  
 }
 
 .icon {
@@ -34,7 +35,7 @@
 
 .subtitle {
   font-size: 0.85rem;
-  color: #aaa;
+  color: var(--color-accent);
 }
 
 .title {
@@ -45,28 +46,27 @@
 .description {
   font-size: 0.95rem;
   line-height: 1.5;
-  color: #ddd;
+  color: var(--color-accent);
 }
 
 .footer {
   margin-top: auto;
   font-size: 0.8rem;
-  font-weight: 500;
-  color: #888;
+  font-weight: 600;
+  color: var(--color-primary);
 }
 
 /* Background accent images */
 .bgImage {
   position: absolute;
-  opacity: 0.25;
-  width: 200px;
-  height: 200px;
+  width: 100px;
+  height: 100px;
   object-fit: contain;
   pointer-events: none;
 }
 
 .right {
-  top: -20px;
+  top: -40px;
   right: -20px;
 }
 
@@ -78,4 +78,8 @@
 .bottom {
   bottom: -20px;
   right: -20px;
+}
+.top{
+    top: 0px;
+    left: 80%;
 }
