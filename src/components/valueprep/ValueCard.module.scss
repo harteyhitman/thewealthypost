@@ -1,6 +1,6 @@
 .card {
   position: relative;
-  background: #111; // dark background like your reference
+  background: var(--color-text-light); // dark background like your reference
   color: var(--color-primary);
   border-radius: 1rem;
   padding: 1.5rem;
@@ -35,7 +35,7 @@
 
 .subtitle {
   font-size: 0.85rem;
-  color: var(--color-accent);
+  color: var(--color-secondary);
 }
 
 .title {
@@ -46,7 +46,7 @@
 .description {
   font-size: 0.95rem;
   line-height: 1.5;
-  color: var(--color-accent);
+  color: var(--color-secondary);
 }
 
 .footer {
