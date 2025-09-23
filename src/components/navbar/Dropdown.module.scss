@@ -57,7 +57,7 @@
 }
 
 .menu {
-  background: black;
+  background: var(--color-background);
   border-radius: 8px;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
   padding: 0.5rem 0;
@@ -68,7 +68,7 @@
   display: block;
   padding: 0.6rem 1rem;
   text-decoration: none;
-  color: var(--color-accent);
+  color: var(--color-primary);
   font-size: 1.2rem;
   font-weight: 600;
   transition: background 0.2s ease;
