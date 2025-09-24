@@ -78,12 +78,15 @@ export default function ValueProposition() {
   ];
 
   return (
-    <section className={styles.wrapper}>
-      <div className={styles.grid}>
-        {values.map((val, i) => (
-          <ValueCard key={i} {...val} />
-        ))}
-      </div>
-    </section>
+    <>
+      <h1 className={styles.title}>Core Area of Expertise</h1>
+      <section className={styles.wrapper}>
+        <div className={styles.grid}>
+          {values.map((val, i) => (
+            <ValueCard key={i} {...val} />
+          ))}
+        </div>
+      </section>
+    </>
   );
 }
