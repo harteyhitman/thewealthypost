@@ -2,7 +2,8 @@
   position: relative;
   color: var(--color-text-light);
   overflow: hidden;
-  padding: 6rem 2rem;
+  padding: 0 2rem;
+  padding-top: 4rem;
 
   /* Add background image + gradient overlay */
   background: 
@@ -46,9 +47,9 @@
   max-width: 1400px;
   margin: 0 auto;
   display: flex;
-  justify-content: space-between; 
+  justify-content: center; 
   align-items: flex-start;
-  gap: 1rem;
+  gap: 15rem;
   position: relative;
   z-index: 1;
 
