@@ -79,7 +79,7 @@ export default function ValueProposition() {
 
   return (
     <>
-      <h1 className={styles.title}>Core Area of Expertise</h1>
+      <h1 className={styles.title}>What We Do Best</h1>
       <section className={styles.wrapper}>
         <div className={styles.grid}>
           {values.map((val, i) => (

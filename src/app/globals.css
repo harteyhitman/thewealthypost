@@ -3,6 +3,7 @@
 :root {
   --color-primary: #6E61FF;
   --color-accent: #DAC3FF;
+  --color-tertiary: #F1F6F0;
   --color-secondary: #109F9F;
   --color-background: #DCF8E5;
   --color-text-light: #FFFFFF;
@@ -11,7 +12,7 @@
 }
 
 body {
-  background: var(--color-background);
+  background: var(--color-tertiary);
   color: var(--color-text-dark);
   font-family: Arial, Helvetica, sans-serif;
 }
