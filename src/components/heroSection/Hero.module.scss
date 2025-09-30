@@ -83,7 +83,7 @@
   margin: 1rem 0 2rem;
   font-size: 1.1rem;
   font-weight: 600;
-  color: var(--color-background);
+  color: var(--color-body-text);
     max-width: 600px;
 }
 
@@ -127,8 +127,11 @@
   }
 
   p {
-    font-size: 0.9rem;
-    color: var(--color-background);
+    // margin: 1rem 0 2rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--color-body-text);
+    max-width: 600px;
   }
 
   @media (max-width: 768px) {
@@ -178,16 +181,16 @@
     border-radius: 50%;
   }
   h4 {
-    font-size: 1rem;
+  font-size: 1.1rem;
     margin-bottom: 0.25rem;
     color: var(--color-primary);
     font-weight: 600;
   }
 
   p {
-    font-size: 1rem;
+  font-size: 1rem;
     font-weight: 600;
-    color: var(--color-text-dark);
+    color: var(--color-body-text);
 
   }
 
@@ -205,7 +208,7 @@
   position: absolute;
   bottom: 10%;
   right: -2rem;
-  background: var(--color-secondary);
+  background: var(--color-body-text);
   color: var(--color-text-light);
   padding: 0.8rem 1.2rem;
   border-radius: 12px;
