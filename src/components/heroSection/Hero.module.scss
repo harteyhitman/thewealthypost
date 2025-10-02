@@ -268,7 +268,29 @@
 @media (max-width: 768px) {
   .hero {
     padding: 3rem 1rem;
+    margin: 0;
+    border-radius: 0;
   }
+
+  .bubbleAlt {
+  position: absolute;
+  top: 1rem;
+  right: 0;
+  color: var(--color-accent);
+  background: var(--color-text-dark);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  z-index: 2;
+  padding: 0.5rem 0.5rem;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Inter', sans-serif;
+  span {
+    font-weight: 400;
+    margin-left: 4px;
+  }
+}
 
   .container {
     flex-direction: column;
@@ -283,7 +305,8 @@
   }
 
   .heading {
-    font-size: 2.2rem;
+    font-size: 1.5rem;
+    font-weight: 600;
     line-height: 1.3;
   }
 
@@ -346,4 +369,10 @@
     margin-top: 2rem;
   }
 }
+.card { 
+    display: none;
+  }
+  .bubbleAlt{
+    font-size: 14px;
+  }
 }
