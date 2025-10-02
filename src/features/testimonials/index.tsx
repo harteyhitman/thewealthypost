@@ -7,57 +7,57 @@ import { ImQuotesLeft } from 'react-icons/im';
 const testimonialsData = [
   {
     id: 1,
-    text: 'Exceeded our expectations with innovative designs that brought our vision to life - a truly remarkable creative agency.',
-    author: 'Samantha Johnson',
-    position: 'CEO and Co-founder',
+    text: 'Thanks to Nnamdi’s unwavering support and encouragement, I’ve successfully paid off £8,000 in debt. His belief in me made all the difference.',
+    author: 'Lauren',
+    position: 'Scotland',
     company: 'ABC Company',
  image: "https://i.pravatar.cc/150?img=1"
   },
   {
     id: 2,
-    text: 'Their ability to capture our brand essence in every project is unparalleled - an invaluable creative collaborator.',
-    author: 'Isabella Rodriguez',
-    position: 'CEO and Co-founder',
+    text: 'Your article, Nnamdi, has been life-changing. It helped me identify and address my negative money mindsets, empowering me to take charge of my finances especially as an immigrant in a new country.',
+    author: 'Sarah ',
+    position: 'London',
     company: 'ABC Company',
     image: "https://i.pravatar.cc/150?img=2"
   },
   {
     id: 3,
-    text: 'Creative geniuses who listen, understand, and craft captivating visuals - an agency that truly understands our needs.',
-    author: 'Gabrielle Williams',
-    position: 'CEO and Co-founder',
+    text: 'Your article, Nnamdi, has been life-changing. It helped me identify and address my negative money mindsets, empowering me to take charge of my finances especially as an immigrant in a new country.',
+    author: 'Bisola',
+    position: 'Nottingham',
     company: 'ABC Company',
     image: "https://i.pravatar.cc/150?img=3"
   },
   {
     id: 4,
-    text: 'A refreshing and imaginative agency that consistently delivers exceptional results - highly recommended for any project.',
-    author: 'Victoria Thompson',
-    position: 'CEO and Co-founder',
+    text: 'Nnamdi’s insights are like gold. His articles are worth reading and re-reading.',
+    author: 'TJ',
+    position: 'Leeds',
     company: 'ABC Company',
     image: "https://i.pravatar.cc/150?img=4"
   },
   {
     id: 5,
-    text: "Their team's artistic flair and strategic approach resulted in remarkable campaigns - a reliable creative partner.",
-    author: 'John Peter',
-    position: 'CEO and Co-founder',
+    text: "Thank you, Nnamdi, for sharing such profound wisdom on the blog. Your insights have been invaluable.",
+    author: ' Matt',
+    position: 'Boldmin Comwall',
     company: 'ABC Company',
     image: "https://i.pravatar.cc/150?img=5"
   },
   {
     id: 6,
-    text: "From concept to execution, their creativity knows no bounds - a game-changer for our brand's success.",
-    author: 'Natalie Martinez',
-    position: 'CEO and Co-founder',
+    text: "I’m really impressed by how much information you gave me even though i am in the US.” It is clear that you know a lot about personal finance.",
+    author: 'Yomi',
+    position: 'Atlanta, USA',
     company: 'ABC Company',
     image: "https://i.pravatar.cc/150?img=6"
   },
   {
     id: 7,
-    text: 'Exceptional service and outstanding creativity that transformed our brand identity completely.',
-    author: 'Michael Chen',
-    position: 'CEO and Co-founder',
+    text: 'Nnamdi, your article really makes me think. It has made me want to take charge of my financial situation again.',
+    author: 'David ',
+    position: 'Ontario, Canada',
     company: 'ABC Company',
     image: "https://i.pravatar.cc/150?img=7"
   },
