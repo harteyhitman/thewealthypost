@@ -8,8 +8,8 @@ export default function Home() {
     <div>
       <Hero />
       <ValueProp />
-      <Testimonials />
       <BlogSection />
+      <Testimonials /> 
     </div>
   );
 }

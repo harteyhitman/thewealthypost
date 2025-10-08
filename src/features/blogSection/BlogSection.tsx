@@ -1,63 +1,80 @@
 "use client";
 import Image from "next/image";
 import styles from "./BlogSection.module.scss";
-import Splash from '../../../public/splash.jpg'
+import Budgeting from "../../../public/blogpost/budgeting-bascis.jpg";
+import Debt from "../../../public/blogpost/debt-management.jpg";
+import Savings from "../../../public/blogpost/savings-emegerncy.jpg";
+import Investing from "../../../public/blogpost/investing.jpg";
+import FinanceIndependence from "../../../public/blogpost/finanace-independence.jpg";
+import RetirementPlan from "../../../public/blogpost/retirement-plans.jpg";
+
 const blogPosts = [
   {
     id: 1,
     title: "Budgeting Basics",
-    excerpt: 'Investing in Index Funds for Beginners',
-    excerpt1: 'Is Now a Good Time to Invest in Stocks?',
-    excerpt2: 'Bonds vs Mutual Funds: Everything You Need to Know',
-    image: Splash,
+    excerpts: [
+      "Investing in Index Funds for Beginners",
+      "Is Now a Good Time to Invest in Stocks?",
+      "Bonds vs Mutual Funds: Everything You Need to Know",
+    ],
+    image: Budgeting,
     link: "#",
   },
-
   {
     id: 2,
     title: "Debt Management",
-    excerpt: "How to Pay Off Debt Fast Even on a Low Income",
-    excerpt1: "Debt Avalanche vs Debt Snowball: What is the Best Way to Pay Off Debt",
-    excerpt2: "14 Common Mistakes to Avoid When Paying Off Debt",
-    image: Splash,
+    excerpts: [
+      "How to Pay Off Debt Fast Even on a Low Income",
+      "Debt Avalanche vs Debt Snowball: What is the Best Way to Pay Off Debt",
+      "14 Common Mistakes to Avoid When Paying Off Debt",
+    ],
+    image: Debt,
     link: "#",
   },
   {
     id: 3,
     title: "Saving & Emergency Funds",
-    excerpt: "Emergency Fund: Everything You Need to Know",
-    excerpt1: "Money-Saving Hacks: 15 Ways to Boost Your Savings",
-    excerpt2: "Sinking Fund: Everything You Need to Know",
-    excerpt3: "How to Save Energy",
-    image: Splash,
+    excerpts: [
+      "Emergency Fund: Everything You Need to Know",
+      "Money-Saving Hacks: 15 Ways to Boost Your Savings",
+      "Sinking Fund: Everything You Need to Know",
+      "How to Save Energy",
+    ],
+    image: Savings,
     link: "#",
   },
   {
     id: 4,
     title: "Investing",
-    excerpt: "Investing in Index Funds for Beginners",
-    excerpt1: "Is Now a Good Time to Invest in Stocks?",
-    excerpt2: "Bonds vs Mutual Funds: Everything You Need to Know",
-    image: Splash,
+    excerpts: [
+      "Investing in Index Funds for Beginners",
+      "Is Now a Good Time to Invest in Stocks?",
+      "Bonds vs Mutual Funds: Everything You Need to Know",
+    ],
+    image: Investing,
     link: "#",
   },
-    {
+  {
     id: 5,
     title: "Financial Independence & Wealth Building",
-    excerpt: "How to Build Wealth Without a Six-Figure Salary",
-    excerpt1: "7 Simple Rules for a Wealthy Life",
-    excerpt2: "How to Change Your Money Mindset (9 Simple Ways)",
-    image: Splash,
+    excerpts: [
+      "How to Build Wealth Without a Six-Figure Salary",
+      "7 Simple Rules for a Wealthy Life",
+      "How to Change Your Money Mindset (9 Simple Ways)",
+    ],
+    image: FinanceIndependence,
     link: "#",
   },
   {
     id: 6,
     title: "Retirement Planning",
-    excerpt: "How Much Money Do I Need to Retire?",
-    excerpt1: "9 Simple Ways to Boost Your Retirement Pot",
-    excerpt2: "How to Retire with 2 Million Pounds",
-    excerpt3: "UK Pensions Explained: Everything You Need to Know",
-    image: Splash,
+    excerpts: [
+      "How Much Money Do I Need to Retire?",
+      "9 Simple Ways to Boost Your Retirement Pot",
+      "How to Retire with 2 Million Pounds",
+      "UK Pensions Explained: Everything You Need to Know",
+    ],
+    image: RetirementPlan,
     link: "#",
   },
 ];
@@ -65,9 +82,14 @@ const blogPosts = [
 export default function BlogSection() {
   return (
     <section className={styles.section}>
-
-      <h2 className={styles.heading}>One place to learn to build wealth and master money</h2>
-      <p className={styles.subheading}>Learn proven strategies to build lasting wealth and take control of your financial future. Expert guidance on investing, saving, and money management all in one place.</p>
+      <h2 className={styles.heading}>
+        One place to learn to build wealth and master money
+      </h2>
+      <p className={styles.subheading}>
+        Learn proven strategies to build lasting wealth and take control of your
+        financial future. Expert guidance on investing, saving, and money
+        management all in one place.
+      </p>
 
       <div className={styles.posts}>
         {blogPosts.map((post) => (
@@ -83,17 +105,22 @@ export default function BlogSection() {
             </div>
             <div className={styles.content}>
               <h3 className={styles.title}>{post.title}</h3>
-              <p className={styles.excerpt}>{post.excerpt}</p>
-              <p className={styles.excerpt}>{post.excerpt1}</p>
-              <p className={styles.excerpt}>{post.excerpt2}</p>
-              <p className={styles.excerpt}>{post.excerpt3}</p>
+              <ul className={styles.excerptList}>
+                {post.excerpts.map((item, index) => (
+                  <li key={index} className={styles.excerptItem}>
+                    {item}
+                  </li>
+                ))}
+              </ul>
             </div>
           </a>
         ))}
       </div>
 
       <div className={styles.moreLink}>
-        <a href="#" className={styles.link}>+ Older Entries</a>
+        <a href="#" className={styles.link}>
+          + Older Entries
+        </a>
       </div>
     </section>
   );
