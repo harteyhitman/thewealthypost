@@ -1,6 +1,6 @@
 .card {
   position: relative;
-  background: var(--color-text-light); 
+  background: var(--color-text-light);
   color: var(--color-primary);
   border-radius: 2rem;
   padding: 1.5rem;
@@ -11,19 +11,35 @@
   justify-content: center;
   align-items: center;
   gap: 0.75rem;
-  transition: transform 0.3s ease;
+  transition: all 0.4s ease;
+
   &:hover {
     transform: translateY(-6px);
     box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
-    background: var(--color-background);
-  }
-}
+    background: var(--color-secondary);
+    color: var(--color-text-light);
 
-.header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  
+    .icon {
+      background: var(--color-secondary);
+      color: var(--color-text-light);
+      transform: scale(1.15);
+    }
+
+    .subtitle,
+    .title,
+    .description,
+    .footer {
+      color: var(--color-text-light);
+    }
+
+    .footer {
+      border-color: var(--color-text-light);
+      &:hover {
+        color: var(--color-accent);
+        border-color: var(--color-accent);
+      }
+    }
+  }
 }
 
 .icon {
@@ -35,16 +51,20 @@
   border-radius: 12px;
   color: #fff;
   font-size: 1.2rem;
+  background: var(--color-primary);
+  transition: all 0.3s ease;
 }
 
 .subtitle {
   font-size: 0.85rem;
   color: var(--color-secondary);
+  transition: color 0.3s ease;
 }
 
 .title {
   font-size: 1.2rem;
   font-weight: 600;
+  transition: color 0.3s ease;
 }
 
 .description {
@@ -53,6 +73,7 @@
   line-height: 1.5;
   color: var(--color-body-text);
   text-align: center;
+  transition: color 0.3s ease;
 }
 
 .footer {
@@ -63,7 +84,8 @@
   border-bottom: 2px solid var(--color-primary);
   width: 150px;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
+
   &:hover {
     color: var(--color-accent);
     border-color: var(--color-accent);
@@ -93,7 +115,13 @@
   bottom: -20px;
   right: -20px;
 }
-.top{
-    top: 0px;
-    left: 80%;
+
+.top {
+  top: 0px;
+  left: 80%;
+}
+.card:hover .avatar {
+  transform: scale(1.1);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+  transition: all 0.3s ease;
 }
