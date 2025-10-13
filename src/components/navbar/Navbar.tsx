@@ -27,17 +27,18 @@ export default function Navbar() {
             ]}
           />
           <Dropdown
-            label="Blogs"
+            label="FAQs"
             items={[
-              { href: "/blog1", label: "Blog 1" },
-              { href: "/blog2", label: "Blog 2" },
+              { href: "/questions", label: "Questions" },
+              { href: "/answers", label: "Answers" },
             ]}
           />
           <Dropdown
-            label="Podcast"
+            label="Guides"
             items={[
-              { href: "/podcast1", label: "Podcast 1" },
-              { href: "/podcast2", label: "Podcast 2" },
+              { href: "/guidelines", label: "Guidelines" },
+              { href: "/terms", label: "Terms" },
+              { href: "/conditions", label: "Conditions" },
             ]}
           />
           <Dropdown
@@ -50,8 +51,8 @@ export default function Navbar() {
           <Dropdown
             label="Resources"
             items={[
-              { href: "/guides", label: "Guides" },
-              { href: "/faq", label: "FAQ" },
+              { href: "/podcast", label: "Podcast" },
+              { href: "/blogs", label: "Blogs" },
             ]}
           />
           <CTAButton href="/discover-more" label="Discover More" />
