@@ -7,6 +7,7 @@ import Savings from "../../../public/blogpost/savings-emegerncy.jpg";
 import Investing from "../../../public/blogpost/investing.jpg";
 import FinanceIndependence from "../../../public/blogpost/finanace-independence.jpg";
 import RetirementPlan from "../../../public/blogpost/retirement-plans.jpg";
+import Link from "next/link";
 
 const blogPosts = [
   {
@@ -93,7 +94,7 @@ export default function BlogSection() {
 
       <div className={styles.posts}>
         {blogPosts.map((post) => (
-          <a key={post.id} href={post.link} className={styles.card}>
+          <Link key={post.id} href={post.link} className={styles.card}>
             <div className={styles.imageWrapper}>
               <Image
                 src={post.image}
@@ -113,14 +114,14 @@ export default function BlogSection() {
                 ))}
               </ul>
             </div>
-          </a>
+          </Link>
         ))}
       </div>
 
       <div className={styles.moreLink}>
-        <a href="#" className={styles.link}>
+        <Link href="#" className={styles.link}>
           + Older Entries
-        </a>
+        </Link>
       </div>
     </section>
   );

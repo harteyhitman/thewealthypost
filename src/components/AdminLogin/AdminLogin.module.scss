@@ -1,0 +1,245 @@
+// // components/AdminLogin/AdminLogin.module.scss
+// .loginContainer {
+//   min-height: 100vh;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+//   padding: 20px;
+// }
+
+// .loginCard {
+//   background: white;
+//   padding: 40px;
+//   border-radius: 12px;
+//   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+//   width: 100%;
+//   max-width: 400px;
+// }
+
+// .title {
+//   text-align: center;
+//   margin-bottom: 30px;
+//   color: #333;
+//   font-size: 28px;
+//   font-weight: 600;
+// }
+
+// .form {
+//   display: flex;
+//   flex-direction: column;
+//   gap: 20px;
+// }
+
+// .formGroup {
+//   display: flex;
+//   flex-direction: column;
+// }
+
+// .label {
+//   margin-bottom: 8px;
+//   color: #555;
+//   font-weight: 500;
+//   font-size: 14px;
+// }
+
+// .input {
+//   padding: 12px 16px;
+//   border: 2px solid #e1e5e9;
+//   border-radius: 8px;
+//   font-size: 16px;
+//   transition: all 0.3s ease;
+
+//   &:focus {
+//     outline: none;
+//     border-color: #667eea;
+//     box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+//   }
+
+//   &:disabled {
+//     background-color: #f8f9fa;
+//     cursor: not-allowed;
+//   }
+// }
+
+// .error {
+//   background-color: #fee;
+//   color: #c33;
+//   padding: 12px;
+//   border-radius: 6px;
+//   border: 1px solid #fcc;
+//   font-size: 14px;
+//   text-align: center;
+// }
+
+// .submitButton {
+//   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+//   color: white;
+//   border: none;
+//   padding: 14px;
+//   border-radius: 8px;
+//   font-size: 16px;
+//   font-weight: 600;
+//   cursor: pointer;
+//   transition: all 0.3s ease;
+
+//   &:hover:not(:disabled) {
+//     transform: translateY(-2px);
+//     box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+//   }
+
+//   &:disabled {
+//     opacity: 0.6;
+//     cursor: not-allowed;
+//     transform: none;
+//   }
+// }
+
+// components/AdminAuth/AdminAuth.module.scss
+.authContainer {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 20px;
+}
+
+.authCard {
+  background: white;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #333;
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  margin-bottom: 8px;
+  color: #555;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.input {
+  padding: 12px 16px;
+  border: 2px solid #e1e5e9;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+
+  &:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+  }
+
+  &:disabled {
+    background-color: #f8f9fa;
+    cursor: not-allowed;
+  }
+
+  &::placeholder {
+    color: #999;
+  }
+}
+
+.message {
+  padding: 12px;
+  border-radius: 6px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.error {
+  background-color: #fee;
+  color: #c33;
+  border: 1px solid #fcc;
+}
+
+.success {
+  background-color: #efe;
+  color: #363;
+  border: 1px solid #cfc;
+}
+
+.submitButton {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 14px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+  }
+}
+
+.switchMode {
+  text-align: center;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid #e1e5e9;
+
+  p {
+    color: #666;
+    margin: 0;
+  }
+}
+
+.switchButton {
+  background: none;
+  border: none;
+  color: #667eea;
+  cursor: pointer;
+  text-decoration: underline;
+  font-size: inherit;
+
+  &:hover {
+    color: #764ba2;
+  }
+}
+
+.backendInfo {
+  margin-top: 20px;
+  padding: 12px;
+  background: #f8f9fa;
+  border-radius: 6px;
+  text-align: center;
+
+  p {
+    margin: 0;
+    font-size: 12px;
+    color: #666;
+  }
+}

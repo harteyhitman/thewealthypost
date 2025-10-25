@@ -1,19 +1,52 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 :root {
-  --color-primary: #6E61FF;
-  --color-body-text: #324A6D;
-  --color-accent: #DAC3FF;
-  --color-tertiary: #F1F6F0;
-  --color-secondary: #109F9F;
-  --color-background: #DCF8E5;
-  --color-text-light: #FFFFFF;
+  --color-primary: #6e61ff;
+  --color-body-text: #324a6d;
+  --color-accent: #dac3ff;
+  --color-tertiary: #f1f6f0;
+  --color-secondary: #109f9f;
+  --color-background: #dcf8e5;
+  --color-text-light: #ffffff;
   --color-text-dark: #000000;
-  --color-text-gray: #282A2C;
+  --color-text-gray: #282a2c;
 }
 
 body {
   background: var(--color-tertiary);
   color: var(--color-text-dark);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, sans-serif Arial, Helvetica;
+  line-height: 1.6;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.loading-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+}
+
+.loading-spinner {
+  border: 3px solid #f3f3f3;
+  border-top: 3px solid #667eea;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
