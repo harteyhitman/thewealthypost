@@ -8,6 +8,7 @@ interface Post {
   title: string;
   excerpt: string;
   slug: string;
+  link: string;
 }
 
 interface BlogGridProps {
@@ -17,8 +18,8 @@ interface BlogGridProps {
 const BlogGrid = ({ posts }: BlogGridProps) => {
   return (
     <div className={styles.blogGrid}>
-      {posts.map((post) => (
-        <BlogCard key={post.id} post={post} />
+      {posts.map((post, index) => (
+        <BlogCard key={post.id} post={post} index={index} />
       ))}
     </div>
   );

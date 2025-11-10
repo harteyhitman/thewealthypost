@@ -9,33 +9,46 @@ interface Post {
   title: string;
   excerpt: string;
   slug: string;
+  link: string;
+  
 }
+const directions = [
+  { '--x-offset': '100px', '--y-offset': '0px' },   // from right
+  { '--x-offset': '-100px', '--y-offset': '0px' },  // from left
+  { '--x-offset': '0px', '--y-offset': '100px' },   // from bottom
+  { '--x-offset': '0px', '--y-offset': '-100px' },  // from top
+];
 
 interface BlogCardProps {
   post: Post;
+  index: number;
 }
 
-const BlogCard = ({ post }: BlogCardProps) => {
+export default function BlogCard({ post, index }: BlogCardProps) {
+  const randomDir = directions[index % directions.length];
+  
   return (
-    <div className={styles.blogCard}>
+    <div
+      className={styles.blogCard}
+      style={{
+        ...randomDir,
+        animationDelay: `${index * 0.2}s`, // staggered animation
+      }}
+    >
       <div className={styles.blogImage}>
-        <Image
+        <img
           src={post.image}
           alt={post.title}
-          width={300}
-          height={200}
           className={styles.blogThumbnail}
         />
       </div>
       <div className={styles.blogContent}>
         <h3 className={styles.blogTitle}>{post.title}</h3>
         <p className={styles.blogExcerpt}>{post.excerpt}</p>
-        <Link href={`/blog/${post.slug}`} className={styles.readMoreLink}>
-          READ MORE
-        </Link>
+        <a href={post.link} className={styles.readMoreLink}>
+          Read More →
+        </a>
       </div>
     </div>
   );
-};
-
-export default BlogCard;
+}

@@ -2,11 +2,17 @@
 import { notFound } from 'next/navigation';
 import BlogTemplate from '@/components/BlogTemplate/BlogTemplate';
 import { getPostBySlug, getAllPosts } from '../../../libs/posts-data';
+import type { Post as PostType } from '@/libs/posts-data';
+
+interface BlogTemplateProps {
+  post: PostType;
+}
 
 interface PageProps {
   params: {
     slug: string;
   };
+  
 }
 
 // Generate static params for all blog posts

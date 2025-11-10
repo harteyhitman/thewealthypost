@@ -1,12 +1,11 @@
-// components/BlogTemplate/BlogTemplate.tsx
-import Image from 'next/image';
+import Image, { StaticImageData } from 'next/image';
 import styles from './BlogTemplate.module.scss';
 
 interface Post {
   id: number;
   slug: string;
   title: string;
-  image: string;
+  image: StaticImageData;
   content: string;
   author?: string;
   date?: string;
@@ -19,47 +18,69 @@ interface BlogTemplateProps {
 
 const BlogTemplate = ({ post }: BlogTemplateProps) => {
   return (
-    <article className={styles.blogTemplate}>
-      <header className={styles.blogHeader}>
-        <h1 className={styles.blogTemplateTitle}>{post.title}</h1>
-        
-        {post.image && (
-          <div className={styles.blogTemplateImage}>
-            <Image 
-              src={post.image} 
-              alt={post.title}
-              width={800}
-              height={400}
-              className={styles.featuredImage}
-              priority
+    <section className={styles.blogWrapper}>
+      {/* Top bar */}
+      <div className={styles.blogTopBar}>
+        <span className={styles.category}>Category 1</span>
+        <span className={styles.date}>{post.date}</span>
+        <span className={styles.comments}>3 Comments</span>
+      </div>
+
+      <div className={styles.blogLayout}>
+        {/* Main Content */}
+        <article className={styles.blogMain}>
+          <h1 className={styles.blogTitle}>{post.title}</h1>
+
+          {post.image && (
+            <div className={styles.blogImage}>
+              <Image
+                src={post.image}
+                alt={post.title}
+                width={800}
+                height={400}
+                className={styles.featuredImage}
+                priority
+              />
+            </div>
+          )}
+
+          <div className={styles.blogBody}>
+            <div
+              dangerouslySetInnerHTML={{ __html: post.content }}
             />
           </div>
-        )}
-        
-        <div className={styles.blogMeta}>
-          {post.author && <span className={styles.author}>By {post.author}</span>}
-          {post.date && <span className={styles.date}>{post.date}</span>}
-        </div>
-      </header>
-      
-      <div className={styles.blogContent}>
-        {post.content ? (
-          <div dangerouslySetInnerHTML={{ __html: post.content }} />
-        ) : (
-          <p>Content coming soon...</p>
-        )}
-      </div>
-      
-      <footer className={styles.blogFooter}>
-        {post.tags && post.tags.length > 0 && (
-          <div className={styles.blogTags}>
-            {post.tags.map(tag => (
-              <span key={tag} className={styles.tag}>#{tag}</span>
-            ))}
+        </article>
+
+        {/* Sidebar */}
+        <aside className={styles.blogSidebar}>
+          <div className={styles.sidebarCard}>
+            <h3>Recent Posts</h3>
+            <ul>
+              <li>How to Save Money Smartly</li>
+              <li>5 Tips for Better Design</li>
+              <li>What Makes a Website Great?</li>
+            </ul>
           </div>
-        )}
-      </footer>
-    </article>
+
+          <div className={styles.sidebarCard}>
+            <h3>Recent Comments</h3>
+            <ul>
+              <li>John on Design Trends</li>
+              <li>Mary on UX Psychology</li>
+            </ul>
+          </div>
+
+          <div className={styles.sidebarCard}>
+            <h3>Get the Latest News!</h3>
+            <form>
+              <input type="text" placeholder="Your Name" />
+              <input type="email" placeholder="Your Email" />
+              <button type="submit">Subscribe</button>
+            </form>
+          </div>
+        </aside>
+      </div>
+    </section>
   );
 };
 

@@ -29,7 +29,11 @@ import styles from './Blog.module.scss';
 // ];
 
 export default function BlogPage() {
-  const posts = getAllPosts();
+  const posts = getAllPosts().map(post => ({
+    ...post,
+    image: typeof post.image === 'string' ? post.image : post.image.src,
+    link: `/blog/${post.slug}`,
+  }));
   
   return (
     <div className={styles.blogPage}>

@@ -1,11 +1,13 @@
-// components/BlogCard/BlogCard.module.scss
 .blogCard {
   border: 1px solid #e0e0e0;
   border-radius: 8px;
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   background: white;
-
+  opacity: 0;
+  animation: enterAnimation 0.8s ease forwards;
+  /* You’ll randomize or stagger these in React inline styles */
+  
   &:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
@@ -58,5 +60,20 @@
 
   &:hover {
     color: #0051a2;
+  }
+}
+
+/* --- Animations --- */
+@keyframes enterAnimation {
+  0% {
+    opacity: 0;
+    transform: translate(
+      var(--x-offset, 0),
+      var(--y-offset, 0)
+    ) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
   }
 }
