@@ -1,0 +1,36 @@
+// pages/blog/Blog.module.scss
+.blogPage {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  min-height: 100vh;
+}
+
+.blogHeader {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.pageTitle {
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+
+.imageCredit {
+  font-size: 0.9rem;
+  color: #666;
+  font-style: italic;
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .blogPage {
+    padding: 1rem;
+  }
+  
+  .pageTitle {
+    font-size: 2rem;
+  }
+}
