@@ -120,7 +120,7 @@
   &:hover {
     transform: translateY(-1px);
     box-shadow: $shadow-md;
-    background: linear-gradient(135deg, darken($primary, 5%), darken($tertiary, 5%));
+    background: linear-gradient(135deg, $primary, 5%), ($tertiary, 5%);
   }
 
   &:focus {

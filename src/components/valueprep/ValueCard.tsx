@@ -1,9 +1,7 @@
 // components/ValueCard.tsx
 'use client';
 import React from 'react';
-import { motion } from 'framer-motion';
 import styles from './ValueCard.module.scss';
-import Image, { StaticImageData } from 'next/image';
 
 type Props = {
   icon: React.ReactNode;
@@ -12,7 +10,6 @@ type Props = {
   description: string;
   footer?: string;
   accentColor?: string;
-  bgImage?: string | StaticImageData;
   bgPosition?: 'right' | 'left' | 'bottom' | 'top'; // positioning
 };
 
@@ -22,8 +19,6 @@ export default function ValueCard({
   subtitle,
   description,
   accentColor = '#6E61FF',
-  bgImage,
-  bgPosition = 'right',
 }: Props) {
   return (
     <div className={styles.card}>

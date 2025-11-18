@@ -1,14 +1,11 @@
 // sections/ValueProposition.tsx
 'use client';
-import { FaApple, FaGooglePlay, FaMusic } from 'react-icons/fa';
 import ValueCard from '@/components/valueprep/ValueCard';
 import styles from './valuePrep.module.scss';
 import bgCardImg1 from '../../../public/waves.svg'
-import bgCardImg2 from '../../../public/dots.svg'
-import bgCardImg3 from '../../../public/rings.svg'
+
 import bgCardImg4 from '../../../public/stripes.svg'
-import bgCardImg5 from '../../../public/dots2.svg'
-import bgCardImg6 from '../../../public/dots2.svg'
+
 import { AiFillCloseCircle, AiOutlineTransaction } from 'react-icons/ai';
 import { SiActualbudget } from 'react-icons/si';
 import { LiaPersonBoothSolid } from 'react-icons/lia';

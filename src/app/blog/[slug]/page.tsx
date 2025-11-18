@@ -1,18 +1,12 @@
-// app/blog/[slug]/page.tsx
+// src/app/blog/[slug]/page.tsx
 import { notFound } from 'next/navigation';
 import BlogTemplate from '@/components/BlogTemplate/BlogTemplate';
 import { getPostBySlug, getAllPosts } from '../../../libs/posts-data';
-import type { Post as PostType } from '@/libs/posts-data';
-
-interface BlogTemplateProps {
-  post: PostType;
-}
 
 interface PageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
-  
+  }>;
 }
 
 // Generate static params for all blog posts
@@ -26,7 +20,8 @@ export async function generateStaticParams() {
 
 // Generate metadata for SEO
 export async function generateMetadata({ params }: PageProps) {
-  const post = getPostBySlug(params.slug);
+  const { slug } = await params;
+  const post = getPostBySlug(slug);
   
   if (!post) {
     return {
@@ -40,8 +35,9 @@ export async function generateMetadata({ params }: PageProps) {
   };
 }
 
-export default function BlogPost({ params }: PageProps) {
-  const post = getPostBySlug(params.slug);
+export default async function BlogPost({ params }: PageProps) {
+  const { slug } = await params;
+  const post = getPostBySlug(slug);
   
   if (!post) {
     notFound();

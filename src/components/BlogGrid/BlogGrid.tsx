@@ -38,26 +38,24 @@ const BlogGrid = ({ posts, itemsPerPage = 9 }: BlogGridProps) => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  // Generate page numbers for pagination
-  const getPageNumbers = () => {
-    const pages = [];
-    const maxVisiblePages = 5;
-    
-    let startPage = Math.max(1, currentPage - Math.floor(maxVisiblePages / 2));
-    let endPage = Math.min(totalPages, startPage + maxVisiblePages - 1);
-    
-    // Adjust if we're at the end
-    if (endPage - startPage + 1 < maxVisiblePages) {
-      startPage = Math.max(1, endPage - maxVisiblePages + 1);
-    }
-    
-    for (let i = startPage; i <= endPage; i++) {
-      pages.push(i);
-    }
-    
-    return pages;
-  };
-
+const getPageNumbers = () => {
+  const pages = [];
+  const maxVisiblePages = 5;
+  
+  let startPage = Math.max(1, currentPage - Math.floor(maxVisiblePages / 2));
+  const endPage = Math.min(totalPages, startPage + maxVisiblePages - 1); // Changed to const
+  
+  // Adjust if we're at the end
+  if (endPage - startPage + 1 < maxVisiblePages) {
+    startPage = Math.max(1, endPage - maxVisiblePages + 1);
+  }
+  
+  for (let i = startPage; i <= endPage; i++) {
+    pages.push(i);
+  }
+  
+  return pages;
+};
   if (posts.length === 0) {
     return (
       <div className={styles.noPosts}>
