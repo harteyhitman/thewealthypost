@@ -1,4 +1,4 @@
-// pages/blog/Blog.module.scss
+@use '../../styles/variables' as *;
 .blogPage {
   max-width: 1200px;
   margin: 0 auto;
@@ -32,5 +32,56 @@
   
   .pageTitle {
     font-size: 2rem;
+  }
+}
+
+// pages/Blog.module.scss
+
+.blogPage {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: $space-8 $space-6;
+
+  @include tablet {
+    padding: $space-12 $space-8;
+  }
+
+  @include desktop {
+    padding: $space-16 $space-12;
+  }
+}
+
+.blogHeader {
+  text-align: center;
+  margin-bottom: $space-12;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+
+  .pageTitle {
+    font-size: $text-3xl;
+    font-weight: 700;
+    color: $primary;
+    margin-bottom: $space-6;
+    line-height: 1.2;
+
+    @include tablet {
+      font-size: $text-4xl;
+    }
+
+    @include desktop {
+      font-size: $text-5xl;
+    }
+  }
+
+  .imageCredit {
+    font-size: $text-lg;
+    color: $text-secondary;
+    line-height: 1.6;
+    margin: 0;
+
+    @include tablet {
+      font-size: $text-xl;
+    }
   }
 }

@@ -1,4 +1,4 @@
-// components/BlogCard/BlogCard.tsx
+// components/BlogCard/BlogCard.tsx - SIMPLIFIED VERSION
 import Link from 'next/link';
 import Image from 'next/image';
 import styles from './BlogCard.module.scss';
@@ -9,46 +9,44 @@ interface Post {
   title: string;
   excerpt: string;
   slug: string;
-  link: string;
-  
 }
-const directions = [
-  { '--x-offset': '100px', '--y-offset': '0px' },   // from right
-  { '--x-offset': '-100px', '--y-offset': '0px' },  // from left
-  { '--x-offset': '0px', '--y-offset': '100px' },   // from bottom
-  { '--x-offset': '0px', '--y-offset': '-100px' },  // from top
-];
 
 interface BlogCardProps {
   post: Post;
   index: number;
 }
 
-export default function BlogCard({ post, index }: BlogCardProps) {
-  const randomDir = directions[index % directions.length];
-  
+const BlogCard = ({ post, index }: BlogCardProps) => {
+  // Calculate animation delay based on index for staggering effect
+  const animationDelay = `${index * 0.1}s`;
+
   return (
-    <div
+    <div 
       className={styles.blogCard}
       style={{
-        ...randomDir,
-        animationDelay: `${index * 0.2}s`, // staggered animation
+        animationDelay,
       }}
     >
       <div className={styles.blogImage}>
-        <img
+        <Image
           src={post.image}
           alt={post.title}
+          width={400}
+          height={250}
           className={styles.blogThumbnail}
+          placeholder="blur"
+          blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R"
         />
       </div>
       <div className={styles.blogContent}>
         <h3 className={styles.blogTitle}>{post.title}</h3>
         <p className={styles.blogExcerpt}>{post.excerpt}</p>
-        <a href={post.link} className={styles.readMoreLink}>
-          Read More →
-        </a>
+        <Link href={`/blog/${post.slug}`} className={styles.readMoreLink}>
+          READ MORE
+        </Link>
       </div>
     </div>
   );
-}
+};
+
+export default BlogCard;
