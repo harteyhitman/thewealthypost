@@ -119,7 +119,7 @@ export default function BlogSection() {
       </div>
 
       <div className={styles.moreLink}>
-        <Link href="#" className={styles.link}>
+        <Link href="/blog" className={styles.link}>
           + Older Entries
         </Link>
       </div>

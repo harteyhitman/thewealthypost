@@ -52,7 +52,7 @@ export default function Navbar() {
             label="Resources"
             items={[
               { href: "/podcast", label: "Podcast" },
-              { href: "/blog-page", label: "Blogs" },
+              { href: "/blog", label: "Blogs" },
             ]}
           />
           <CTAButton href="/discover-more" label="Discover More" />
