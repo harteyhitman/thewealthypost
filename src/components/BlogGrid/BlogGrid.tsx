@@ -11,6 +11,9 @@ interface Post {
   title: string;
   excerpt: string;
   slug: string;
+  category?: string;
+  date?: string;
+  author?: string;
 }
 
 interface BlogGridProps {

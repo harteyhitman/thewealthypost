@@ -11,57 +11,79 @@ export interface Post {
   author?: string;
   date?: string;
   tags?: string[];
+  category?: string;
 }
 
 // Import your actual images
+import PostImg0 from '../../public/blogpost/debt-management.jpg';
+// Import images from blog posts images folder
+import BirminghamCouncilImg from '../../public/blog posts images/Birmingham city council bankrupcy.jpg';
+import CarFinanceImg from '../../public/blog posts images/Car finance.jpg';
+import ChildBenefitsImg from '../../public/blog posts images/child benefits changes.jpg';
+import CreditScoreImg from '../../public/blog posts images/Credit score.jpg';
+import DebtManagementImg from '../../public/blog posts images/Debt management strategyu.jpg';
+import EmergencyFundsImg from '../../public/blog posts images/Emergency funds.jpg';
+import EnergyBillsImg from '../../public/blog posts images/Energy bill support.jpg';
+import FirstTimeBuyerImg from '../../public/blog posts images/first time buyer mortgage guide.jpg';
+import InsuranceGuideImg from '../../public/blog posts images/Insurance guide.jpg';
+import InterestRatesImg from '../../public/blog posts images/Interest rates.jpg';
+import InvestmentBeginnersImg from '../../public/blog posts images/investment for beginers.jpg';
+import MoneySavingAppImg from '../../public/blog posts images/Money saving app.jpg';
+import RetirementPlanningImg from '../../public/blog posts images/Retirement planning.jpg';
+import SelfAssessmentImg from '../../public/blog posts images/Self assesment tax return.jpg';
+import SideHustlesImg from '../../public/blog posts images/Side hustles.jpg';
+import StudentFinanceImg from '../../public/blog posts images/Student Finance England.jpg';
+import TaxCodesImg from '../../public/blog posts images/The codes explaoined.jpg';
+import UniversalCreditImg from '../../public/blog posts images/Universal credit.jpg';
+// Keep other images as fallback
 import PostImg1 from '../../public/debt-management.jpg';
-import PostImg2 from '../../public/debt-management.jpg'
-import PostImg3 from '../../public/debt-management.jpg'
-import PostImg4 from '../../public/debt-management.jpg'
-import PostImg5 from '../../public/debt-management.jpg'
-import PostImg6 from '../../public/debt-management.jpg'
-import PostImg7 from '../../public/debt-management.jpg'
-import PostImg8 from '../../public/debt-management.jpg'
-import PostImg9 from '../../public/debt-management.jpg'
-import PostImg10 from '../../public/debt-management.jpg'
-import PostImg11 from '../../public/debt-management.jpg'
-import PostImg12 from '../../public/debt-management.jpg'
-import PostImg13 from '../../public/debt-management.jpg'
-import PostImg14 from '../../public/debt-management.jpg'
-import PostImg15 from '../../public/debt-management.jpg'
-import PostImg16 from '../../public/debt-management.jpg'
-import PostImg17 from '../../public/debt-management.jpg'
-import PostImg18 from '../../public/debt-management.jpg'
-import PostImg19 from '../../public/debt-management.jpg'
-import PostImg20 from '../../public/debt-management.jpg'
-import PostImg21 from '../../public/debt-management.jpg'
-import PostImg22 from '../../public/debt-management.jpg'
-import PostImg23 from '../../public/debt-management.jpg'
-import PostImg24 from '../../public/debt-management.jpg'
-import PostImg25 from '../../public/debt-management.jpg'
-import PostImg26 from '../../public/debt-management.jpg'
-import PostImg27 from '../../public/debt-management.jpg'
-import PostImg28 from '../../public/debt-management.jpg'
-import PostImg29 from '../../public/debt-management.jpg'
-import PostImg30 from '../../public/debt-management.jpg'
-import PostImg31 from '../../public/debt-management.jpg'
-import PostImg32 from '../../public/debt-management.jpg'
-import PostImg33 from '../../public/debt-management.jpg'
-import PostImg34 from '../../public/debt-management.jpg'
-import PostImg35 from '../../public/debt-management.jpg'
-import PostImg36 from '../../public/debt-management.jpg'
-import PostImg37 from '../../public/debt-management.jpg'
-import PostImg38 from '../../public/debt-management.jpg'
-import PostImg39 from '../../public/debt-management.jpg'
-import PostImg40 from '../../public/debt-management.jpg'
-import PostImg41 from '../../public/debt-management.jpg'
-import PostImg42 from '../../public/debt-management.jpg'
-import PostImg43 from '../../public/debt-management.jpg'
-import PostImg44 from '../../public/debt-management.jpg'
-import PostImg45 from '../../public/debt-management.jpg'
-import PostImg46 from '../../public/debt-management.jpg'
-import PostImg47 from '../../public/debt-management.jpg'
-import PostImg48 from '../../public/debt-management.jpg'
+import PostImg2 from '../../public/debt-management.jpg';
+import PostImg3 from '../../public/debt-management.jpg';
+import PostImg4 from '../../public/debt-management.jpg';
+import PostImg5 from '../../public/debt-management.jpg';
+import PostImg6 from '../../public/debt-management.jpg';
+import PostImg7 from '../../public/debt-management.jpg';
+import PostImg8 from '../../public/debt-management.jpg';
+import PostImg9 from '../../public/debt-management.jpg';
+import PostImg10 from '../../public/debt-management.jpg';
+import PostImg11 from '../../public/debt-management.jpg';
+import PostImg12 from '../../public/debt-management.jpg';
+import PostImg13 from '../../public/debt-management.jpg';
+import PostImg14 from '../../public/debt-management.jpg';
+import PostImg15 from '../../public/debt-management.jpg';
+import PostImg16 from '../../public/debt-management.jpg';
+import PostImg17 from '../../public/debt-management.jpg';
+import PostImg18 from '../../public/debt-management.jpg';
+import PostImg19 from '../../public/debt-management.jpg';
+import PostImg20 from '../../public/debt-management.jpg';
+import PostImg21 from '../../public/debt-management.jpg';
+import PostImg22 from '../../public/debt-management.jpg';
+import PostImg23 from '../../public/debt-management.jpg';
+import PostImg24 from '../../public/debt-management.jpg';
+import PostImg25 from '../../public/debt-management.jpg';
+import PostImg26 from '../../public/debt-management.jpg';
+import PostImg27 from '../../public/debt-management.jpg';
+import PostImg28 from '../../public/debt-management.jpg';
+import PostImg29 from '../../public/debt-management.jpg';
+import PostImg30 from '../../public/debt-management.jpg';
+import PostImg31 from '../../public/debt-management.jpg';
+import PostImg32 from '../../public/debt-management.jpg';
+import PostImg33 from '../../public/debt-management.jpg';
+import PostImg34 from '../../public/debt-management.jpg';
+import PostImg35 from '../../public/debt-management.jpg';
+import PostImg36 from '../../public/debt-management.jpg';
+import PostImg37 from '../../public/debt-management.jpg';
+import PostImg38 from '../../public/debt-management.jpg';
+import PostImg39 from '../../public/debt-management.jpg';
+import PostImg40 from '../../public/debt-management.jpg';
+import PostImg41 from '../../public/debt-management.jpg';
+import PostImg42 from '../../public/debt-management.jpg';
+import PostImg43 from '../../public/debt-management.jpg';
+import PostImg44 from '../../public/debt-management.jpg';
+import PostImg45 from '../../public/debt-management.jpg';
+import PostImg46 from '../../public/debt-management.jpg';
+import PostImg47 from '../../public/debt-management.jpg';
+import PostImg48 from '../../public/debt-management.jpg';
 import PostImg49 from '../../public/debt-management.jpg';
 import PostImg50 from '../../public/debt-management.jpg';
 import PostImg51 from '../../public/debt-management.jpg';
@@ -77,30 +99,1070 @@ import PostImg60 from '../../public/debt-management.jpg';
 
 export const posts: Post[] = [
   {
+    id: -1,
+    slug: 'avoid-these-15-money-mistakes-that-keep-you-poor-expert-advice-and-tips',
+    title: 'Avoid These 15 Money Mistakes That Keep You Poor: Expert Advice and Tips',
+    excerpt: 'Many people make poor judgements, such as not saving or making impulsive purchases. In this blog post we will share 15 money mistakes but also practical financial advice and tips to avoid mistakes that keep you poor.',
+    image: PostImg0,
+    category: 'Personal Finance',
+    content: `
+      <p>Many people make poor judgements, such as not saving or making impulsive purchases.</p>
+      
+      <p>In this blog post we will share 15 money mistakes but also practical financial advice and tips to avoid mistakes that keep you poor.</p>
+      
+      <p>In 2024, make it your goal to take control of your personal finances by avoiding these common mistakes that can make you poor, and ensure that every financial decision you make contributes to building wealth over time. Let's dive in</p>
+
+      <h2>High Expense Ratios</h2>
+      <p>One common financial mistake people make is not paying attention to expense ratios when they invest.</p>
+
+      <h3>What is an Expense Ratio?</h3>
+      <p>An expense ratio is a fee charged annually by mutual funds, index funds, or ETFs to cover their operating costs. This fee is expressed as a percentage of the fund's average net assets. For instance, if you invest £10,000 in a fund with a 1% expense ratio, you'll pay $100 per year in fees. This might seem like a small amount, but these costs can add up over time and financial advisors won't tell you this.</p>
+
+      <h3>Impact on Savings and Investments</h3>
+      <p>High expense ratios can significantly reduce your investment returns. Every pound spent on fees is a pound that isn't working for you, which can lead to substantial losses in your savings over the long run. This is one mistake that eats away at the potential growth of your investments.</p>
+
+      <h3>Why Low-Cost Index Funds and ETFs Matter</h3>
+      <p>Investing in low-cost index funds and ETFs is a smart financial decision. These funds typically have lower expense ratios compared to actively managed funds. For example, many global index funds have expense ratios between 0.2% and 0.5%, which is much lower than the 1-2% typically charged by actively managed funds.</p>
+
+      <h3>Example Comparison: Investment Outcomes Over Time</h3>
+      <p>To show how cost ratios work, think about this situation: Alex and Sam each put £500 into an investment every month for 30 years. They both get an average return of 7% per year. Alex's fund charges a 0.5% expense ratio, while Sam's fund charges 2%. After 30 years, Alex will have approximately $560,000, while Sam will have only about $420,000. This $140,000 difference highlights the importance of avoiding high expense ratios, that's why I use vanguard.</p>
+
+      <h2>Late Fees</h2>
+      <h3>Consequences of Late Fees on Credit Score and Financial Stress</h3>
+      <p>You usually have to pay a fee if you don't pay your bills on time. These fees can add up quickly, and what's worse is that they can be reported to credit companies, which can hurt your credit score.</p>
+      
+      <p>A lower credit score means higher interest rates when you want to get a loan or mortgage and you get approved, making it more expensive to borrow money in the future.</p>
+
+      <h3>Practical Steps to Avoid This</h3>
+      <ul>
+        <li><strong>Set Up Automatic Payments</strong></li>
+        <li><strong>Use Reminders</strong></li>
+        <li><strong>Create a Monthly Budget</strong></li>
+      </ul>
+
+      <h2>Bank Account Fees</h2>
+      <p>Bank account fees are another area where people are making mistakes and they don't even know it. These fees can quietly eat away at your savings and impact your paycheck.</p>
+
+      <h3>Common Bank Fees</h3>
+      <ul>
+        <li><strong>Overdraft Fees:</strong> Charged when you spend more money than you have in your account.</li>
+        <li><strong>ATM Fees:</strong> Incurred when you use an ATM outside of your bank's network.</li>
+        <li><strong>Maintenance Fees:</strong> Maintenance costs just for having an account.</li>
+        <li><strong>Transfer Fees:</strong> Costs associated with transferring money between accounts.</li>
+      </ul>
+
+      <h3>How to Identify These Fees and Their Impact on Your Paycheck</h3>
+      <p>To avoid these fees, start by reviewing your bank statements regularly. Look for any charges that you don't recognize and understand what they are for. These fees might seem small individually, but over time, they can add up, reducing the money you have available.</p>
+      
+      <p>Many banks offer fee-free accounts with no monthly maintenance fees or hidden charges. Switching to these accounts can improve your cash flow and help you save money over time. Look for banks that provide:</p>
+      <ul>
+        <li>No overdraft fees</li>
+        <li>Free ATM access</li>
+        <li>No monthly maintenance fees</li>
+        <li>No transfer fees</li>
+      </ul>
+      
+      <p>These banks don't really care about you so do yourself a favour by choosing a bank account that doesn't charge these fees, you can keep more of your hard-earned money.</p>
+
+      <h2>Trying to Impress People</h2>
+      <p>One of the most common financial mistakes is spending money to impress others. This often lead to unnecessary financial stress and prevent you from achieving your financial goals. Let's delve into the psychological aspect of this behavior and how to make smarter financial decisions.</p>
+
+      <h3>Psychological Aspect of Wanting to Fit In and Its Financial Implications</h3>
+      <p>As humans, we naturally want to fit in and be accepted by others. This often leads us to buy those things we don't need, like a new car or expensive gadgets, just to keep up with our peers. This behavior can lead to significant financial stress and make it difficult to save and invest your money wisely.</p>
+      
+      <p>Living with intention means focusing on what truly brings you joy and fulfillment, rather than trying to impress others. This involves making financial decisions that align with your personal values and long-term goals. When you stop spending money on things you don't really need, don't like or could not afford you can save and invest more effectively, building wealth over time.</p>
+
+      <h3>Personal Reflection on Making Smarter Financial Decisions</h3>
+      <p>Take a moment to reflect on your financial decisions. Ask yourself:</p>
+      <ul>
+        <li>Am I buying this because I need it or because I want to impress someone?</li>
+        <li>Does this purchase align with my long-term financial goals?</li>
+        <li>Will this bring me joy and fulfilment?</li>
+        <li>Have i done my due diligence with this product?</li>
+      </ul>
+      
+      <p>By making thoughtful financial decisions and avoiding the mistake of spending to impress others, you can focus on what truly matters to you and improve your personal finance.</p>
+
+      <h2>Credit Card Interest Charges</h2>
+      <p>All it takes is one missed payment. Credit card interest charges are a significant financial burden that many people face and are ignorant enough to be willing to pay it until they realise that it's something that is pulling them down. High rates on products like credit cards can quickly accumulate, leading to a growing mountain of debt.</p>
+      
+      <p>The average APR (Annual Percentage Rate) for credit cards can be as high as 25% or more. In 2023, the average credit card debt per household was approximately £7,000. High interest rates mean that a significant portion of your monthly payment goes towards interest rather than paying down the principal balance, making it difficult to get out of debt.</p>
+
+      <h3>Strategies to Manage and Pay Off Credit Card Debt</h3>
+      <ol>
+        <li><strong>Pay More Than the Minimum:</strong> Always try to pay more than the minimum payment of the credit card bill every month. This reduces the principal balance faster and lowers the amount of interest you owe.</li>
+        <li><strong>Pay off your card every two weeks:</strong> This ensures you don't miss any payment and keep your utilization low</li>
+        <li><strong>Balance Transfer:</strong> Consider transferring your balance to a card with a lower interest rate. Many cards offer 0% APR for an introductory period, which can help you pay down the debt faster.</li>
+        <li><strong>Debt Snowball or Avalanche Method:</strong> Use the debt snowball method by paying off the smallest debt first, or the avalanche method by focusing on the debt with the highest interest rate.</li>
+        <li><strong>Consolidation Loans:</strong> A personal loan with a lower interest rate can consolidate multiple credit card debts into one manageable payment.</li>
+      </ol>
+
+      <h3>Alternatives to Using Credit Cards</h3>
+      <ul>
+        <li><strong>Use a Debit Card</strong></li>
+        <li><strong>Pay Cash</strong></li>
+        <li><strong>Build an Emergency Fund</strong></li>
+      </ul>
+
+      <h2>Don't Buy Things Just Because They're on Sale</h2>
+      <p>The allure of sales can lead to impulse purchases, which is a common money mistake and advertisers love to use them because it works</p>
+
+      <h3>The Psychology Behind Sales and Impulse Purchases</h3>
+      <p>Sales create a sense of urgency and scarcity, making you feel like you must act quickly to secure a deal. This psychological trick often leads to buying things blindly, things you don't need or even want, just because they're on discount.</p>
+
+      <h3>Distinguishing Between Needs and Wants</h3>
+      <p>Before you put your money on a product, ask yourself:</p>
+      <ul>
+        <li>Do I truly need this item, or is it just something I want?</li>
+        <li>Will this purchase bring long-term value or satisfaction?</li>
+      </ul>
+      
+      <p>To the seller it doesn't matter if it's a need or want, all they want is to tempt you with the sale but to you, it matters and by being honest about your needs versus wants, you can avoid unnecessary spending and focus on saving and investing your money.</p>
+
+      <h3>Smart Shopping Tips to Save and Invest Your Money Wisely</h3>
+      <ul>
+        <li><strong>Create a Shopping List</strong></li>
+        <li><strong>Set a Budget</strong></li>
+        <li><strong>Wait Before Buying</strong></li>
+      </ul>
+
+      <h2>Avoid Lottery Tickets</h2>
+      <p>Buying lottery tickets is a financial mistake that many people make, hoping for a big win. However, the odds are overwhelmingly against you.</p>
+      
+      <p>The odds of winning a lottery jackpot are extremely low, often one in millions. Despite this, many poor people spend significant portions of their income on lottery tickets, hoping to strike it rich.</p>
+
+      <h3>Better Alternatives to Invest Your Money</h3>
+      <p>Instead of buying lottery tickets, consider investing in opportunities that offer passive income, such as:</p>
+      <ul>
+        <li><strong>Index funds which diversify your investments into different stocks</strong></li>
+        <li><strong>Yourself</strong></li>
+        <li><strong>Your business</strong></li>
+      </ul>
+
+      <h2>Extended Warranties</h2>
+      <p>Extended warranties often seem like a good idea, but they usually aren't worth the additional cost.</p>
+      
+      <p>Extended warranties are a form of insurance that retailers offer to cover repairs beyond the standard manufacturer's warranty. However, most products rarely fail within the extended warranty period, making this an additional cost that doesn't offer much value.</p>
+      
+      <p>Manufacturer's warranties often provide sufficient coverage for a reasonable period. By relying on these warranties and not buying extended ones, you can save money and make more informed financial decisions.</p>
+
+      <h2>Games</h2>
+      <p>Spending on video games and mobile games can quickly become a financial black hole.</p>
+
+      <h3>Financial Impact of Gaming Expenses on Your Household Budget</h3>
+      <p>Gaming expenses, including the cost of new games, in-game purchases, and subscriptions, can add up and impact your monthly budget. These expenses often fall under frivolous spending that doesn't contribute to your financial goals.</p>
+
+      <h3>Responsible Gaming Practices and Setting Clear Spending Limits</h3>
+      <ol>
+        <li><strong>Set a Budget for entertainment</strong></li>
+        <li><strong>Use Gift Cards:</strong> Preload a gift card with your gaming budget to avoid overspending.</li>
+        <li><strong>Track Spending:</strong> Monitor your gaming expenses against the money you set aside for it</li>
+        <li><strong>Productivity 101:</strong> Make sure gaming is productive for you</li>
+      </ol>
+
+      <h2>Avoid Impulse Purchases</h2>
+      <p>Impulse purchases are a common financial mistake that can significantly impact your personal financial health. The convenience of online shopping and the lure of instant gratification often lead to buying things you don't need, which can drain your savings and disrupt your financial plan.</p>
+
+      <h3>The Temptation of Convenience and How It Leads to Financial Mistakes</h3>
+      <p>Online shopping, with its one-click purchase options and constant sales notifications, might make it incredibly easy to spend money impulsively. This behavior can quickly lead to frivolous spending, adding unnecessary costs to your monthly budget.</p>
+
+      <h3>Strategies to Control Impulse Buying and Avoid Frivolous Spending</h3>
+      <ol>
+        <li>Create a Shopping List</li>
+        <li>Set a Budget</li>
+        <li>Unsubscribe from Marketing Emails</li>
+        <li>Implementing a cooling-off period, such as waiting 24-48 hours before making a non-essential purchase, can help you decide if you truly need the item. This delay often reduces the urge to buy impulsively and allows for more thoughtful financial decisions.</li>
+      </ol>
+
+      <h2>Skip Luxury Brands</h2>
+      <p>Luxury brands often come with a hefty price tag, which can significantly impact your financial plan. While they might offer prestige, the cost versus value ratio is something to consider carefully.</p>
+      
+      <p>Luxury brands charge a premium for their name, but this doesn't always mean better quality.</p>
+      
+      <p>Opt for high-quality products from lesser-known brands. These can provide the same functionality and longevity without the additional cost associated with luxury labels.</p>
+
+      <h2>Buying Souvenirs</h2>
+      <p>Souvenir shopping during travels can add significant costs to your trip. These impulse purchases often lead to clutter and financial waste.</p>
+
+      <h3>Financial Impact of Souvenir Shopping on Travel Expenses</h3>
+      <p>Buying souvenirs can quickly escalate your travel budget, leading to unexpected expenses that affect your overall financial plan. These small purchases add up and can become a financial burden.</p>
+
+      <h3>Alternative Ways to Remember Trips Without Spending Money</h3>
+      <ul>
+        <li>Capture memories through photographs</li>
+        <li>By journaling your experiences.</li>
+        <li>Create a digital photo album</li>
+        <li>A travel blog to document your adventures.</li>
+      </ul>
+      
+      <p>These alternatives are not only cost-effective but also preserve memories in a more personal and organized manner.</p>
+
+      <h2>Resist the Latest Fads</h2>
+      <p>Keeping up with the latest trends and technology is a costly mistake and can be financially draining. Constantly upgrading to the newest gadgets or fashion items can lead to high-interest debt and financial instability.</p>
+      
+      <p>Focus on the functionality of what you already own. This mindset helps you avoid the financial mistakes associated with chasing every new trend.</p>
+      
+      <p>By resisting the urge to buy the latest gadgets, you can save significant amounts of money and invest it in assets that appreciate over time, such as stocks or real estate.</p>
+
+      <h2>Unused Subscriptions</h2>
+      <p>Many people spend money on subscriptions they rarely use, leading to wasted resources. Regularly auditing these expenses can improve your cash flow</p>
+      
+      <p>Unused subscriptions, whether for streaming services, magazines, or gym memberships, can add up to a significant amount each month.</p>
+      
+      <p>Review your bank and credit card statements regularly to identify and cancel subscriptions you no longer use or need.</p>
+
+      <h3>Steps to Cancel Unnecessary Subscriptions and Improve Cash Flow</h3>
+      <ol>
+        <li><strong>List All Subscriptions</strong></li>
+        <li><strong>Evaluate Usage</strong></li>
+        <li><strong>Cancel Unused Services</strong></li>
+      </ol>
+
+      <h2>Fast Fashion</h2>
+      <p>Fast fashion may seem like an affordable way to keep up with trends, but it often leads to waste.</p>
+      
+      <p>Fast fashion items are typically low in quality and designed to be replaced frequently. This cycle of constant replacement can lead to higher long-term costs</p>
+      
+      <p>Investing in high-quality, timeless pieces can save you money in the long run. These items tend to last longer and provide better value, reducing the need for frequent replacements.</p>
+      
+      <p>Consider shopping for pre-loved items. Thrift stores, consignment shops, and online marketplaces offer high-quality goods at a fraction of the cost of new items. This approach helps you save money while still enjoying fashionable and durable products.</p>
+
+      <h2>Conclusion</h2>
+      <p>By avoiding these 15 common money mistakes, you can significantly improve your financial health. Focus on long-term value, save and invest wisely, and make informed financial decisions. Remember, financial freedom starts with small, smart choices every day. Always be mindful of your spending habits, track your expenses, create realistic budgets, and work towards your financial goals consistently. By staying disciplined and avoiding these pitfalls, you can pave the way towards a more secure and prosperous future. Your financial well-being is in your hands, so make sure to make the most of it by being proactive and responsible with your money.</p>
+    `,
+    author: 'The Wealthy Post Team',
+    date: 'January 20, 2025',
+    tags: ['Money Mistakes', 'Personal Finance', 'Financial Advice', 'Budgeting', 'Saving Money', 'Investing']
+  },
+  {
+    id: 0,
+    slug: 'the-biggest-financial-mistakes-we-make-and-how-to-avoid-them',
+    title: 'The Biggest Financial Mistakes We Make and How to Avoid Them',
+    excerpt: 'I have made mistakes and you have made mistakes, whether we acknowledge it or not some mistakes can have long-lasting consequences. In this article, we\'ll explore the biggest financial mistakes that could change your future and share the best way in my opinion to get ahead of them.',
+    image: PostImg0,
+    category: 'Personal Finance',
+    content: `
+      <p>I have made mistakes and you have made mistakes, whether we acknowledge it or not some mistakes can have long-lasting consequences. In this article, we'll explore the biggest financial mistakes that could change your future and share the best way in my opinion to get ahead of them.</p>
+
+      <h2>The Biggest Financial Mistake – Ignoring Retirement Savings</h2>
+      <p>Many mistakes with money may only have short-term effects, but mistakes regarding planning for retirement always have long-term effects.</p>
+      
+      <p>This is one of the most common financial mistakes for many young people, a lot of young adults don't take retirement planning seriously because it's hard to think about something that is far away when you have important things to do right now or simply because they think they will win the lottery someday.</p>
+      
+      <p>According to the Scottish Widows Retirement Report 2023, 35% of people in the UK aren't saving enough money for retirement. Yes, that's one-third of us!</p>
+      
+      <p>Also with the cost of living crisis, Scottish widow also finds out young people are more guilty of cutting down their retirement contribution.</p>
+      
+      <p>The truth is, when you start young, you have the power of compound interest on your side. This is like financial magic because it makes your money grow by itself. The longer you wait, the more you have each month to save.</p>
+      
+      <p>Other tips are to grow your retirement fund by taking advantage of employer pension match and tax advantaged accounts like an ISA in the UK and 401k and IRA in the US.</p>
+      
+      <p>In the long run taking retirement planning seriously and acting on this could be the one of best financial decisions you make.</p>
+
+      <h2>Other Financial Mistakes</h2>
+
+      <h3>Not Having an Emergency Fund</h3>
+      <p>Life is full of surprises, and not all of them are pleasant. Whether it's a sudden medical expense, car repair, or job loss, unexpected financial situation can happen to anyone. Without an emergency fund, you may be forced to rely on high-interest loans or credit cards, leading to debt.</p>
+
+      <h4>How to start and build an emergency fund</h4>
+      <ul>
+        <li><strong>Set a goal:</strong> Your goal would be how much you need in your emergency fund. A good rule of thumb is to have three to six months' worth of living expenses but there are individual circumstances that determine if you need more or less.</li>
+        <li><strong>Open a separate savings account:</strong> It's important to keep your emergency fund in a separate bank account to avoid the temptation of dipping into it for non-emergencies.</li>
+        <li><strong>Start small:</strong> If you're just starting, don't worry about reaching your goal right away. Begin by ensuring an emergency fund is a part of your monthly budget and make sure you are saving regularly, even if it's just £10 or £20 a week.</li>
+        <li><strong>Automate your savings:</strong> It's a good idea to set up automatic transfers to your savings account to make saving effortless.</li>
+      </ul>
+
+      <h3>Living Beyond Your Means</h3>
+      <p>A lot of people today are living above their means maybe because of social media. Living beyond your means is a surefire way to end up in financial trouble.</p>
+      
+      <p>It's simple maths if you earn £10 and spend £12 continuously you will keep racking up debt and you won't be able to reach any of your long-term goals.</p>
+      
+      <p>Overspending can be tempting, especially with easy access to credit cards and the pressure to keep up with the latest trends. However, living this lifestyle is not sustainable and bad for your financial health.</p>
+
+      <h4>Strategies for creating a realistic budget and sticking to it</h4>
+      <ul>
+        <li><strong>Track your expenses:</strong> Keep track of your spending on a regular basis, you want to always see where your money is going. Categorize your expenses and identify areas where you can cut back either by renegotiating to get a good deal, choosing a new vendor or stop using the product or service altogether especially if it doesn't add to you</li>
+        <li><strong>Set a budget:</strong> A budget is a plan of how you will spend your income. That means you are always forward looking its not the same as tracking. A budget says i want to spend x on y next month while tracking asks how much I spent on y at any particular month.</li>
+        <li><strong>Use cash or debit card:</strong> If you have identified that credit cards are a problem for you the best thing you can do is to avoid using credit cards irrespective of the perks. Instead, use cash or debit cards to stay within your budget.</li>
+        <li><strong>Review your budget regularly:</strong> Periodically review your budget to ensure it still aligns with your income and expenses. Adjust as needed to stay on track</li>
+      </ul>
+
+      <h3>Falling into the Credit Card Debt Trap</h3>
+      <p>Credit cards are a double edged swords, they can be a useful financial tool, but if not used correctly they could be holding you back. It's very easy to fall into credit card debt trap.</p>
+      
+      <p>Credit cards are a good way to perks when you buy things you would normally buy but not managing it properly can be bad for your financial life or financial well-being.</p>
+
+      <h4>How credit card debt accumulates</h4>
+      <ul>
+        <li><strong>Overspending:</strong> Using credit cards for impulse purchases or living beyond your means can quickly lead to debt.</li>
+        <li><strong>High interest rates:</strong> Credit cards typically have high interest rates, and carrying a balance can result in significant interest charges which adds to what you already owe and the cycle never ends</li>
+        <li><strong>Minimum payments:</strong> If you make only the minimum monthly payment you would never come out of debt</li>
+      </ul>
+
+      <h2>Consequences of Money Mistakes</h2>
+
+      <h3>Financial Stress</h3>
+      <p>Money mistakes can lead to financial stress, which can take a toll on your mental and physical health, also constantly worrying about money can lead to sleepless nights, anxiety, and even depression, this is the opposite of financial freedom that your future self would not want.</p>
+
+      <h3>Limited Future Opportunities</h3>
+      <p>Money mistakes can limit your future opportunities. For example, if you have bad debt and a low credit score, it may be hard for you to get a mortgage. Also if you don't have enough savings, you might not be able to take advantage of an investment or start a business.</p>
+
+      <h3>Strained Relationships</h3>
+      <p>Money mistakes can strain relationships with family and friends. Imagine being a burden to your child's young family or borrowing money from the people you care about, This can easily cause tension and anger, especially if your child is struggling or you can't pay back the money you borrowed.</p>
+
+      <h2>Conclusion</h2>
+      <p>Take action today and start investing for your future, you can check out this blog post that can help you achieve that.</p>
+      
+      <p>Avoiding other money mistakes is also crucial for securing your financial future. By building an emergency fund, living within your means, using credit cards responsibly, and having a financial plan, you can set yourself up for financial success.</p>
+      
+      <p>Remember, it's never too late to start making smart money decisions. Take action today to secure your financial future and avoid financial regrets.</p>
+
+      <h2>FAQs</h2>
+      <ol>
+        <li><strong>How much should I save in my emergency fund?</strong> The rule of thumb is to aim to save enough money in your emergency fund to cover your living expenses for three to six months. This will provide you with a solid financial foundation to handle unexpected expenses like car repairs without going into debt.</li>
+        <li><strong>How can I start investing with a small budget?</strong> You can start investing with a small budget by opening a regular investment account or a retirement account, such as an ISA. Consider investing in low-cost index funds or exchange-traded funds (ETFs) that track the overall market. Over time, even a small amount can add up.</li>
+        <li><strong>How can I create a budget?</strong> To create a budget, start by tracking your income and expenses for a month. Categorize your expenses into fixed and variable expenses. Set spending limits for each category and stick to them. Review your budget regularly and adjust as needed.</li>
+        <li><strong>How can I prioritize retirement savings?</strong> To prioritize retirement savings, take advantage of employer-sponsored retirement plans and contribute enough to get any employer match. Consider opening an individual Savings Account (ISA) and contribute regularly.</li>
+      </ol>
+    `,
+    author: 'The Wealthy Post Team',
+    date: 'January 15, 2025',
+    tags: ['Financial Mistakes', 'Retirement Planning', 'Emergency Fund', 'Credit Cards', 'Budgeting', 'Personal Finance']
+  },
+  {
     id: 1,
     slug: 'birmingham-city-council-bankruptcy-personal-finance-lessons',
     title: 'Birmingham City Council Bankruptcy: Personal Finance Lessons',
-    excerpt: 'This week, the Birmingham city council issued a "section 114 notice." This means that the council cannot meet its legal obligation to balance the books. This story made me ask how can a city in a place like the UK go broke and what can we learn for our personal finances?',
-    image: PostImg1,
+    excerpt: 'This week, the Birmingham city council issued a "section 114 notice." This means that the council cannot meet its legal obligation to balance the books. This story made me ask how can a city in a place like the UK go broke and what can we learn from this.',
+    image: BirminghamCouncilImg,
+    category: 'Personal Finance',
     content: `
-      <h2>Understanding Section 114 Notice</h2>
-      <p>When a local authority like Birmingham City Council issues a Section 114 notice, it essentially means they cannot meet their financial obligations. This situation, while concerning for the city's residents, offers valuable lessons for personal financial management.</p>
+      <p>This week, the Birmingham city council issued a "section 114 notice." This means that the council cannot meet its legal obligation to balance the books. This story made me ask how can a city in a place like the UK go broke and what can we learn from this.</p>
+
+      <h2>A Stroll Down Memory Lane</h2>
+      <p>Imagine going back in time to 1890, when August Harper's magazine in New York called Birmingham the best-run city in the world.</p>
       
-      <h2>Key Personal Finance Lessons</h2>
-      <p><strong>1. Live Within Your Means:</strong> Just as the council failed to balance its books, individuals must ensure their expenses don't exceed their income.</p>
-      <p><strong>2. Emergency Funds Matter:</strong> Having reserves for unexpected expenses can prevent financial crises.</p>
-      <p><strong>3. Long-term Planning:</strong> Sustainable financial health requires looking beyond immediate needs to future obligations.</p>
+      <p>This publication described Birmingham as the best-governed city because it was managed in a very sensible manner.</p>
+
+      <h3>The AAA Rating: A Symbol of Financial Stability</h3>
+      <p>In 2011 Birmingham was also considered the standard because they got a AAA rating. In the financial world, a AAA rating is like a 5-star hotel, it is a testament to its financial stability and a boom indicator of excellent financial management.</p>
+      
+      <p>However, fast forward to today, and Birmingham City Council has issued a Section 114 notice, effectively declaring it cannot balance its books. This dramatic fall from grace offers crucial lessons for personal finance management.</p>
+
+      <h2>What Led to Birmingham's Financial Crisis?</h2>
+      <p>The council's financial troubles stem from several factors including equal pay claims, issues with an IT system, and rising costs. These challenges mirror common personal finance pitfalls that individuals face.</p>
+
+      <h2>Personal Finance Lessons from Birmingham's Crisis</h2>
+      
+      <h3>1. Live Within Your Means</h3>
+      <p>Just as Birmingham struggled to balance its books, individuals must ensure expenses don't exceed income. Creating and sticking to a budget is fundamental to financial health.</p>
+
+      <h3>2. Emergency Funds Are Essential</h3>
+      <p>Birmingham's lack of financial reserves left it vulnerable when unexpected costs arose. Similarly, individuals should maintain an emergency fund covering 3-6 months of expenses to handle unexpected situations.</p>
+
+      <h3>3. Long-term Planning Matters</h3>
+      <p>The council's short-term thinking led to long-term problems. For personal finance, this means planning for retirement, major purchases, and life changes well in advance.</p>
+
+      <h3>4. Avoid Over-reliance on Debt</h3>
+      <p>Excessive borrowing can create unsustainable financial situations. Whether for a council or an individual, managing debt levels is crucial for financial stability.</p>
+
+      <h3>5. Regular Financial Reviews</h3>
+      <p>Regular monitoring of financial health can prevent small issues from becoming crises. Review your budget, expenses, and financial goals regularly.</p>
+
+      <h2>Practical Steps for Personal Financial Health</h2>
+      <ul>
+        <li><strong>Create a budget.</strong> Track your income and expenses to understand where your money goes. There are different budgeting methods available. Read our article that differentiates them, find one that works for you and stick to it.</li>
+        <li><strong>Save for emergencies.</strong> It is important to have a financial cushion or cash reserves in case of unexpected expenses. This is called an emergency fund. Most of the big companies you know have large cash reserves some like Microsoft and Google even larger than their debt. Emergency Fund: Everything you need to know</li>
+        <li><strong>Get professional help if needed.</strong> If you are struggling with your finances, don't be afraid to get help from a financial advisor or coach.</li>
+      </ul>
+
+      <h2>Conclusion</h2>
+      <p>Birmingham City Council's financial crisis serves as a powerful reminder that financial stability requires constant vigilance, planning, and discipline. By applying these lessons to our personal finances, we can avoid similar pitfalls and build a secure financial future.</p>
     `,
-    author: 'Financial Insights Team',
-    date: 'September 15, 2024',
-    tags: ['Personal Finance', 'Budgeting', 'Financial Planning']
+    author: 'The Wealthy Post Team',
+    date: 'January 18, 2025',
+    tags: ['Personal Finance', 'Budgeting', 'Financial Planning', 'Emergency Fund', 'Financial Crisis']
   },
   {
     id: 2,
+    slug: 'mortgage-affordability-how-much-can-you-afford',
+    title: 'Mortgage Affordability: How Much Can You Afford?',
+    excerpt: 'Understanding mortgage affordability is crucial when buying a home. Learn how lenders calculate what you can borrow, factors that affect your mortgage amount, and practical tips to improve your borrowing capacity.',
+    image: PostImg2,
+    category: 'Property',
+    content: `
+      <p>Understanding mortgage affordability is one of the most important steps in the home buying process. Before you start house hunting, it's essential to know exactly how much you can afford to borrow.</p>
+
+      <h2>How Lenders Calculate Mortgage Affordability</h2>
+      <p>Lenders use several key factors to determine how much you can borrow for a mortgage. Understanding these calculations can help you prepare and potentially increase your borrowing capacity.</p>
+
+      <h3>Income Multiples</h3>
+      <p>Most lenders will typically lend between 4-5 times your annual income. However, this can vary based on your circumstances, credit history, and the lender's criteria.</p>
+
+      <h3>Affordability Assessment</h3>
+      <p>Lenders conduct a thorough affordability assessment that considers:</p>
+      <ul>
+        <li>Your monthly income (salary, bonuses, benefits)</li>
+        <li>Your monthly expenses and outgoings</li>
+        <li>Existing debts and credit commitments</li>
+        <li>Living costs and household expenses</li>
+        <li>Interest rate stress testing</li>
+      </ul>
+
+      <h2>Factors That Affect Your Mortgage Affordability</h2>
+      
+      <h3>1. Your Income</h3>
+      <p>Your gross annual income is the starting point. Lenders will consider your basic salary plus any regular bonuses, overtime, or additional income sources.</p>
+
+      <h3>2. Your Credit Score</h3>
+      <p>A good credit score can help you access better rates and potentially borrow more. Poor credit may limit your options or require a larger deposit.</p>
+
+      <h3>3. Your Deposit</h3>
+      <p>The size of your deposit affects both the loan-to-value ratio and the interest rates available to you. A larger deposit typically means better rates and more borrowing capacity.</p>
+
+      <h3>4. Existing Debts</h3>
+      <p>Any existing loans, credit cards, or other debts will reduce the amount you can borrow as lenders need to ensure you can afford all your commitments.</p>
+
+      <h3>5. Interest Rates</h3>
+      <p>Lenders stress test your affordability against higher interest rates to ensure you could still afford payments if rates rise.</p>
+
+      <h2>How to Calculate Your Mortgage Affordability</h2>
+      <p>Use online mortgage calculators as a starting point, but remember these are estimates. For an accurate assessment, speak with a mortgage advisor who can consider all your individual circumstances.</p>
+
+      <h2>Tips to Improve Your Mortgage Affordability</h2>
+      <ul>
+        <li>Reduce existing debts before applying</li>
+        <li>Build a larger deposit</li>
+        <li>Improve your credit score</li>
+        <li>Consider a longer mortgage term (though this increases total interest)</li>
+        <li>Look for additional income sources</li>
+        <li>Reduce monthly outgoings where possible</li>
+      </ul>
+
+      <h2>Getting a Mortgage in Principle</h2>
+      <p>A Mortgage in Principle (MIP) or Agreement in Principle (AIP) gives you an indication of how much you could borrow. This can help you:</p>
+      <ul>
+        <li>Know your budget when house hunting</li>
+        <li>Show estate agents you're a serious buyer</li>
+        <li>Speed up the process when you find a property</li>
+      </ul>
+
+      <h2>Conclusion</h2>
+      <p>Understanding mortgage affordability is essential for a successful home purchase. Take time to assess your finances, improve your borrowing capacity where possible, and seek professional advice to ensure you make informed decisions about one of the biggest financial commitments you'll make.</p>
+    `,
+    author: 'The Wealthy Post Team',
+    date: 'January 22, 2025',
+    tags: ['Mortgage', 'Home Buying', 'Property', 'Affordability', 'Finance']
+  },
+  {
+    id: 3,
+    slug: 'the-mansion-house-compact-what-it-means-for-your-pension',
+    title: 'The Mansion House Compact: What It Means for Your Pension',
+    excerpt: 'The Mansion House Compact is a significant agreement that could impact your pension savings. Learn what this compact means, how it affects pension funds, and what you need to know about the changes.',
+    image: PostImg3,
+    category: 'Retirement',
+    content: `
+      <p>The Mansion House Compact represents a significant shift in how UK pension funds invest, with potential implications for millions of pension savers across the country.</p>
+
+      <h2>What is the Mansion House Compact?</h2>
+      <p>The Mansion House Compact is an agreement between the UK government and major pension providers to increase investment in UK companies, particularly in growth sectors and private equity. This initiative aims to boost the UK economy while potentially improving pension returns.</p>
+
+      <h2>Key Objectives</h2>
+      <ul>
+        <li>Increase pension fund investment in UK companies</li>
+        <li>Support economic growth and innovation</li>
+        <li>Potentially improve long-term pension returns</li>
+        <li>Balance risk and return for pension savers</li>
+      </ul>
+
+      <h2>How This Affects Your Pension</h2>
+      
+      <h3>Investment Strategy Changes</h3>
+      <p>Pension funds may shift their investment strategies to include more UK-focused investments, which could affect the risk profile and potential returns of your pension pot.</p>
+
+      <h3>Potential Benefits</h3>
+      <ul>
+        <li>Support for UK economic growth</li>
+        <li>Potential for higher returns from growth investments</li>
+        <li>Diversification of pension fund portfolios</li>
+      </ul>
+
+      <h3>Considerations</h3>
+      <ul>
+        <li>Increased exposure to UK market risks</li>
+        <li>Changes in investment performance</li>
+        <li>Need to understand your pension fund's strategy</li>
+      </ul>
+
+      <h2>What You Should Do</h2>
+      <ul>
+        <li>Review your pension statements regularly</li>
+        <li>Understand your pension fund's investment approach</li>
+        <li>Consider seeking financial advice if concerned</li>
+        <li>Stay informed about pension policy changes</li>
+      </ul>
+
+      <h2>Conclusion</h2>
+      <p>The Mansion House Compact represents an important development in UK pension policy. While the full impact remains to be seen, staying informed and regularly reviewing your pension arrangements will help ensure you're prepared for any changes.</p>
+    `,
+    author: 'The Wealthy Post Team',
+    date: 'January 25, 2025',
+    tags: ['Pension', 'Retirement', 'Investments', 'UK Finance', 'Policy']
+  },
+  {
+    id: 4,
+    slug: 'the-hidden-black-tax-that-affects-wealth-building',
+    title: 'The Hidden Black Tax That Affects Wealth Building',
+    excerpt: 'The "Black Tax" refers to the financial responsibility many people feel to support extended family members. Learn how this impacts wealth building and strategies to balance family obligations with personal financial goals.',
+    image: PostImg4,
+    category: 'Wealth Building',
+    content: `
+      <p>The concept of "Black Tax" refers to the financial obligations and expectations placed on individuals to support extended family members, which can significantly impact their ability to build personal wealth.</p>
+
+      <h2>Understanding Black Tax</h2>
+      <p>Black Tax isn't just about money—it's about cultural expectations, family obligations, and the pressure to provide financial support to relatives. This can include:</p>
+      <ul>
+        <li>Regular financial contributions to parents or elders</li>
+        <li>Supporting siblings' education or expenses</li>
+        <li>Helping extended family members in need</li>
+        <li>Cultural expectations around financial responsibility</li>
+      </ul>
+
+      <h2>How Black Tax Affects Wealth Building</h2>
+      
+      <h3>Reduced Savings Capacity</h3>
+      <p>When significant portions of income go to family support, there's less available for personal savings, investments, and retirement planning.</p>
+
+      <h3>Delayed Financial Goals</h3>
+      <p>Home ownership, starting a business, or building an emergency fund may be delayed due to family financial obligations.</p>
+
+      <h3>Emotional and Mental Impact</h3>
+      <p>The pressure to provide while also trying to build personal wealth can create significant stress and financial anxiety.</p>
+
+      <h2>Strategies to Balance Family Obligations and Wealth Building</h2>
+      
+      <h3>1. Set Clear Boundaries</h3>
+      <p>Establish what you can realistically afford to contribute without compromising your own financial future.</p>
+
+      <h3>2. Create a Family Support Budget</h3>
+      <p>Allocate a specific portion of your income for family support, just like any other budget category.</p>
+
+      <h3>3. Prioritize Your Financial Foundation</h3>
+      <p>Ensure you have an emergency fund and are contributing to retirement savings before taking on additional family obligations.</p>
+
+      <h3>4. Open Communication</h3>
+      <p>Have honest conversations with family about your financial capacity and limitations.</p>
+
+      <h3>5. Invest in Financial Education</h3>
+      <p>Help family members improve their own financial literacy to reduce long-term dependency.</p>
+
+      <h2>Building Wealth Despite Obligations</h2>
+      <ul>
+        <li>Automate your savings before allocating family support</li>
+        <li>Look for ways to increase income</li>
+        <li>Invest consistently, even in small amounts</li>
+        <li>Focus on long-term wealth-building strategies</li>
+        <li>Seek professional financial advice</li>
+      </ul>
+
+      <h2>Conclusion</h2>
+      <p>Balancing family obligations with personal wealth building is challenging but possible. By setting boundaries, creating a plan, and staying committed to your financial goals, you can honor your family responsibilities while still building a secure financial future for yourself.</p>
+    `,
+    author: 'The Wealthy Post Team',
+    date: 'January 28, 2025',
+    tags: ['Wealth Building', 'Family Finance', 'Personal Finance', 'Financial Planning', 'Culture']
+  },
+  {
+    id: 5,
+    slug: 'wealth-protection-a-comprehensive-guide-to-life-insurance',
+    title: 'Wealth Protection: A Comprehensive Guide to Life Insurance',
+    excerpt: 'Life insurance is a crucial component of wealth protection. Learn about different types of life insurance, how much coverage you need, and how to choose the right policy to protect your family and assets.',
+    image: PostImg5,
+    category: 'Insurance',
+    content: `
+      <p>Life insurance is one of the most important tools for protecting your wealth and ensuring your loved ones are financially secure if something happens to you.</p>
+
+      <h2>Why Life Insurance Matters</h2>
+      <p>Life insurance provides financial protection for your dependents, covering expenses like mortgage payments, living costs, children's education, and outstanding debts if you pass away.</p>
+
+      <h2>Types of Life Insurance</h2>
+      
+      <h3>Term Life Insurance</h3>
+      <p>Provides coverage for a specific period (term). If you die during the term, your beneficiaries receive a payout. This is typically the most affordable option.</p>
+
+      <h3>Whole Life Insurance</h3>
+      <p>Provides coverage for your entire life and includes a cash value component that grows over time. More expensive but offers lifetime protection and investment component.</p>
+
+      <h3>Critical Illness Cover</h3>
+      <p>Pays out a lump sum if you're diagnosed with a specified serious illness, helping cover medical costs and loss of income.</p>
+
+      <h3>Income Protection</h3>
+      <p>Provides a regular income if you're unable to work due to illness or injury, helping maintain your lifestyle and meet financial obligations.</p>
+
+      <h2>How Much Life Insurance Do You Need?</h2>
+      <p>Consider these factors when determining coverage:</p>
+      <ul>
+        <li>Outstanding mortgage and debts</li>
+        <li>Children's education costs</li>
+        <li>Living expenses for dependents</li>
+        <li>Funeral and estate costs</li>
+        <li>Future financial goals</li>
+      </ul>
+
+      <h2>Choosing the Right Policy</h2>
+      <ul>
+        <li>Assess your family's financial needs</li>
+        <li>Compare quotes from multiple providers</li>
+        <li>Consider your budget and affordability</li>
+        <li>Review policy terms and exclusions</li>
+        <li>Seek professional advice if needed</li>
+      </ul>
+
+      <h2>Common Mistakes to Avoid</h2>
+      <ul>
+        <li>Underinsuring yourself</li>
+        <li>Not reviewing coverage as circumstances change</li>
+        <li>Choosing the cheapest option without considering needs</li>
+        <li>Not reading policy terms carefully</li>
+      </ul>
+
+      <h2>Conclusion</h2>
+      <p>Life insurance is an essential component of comprehensive wealth protection. Take time to assess your needs, compare options, and choose coverage that adequately protects your family's financial future.</p>
+    `,
+    author: 'The Wealthy Post Team',
+    date: 'January 30, 2025',
+    tags: ['Life Insurance', 'Wealth Protection', 'Financial Planning', 'Insurance', 'Family Finance']
+  },
+  {
+    id: 6,
+    slug: '25-ways-to-practice-financial-self-care',
+    title: '25 Ways to Practice Financial Self-Care',
+    excerpt: 'Financial self-care involves taking proactive steps to improve your financial wellbeing. Discover 25 practical ways to care for your finances, reduce stress, and build a healthier relationship with money.',
+    image: PostImg6,
+    category: 'Personal Finance',
+    content: `
+      <p>Financial self-care is about taking intentional actions to improve your financial wellbeing and reduce money-related stress. Here are 25 practical ways to practice financial self-care.</p>
+
+      <h2>Daily Financial Self-Care Practices</h2>
+      <ol>
+        <li><strong>Check your bank balance daily</strong> - Stay aware of your financial situation</li>
+        <li><strong>Track your spending</strong> - Use an app or notebook to monitor expenses</li>
+        <li><strong>Review your budget weekly</strong> - Ensure you're staying on track</li>
+        <li><strong>Automate your savings</strong> - Set up automatic transfers to savings accounts</li>
+        <li><strong>Cancel unused subscriptions</strong> - Review and eliminate unnecessary expenses</li>
+      </ol>
+
+      <h2>Weekly Financial Self-Care</h2>
+      <ol start="6">
+        <li><strong>Meal plan to reduce food waste</strong> - Save money and reduce waste</li>
+        <li><strong>Compare prices before major purchases</strong> - Ensure you're getting the best deal</li>
+        <li><strong>Review your credit card statements</strong> - Check for errors or unauthorized charges</li>
+        <li><strong>Set financial goals</strong> - Define what you want to achieve</li>
+        <li><strong>Celebrate small financial wins</strong> - Acknowledge your progress</li>
+      </ol>
+
+      <h2>Monthly Financial Self-Care</h2>
+      <ol start="11">
+        <li><strong>Review and update your budget</strong> - Adjust as needed</li>
+        <li><strong>Check your credit score</strong> - Monitor your credit health</li>
+        <li><strong>Review insurance policies</strong> - Ensure adequate coverage</li>
+        <li><strong>Contribute to emergency fund</strong> - Build financial security</li>
+        <li><strong>Review investment performance</strong> - Stay informed about your portfolio</li>
+      </ol>
+
+      <h2>Quarterly Financial Self-Care</h2>
+      <ol start="16">
+        <li><strong>Review financial goals progress</strong> - Assess and adjust</li>
+        <li><strong>Shop around for better rates</strong> - Insurance, utilities, etc.</li>
+        <li><strong>Review retirement contributions</strong> - Ensure you're on track</li>
+        <li><strong>Update your will and estate plan</strong> - Protect your assets</li>
+        <li><strong>Meet with a financial advisor</strong> - Get professional guidance</li>
+      </ol>
+
+      <h2>Annual Financial Self-Care</h2>
+      <ol start="21">
+        <li><strong>Complete annual financial review</strong> - Comprehensive assessment</li>
+        <li><strong>Review and update beneficiaries</strong> - Ensure they're current</li>
+        <li><strong>Maximize tax-advantaged accounts</strong> - ISAs, pensions, etc.</li>
+        <li><strong>Review and rebalance investments</strong> - Maintain proper allocation</li>
+        <li><strong>Plan for the year ahead</strong> - Set new financial goals</li>
+      </ol>
+
+      <h2>Building Healthy Financial Habits</h2>
+      <p>Financial self-care isn't about perfection—it's about progress. Start with a few practices that resonate with you and gradually build your financial self-care routine.</p>
+
+      <h2>Conclusion</h2>
+      <p>Practicing financial self-care regularly can reduce stress, improve your financial situation, and help you build a healthier relationship with money. Choose practices that work for your lifestyle and commit to making them habits.</p>
+    `,
+    author: 'The Wealthy Post Team',
+    date: 'February 1, 2025',
+    tags: ['Financial Self-Care', 'Personal Finance', 'Wellness', 'Money Management', 'Budgeting']
+  },
+  {
+    id: 7,
+    slug: 'failed-business-ideas-how-to-avoid-these-mistakes',
+    title: 'Failed Business Ideas: How to Avoid These Mistakes',
+    excerpt: 'Learn from common business failures to avoid costly mistakes. Discover the key reasons businesses fail and practical strategies to increase your chances of success when starting your own venture.',
+    image: PostImg7,
+    category: 'Business',
+    content: `
+      <p>Understanding why businesses fail is crucial for anyone considering starting their own venture. By learning from common mistakes, you can significantly improve your chances of success.</p>
+
+      <h2>Common Reasons Businesses Fail</h2>
+      
+      <h3>1. Lack of Market Research</h3>
+      <p>Many businesses fail because they don't properly research their target market. Understanding customer needs, competition, and market demand is essential before launching.</p>
+
+      <h3>2. Insufficient Capital</h3>
+      <p>Running out of money is one of the most common reasons for business failure. Underestimating startup costs and operating expenses can quickly lead to closure.</p>
+
+      <h3>3. Poor Business Planning</h3>
+      <p>Without a solid business plan, it's difficult to navigate challenges and make informed decisions. A comprehensive plan helps guide your business strategy.</p>
+
+      <h3>4. Ineffective Marketing</h3>
+      <p>Even great products or services fail if customers don't know about them. Developing an effective marketing strategy is crucial for business success.</p>
+
+      <h3>5. Poor Cash Flow Management</h3>
+      <p>Many profitable businesses fail due to cash flow problems. Managing income and expenses effectively is essential for survival.</p>
+
+      <h2>How to Avoid These Mistakes</h2>
+      
+      <h3>Conduct Thorough Market Research</h3>
+      <ul>
+        <li>Identify your target customers</li>
+        <li>Analyze your competition</li>
+        <li>Validate your business idea</li>
+        <li>Understand market trends</li>
+      </ul>
+
+      <h3>Secure Adequate Funding</h3>
+      <ul>
+        <li>Calculate realistic startup costs</li>
+        <li>Plan for operating expenses</li>
+        <li>Have a financial buffer</li>
+        <li>Explore multiple funding sources</li>
+      </ul>
+
+      <h3>Create a Comprehensive Business Plan</h3>
+      <ul>
+        <li>Define your business model</li>
+        <li>Set clear goals and objectives</li>
+        <li>Develop a marketing strategy</li>
+        <li>Plan for growth and challenges</li>
+      </ul>
+
+      <h3>Develop Strong Financial Management</h3>
+      <ul>
+        <li>Track income and expenses carefully</li>
+        <li>Maintain good cash flow</li>
+        <li>Plan for taxes</li>
+        <li>Seek professional financial advice</li>
+      </ul>
+
+      <h2>Red Flags to Watch For</h2>
+      <ul>
+        <li>Consistently negative cash flow</li>
+        <li>Declining customer base</li>
+        <li>Increasing competition</li>
+        <li>Inability to adapt to market changes</li>
+        <li>Poor customer feedback</li>
+      </ul>
+
+      <h2>Conclusion</h2>
+      <p>Learning from failed businesses can help you avoid common pitfalls. By conducting thorough research, planning carefully, managing finances well, and staying adaptable, you can significantly improve your chances of building a successful business.</p>
+    `,
+    author: 'The Wealthy Post Team',
+    date: 'February 3, 2025',
+    tags: ['Business', 'Entrepreneurship', 'Business Planning', 'Startups', 'Finance']
+  },
+  {
+    id: 8,
+    slug: 'how-to-start-over-at-50-with-no-money-a-complete-guide',
+    title: 'How to Start Over at 50 With No Money: A Complete Guide',
+    excerpt: 'Starting over financially at 50 may seem daunting, but it\'s absolutely possible. Discover practical strategies, resources, and steps to rebuild your finances and create a secure future, regardless of your current situation.',
+    image: PostImg8,
+    category: 'Financial Planning',
+    content: `
+      <p>Starting over financially at 50 can feel overwhelming, but with the right strategies and mindset, it's entirely possible to rebuild your financial foundation and create a secure future.</p>
+
+      <h2>Assessing Your Current Situation</h2>
+      <p>Begin by taking an honest look at your financial situation:</p>
+      <ul>
+        <li>List all assets and liabilities</li>
+        <li>Calculate your net worth</li>
+        <li>Review your income and expenses</li>
+        <li>Identify available resources</li>
+      </ul>
+
+      <h2>Creating a Financial Recovery Plan</h2>
+      
+      <h3>1. Reduce Expenses Immediately</h3>
+      <ul>
+        <li>Cut non-essential spending</li>
+        <li>Downsize housing if possible</li>
+        <li>Negotiate bills and subscriptions</li>
+        <li>Eliminate unnecessary services</li>
+      </ul>
+
+      <h3>2. Increase Income</h3>
+      <ul>
+        <li>Look for additional work opportunities</li>
+        <li>Consider part-time or freelance work</li>
+        <li>Explore skills you can monetize</li>
+        <li>Consider a career change if needed</li>
+      </ul>
+
+      <h3>3. Build an Emergency Fund</h3>
+      <p>Start small—even £10-20 per week adds up. An emergency fund provides a safety net and reduces financial stress.</p>
+
+      <h3>4. Address Debt Strategically</h3>
+      <ul>
+        <li>Prioritize high-interest debt</li>
+        <li>Consider debt consolidation</li>
+        <li>Seek free debt advice if needed</li>
+        <li>Negotiate payment plans</li>
+      </ul>
+
+      <h2>Maximizing Retirement Savings</h2>
+      <p>Even starting at 50, you have 15+ years before retirement:</p>
+      <ul>
+        <li>Maximize pension contributions</li>
+        <li>Take advantage of employer matches</li>
+        <li>Consider additional retirement accounts</li>
+        <li>Invest consistently</li>
+      </ul>
+
+      <h2>Available Resources and Support</h2>
+      <ul>
+        <li>Government benefits and support schemes</li>
+        <li>Free financial advice services</li>
+        <li>Debt management programs</li>
+        <li>Career retraining opportunities</li>
+      </ul>
+
+      <h2>Mindset and Motivation</h2>
+      <ul>
+        <li>Focus on progress, not perfection</li>
+        <li>Celebrate small wins</li>
+        <li>Stay committed to your plan</li>
+        <li>Seek support from others</li>
+      </ul>
+
+      <h2>Long-term Strategies</h2>
+      <ul>
+        <li>Continue learning and developing skills</li>
+        <li>Build multiple income streams</li>
+        <li>Invest in your health</li>
+        <li>Plan for a longer working life if needed</li>
+      </ul>
+
+      <h2>Conclusion</h2>
+      <p>Starting over at 50 is challenging but achievable. With determination, a solid plan, and consistent action, you can rebuild your finances and create a secure future. Remember, it's never too late to take control of your financial situation.</p>
+    `,
+    author: 'The Wealthy Post Team',
+    date: 'February 5, 2025',
+    tags: ['Starting Over', 'Financial Recovery', 'Retirement', 'Personal Finance', 'Financial Planning']
+  },
+  {
+    id: 9,
+    slug: 'best-budget-staycation-ideas-unwind-without-leaving-town',
+    title: 'Best Budget Staycation Ideas: Unwind Without Leaving Town',
+    excerpt: 'You don\'t need to travel far to have a relaxing break. Discover creative and affordable staycation ideas that let you unwind, explore, and recharge without breaking the bank or leaving your local area.',
+    image: PostImg9,
+    category: 'Saving Money',
+    content: `
+      <p>A staycation is a perfect way to relax and recharge without the expense and hassle of traveling. Here are budget-friendly staycation ideas to help you unwind without leaving town.</p>
+
+      <h2>Home-Based Staycation Ideas</h2>
+      
+      <h3>1. Create a Spa Day at Home</h3>
+      <ul>
+        <li>Set up a relaxing atmosphere with candles and music</li>
+        <li>Give yourself facials and treatments</li>
+        <li>Take long, relaxing baths</li>
+        <li>Practice meditation or yoga</li>
+      </ul>
+
+      <h3>2. Have a Movie Marathon</h3>
+      <ul>
+        <li>Choose a theme or series</li>
+        <li>Prepare snacks and drinks</li>
+        <li>Create a cinema-like atmosphere</li>
+        <li>Make it a social event with friends or family</li>
+      </ul>
+
+      <h3>3. Cook and Try New Recipes</h3>
+      <ul>
+        <li>Experiment with cuisines you've never tried</li>
+        <li>Have a cooking challenge</li>
+        <li>Create a themed dinner night</li>
+        <li>Bake treats and desserts</li>
+      </ul>
+
+      <h2>Local Exploration Staycations</h2>
+      
+      <h3>4. Explore Your Local Area</h3>
+      <ul>
+        <li>Visit parks and nature reserves</li>
+        <li>Discover local museums and galleries</li>
+        <li>Walk or cycle new routes</li>
+        <li>Find hidden gems in your area</li>
+      </ul>
+
+      <h3>5. Have a Picnic</h3>
+      <ul>
+        <li>Pack a delicious lunch</li>
+        <li>Find a scenic local spot</li>
+        <li>Bring games or books</li>
+        <li>Enjoy the outdoors</li>
+      </ul>
+
+      <h3>6. Attend Local Events</h3>
+      <ul>
+        <li>Check community calendars</li>
+        <li>Visit farmers' markets</li>
+        <li>Attend free concerts or festivals</li>
+        <li>Join local walking tours</li>
+      </ul>
+
+      <h2>Creative Staycation Activities</h2>
+      
+      <h3>7. Start a Creative Project</h3>
+      <ul>
+        <li>Learn a new craft or skill</li>
+        <li>Start a DIY project</li>
+        <li>Write, paint, or create</li>
+        <li>Organize and declutter</li>
+      </ul>
+
+      <h3>8. Have a Game Day</h3>
+      <ul>
+        <li>Board games with family or friends</li>
+        <li>Video game tournaments</li>
+        <li>Card games and puzzles</li>
+        <li>Outdoor games if weather permits</li>
+      </ul>
+
+      <h3>9. Create a Reading Retreat</h3>
+      <ul>
+        <li>Set up a cozy reading nook</li>
+        <li>Choose books you've been wanting to read</li>
+        <li>Make special reading snacks</li>
+        <li>Disconnect from devices</li>
+      </ul>
+
+      <h2>Budget-Friendly Tips</h2>
+      <ul>
+        <li>Plan activities in advance</li>
+        <li>Look for free local attractions</li>
+        <li>Use what you already have at home</li>
+        <li>Set a small budget for special treats</li>
+        <li>Take advantage of library resources</li>
+      </ul>
+
+      <h2>Making Your Staycation Feel Special</h2>
+      <ul>
+        <li>Unplug from work and responsibilities</li>
+        <li>Create a different routine</li>
+        <li>Treat yourself to small luxuries</li>
+        <li>Focus on relaxation and enjoyment</li>
+        <li>Document your staycation with photos</li>
+      </ul>
+
+      <h2>Conclusion</h2>
+      <p>A staycation can be just as refreshing as traveling, and often more affordable. With a little creativity and planning, you can create memorable experiences and truly unwind without leaving your local area.</p>
+    `,
+    author: 'The Wealthy Post Team',
+    date: 'February 7, 2025',
+    tags: ['Staycation', 'Budget Travel', 'Saving Money', 'Lifestyle', 'Entertainment']
+  },
+  {
+    id: 10,
+    slug: '13-easy-ways-to-make-money-as-a-13-year-old-2023',
+    title: '13 Easy Ways to Make Money as a 13-Year-Old',
+    excerpt: 'Looking for ways to earn money as a teenager? Discover 13 legitimate and age-appropriate ways for 13-year-olds to make money, learn valuable skills, and start building financial independence.',
+    image: PostImg10,
+    category: 'Side Hustles',
+    content: `
+      <p>Earning money as a 13-year-old is a great way to learn about work, responsibility, and financial management. Here are 13 legitimate ways for teenagers to make money.</p>
+
+      <h2>Jobs and Services You Can Offer</h2>
+      
+      <h3>1. Babysitting</h3>
+      <p>With proper training and parental permission, babysitting can be a great way to earn money. Start with family friends or neighbors.</p>
+
+      <h3>2. Pet Sitting or Dog Walking</h3>
+      <p>Many pet owners need help caring for their animals. This is perfect for animal lovers and can be quite flexible.</p>
+
+      <h3>3. Yard Work and Gardening</h3>
+      <p>Offer services like mowing lawns, weeding, raking leaves, or watering plants for neighbors.</p>
+
+      <h3>4. Car Washing</h3>
+      <p>Wash cars for neighbors or family members. This can be done on weekends or during school holidays.</p>
+
+      <h3>5. Tutoring Younger Children</h3>
+      <p>If you're good at a particular subject, offer tutoring services to younger children in your area.</p>
+
+      <h2>Creative and Skill-Based Opportunities</h2>
+      
+      <h3>6. Arts and Crafts Sales</h3>
+      <p>Create and sell handmade items like jewelry, artwork, or crafts at local markets or online (with parental supervision).</p>
+
+      <h3>7. Baking and Selling Treats</h3>
+      <p>If you enjoy baking, make and sell cookies, cakes, or other treats to neighbors and family friends.</p>
+
+      <h3>8. Photography Services</h3>
+      <p>Offer to take photos at events or for family portraits. Many people appreciate affordable photography services.</p>
+
+      <h2>Online Opportunities (With Parental Supervision)</h2>
+      
+      <h3>9. Online Surveys</h3>
+      <p>Some legitimate survey sites allow teenagers (with parental permission) to earn small amounts for completing surveys.</p>
+
+      <h3>10. Selling Items Online</h3>
+      <p>With parental help, sell unused toys, clothes, or items online through platforms like eBay or Facebook Marketplace.</p>
+
+      <h2>Other Opportunities</h2>
+      
+      <h3>11. Helping with Technology</h3>
+      <p>Many older adults need help with technology. Offer to help set up devices, teach basic computer skills, or troubleshoot problems.</p>
+
+      <h3>12. Organizing and Cleaning</h3>
+      <p>Offer organizing services for closets, garages, or rooms. Many people are willing to pay for help decluttering.</p>
+
+      <h3>13. Running Errands</h3>
+      <p>Help neighbors or elderly residents with errands like grocery shopping, picking up prescriptions, or other tasks.</p>
+
+      <h2>Important Considerations</h2>
+      <ul>
+        <li>Always get parental permission</li>
+        <li>Understand local labor laws for minors</li>
+        <li>Stay safe when working with strangers</li>
+        <li>Balance work with school responsibilities</li>
+        <li>Learn about money management</li>
+      </ul>
+
+      <h2>Learning Financial Skills</h2>
+      <ul>
+        <li>Save a portion of earnings</li>
+        <li>Track income and expenses</li>
+        <li>Set financial goals</li>
+        <li>Learn about banking and savings accounts</li>
+      </ul>
+
+      <h2>Conclusion</h2>
+      <p>Making money as a 13-year-old teaches valuable life skills including responsibility, work ethic, and financial management. Choose opportunities that interest you, always prioritize safety, and remember to balance work with school and other activities.</p>
+    `,
+    author: 'The Wealthy Post Team',
+    date: 'February 10, 2025',
+    tags: ['Teen Finance', 'Making Money', 'Jobs for Teens', 'Financial Education', 'Youth']
+  },
+  {
+    id: 11,
     slug: 'student-finance-england-loans-grants-2024',
     title: 'Student Finance England: Loans & Grants 2024',
     excerpt: 'Student Finance England (SFE) is a service provided by the UK government to help students finance their university education. It offers various financial products, including tuition fee loans, maintenance loans, and grants.',
-    image: PostImg2,
+    image: StudentFinanceImg,
     content: `
       <h2>Understanding Student Finance England</h2>
       <p>Student Finance England provides crucial financial support for higher education students across England. Understanding the available options can significantly impact your university experience and future financial health.</p>
@@ -119,7 +1181,7 @@ export const posts: Post[] = [
     slug: 'energy-bills-support-winter-2024',
     title: 'Energy Bills Support: Winter 2024',
     excerpt: 'As winter approaches, many households are concerned about rising energy costs. This guide covers available support schemes, government initiatives, and practical tips to manage your energy bills during the colder months.',
-    image: PostImg3,
+    image: EnergyBillsImg,
     content: `
       <h2>Winter Energy Challenges</h2>
       <p>With temperatures dropping and energy prices fluctuating, many households face significant financial pressure during winter months. Understanding available support can make a substantial difference.</p>
@@ -138,7 +1200,7 @@ export const posts: Post[] = [
     slug: 'retirement-planning-comprehensive-guide-2024',
     title: 'Retirement Planning: Comprehensive Guide 2024',
     excerpt: 'Proper retirement planning is essential for financial security in your later years. This comprehensive guide covers pension options, investment strategies, and government schemes to help you build a secure retirement fund.',
-    image: PostImg4,
+    image: RetirementPlanningImg,
     content: `
       <h2>The Importance of Early Retirement Planning</h2>
       <p>Starting your retirement planning early can significantly impact your financial comfort in later life. Compound growth and longer investment horizons work in your favor when you begin planning sooner rather than later.</p>
@@ -157,7 +1219,7 @@ export const posts: Post[] = [
     slug: 'interest-rates-impact-savings-mortgages-2024',
     title: 'Interest Rates: Impact on Savings & Mortgages 2024',
     excerpt: 'Current interest rate trends significantly affect both savers and borrowers. Understanding how these rates impact your savings accounts, mortgages, and loans can help you make informed financial decisions in the current economic climate.',
-    image: PostImg5,
+    image: InterestRatesImg,
     content: `
       <h2>Understanding Interest Rate Environment</h2>
       <p>The Bank of England's base rate decisions ripple through the entire financial system, affecting everything from savings account returns to mortgage payments.</p>
@@ -177,7 +1239,7 @@ export const posts: Post[] = [
     slug: 'credit-score-improvement-ultimate-guide-2024',
     title: 'Credit Score Improvement: Ultimate Guide 2024',
     excerpt: 'Your credit score plays a crucial role in your financial life, affecting everything from loan approvals to interest rates. This ultimate guide provides practical steps to understand, monitor, and improve your credit score effectively.',
-    image: PostImg6,
+    image: CreditScoreImg,
     content: `
       <h2>Why Credit Scores Matter</h2>
       <p>A good credit score can save you thousands in interest payments over your lifetime and open doors to better financial products and opportunities.</p>
@@ -198,7 +1260,7 @@ export const posts: Post[] = [
     slug: 'tax-codes-explained-2024-uk-guide',
     title: 'Tax Codes Explained: 2024 UK Guide',
     excerpt: 'Understanding your tax code is essential for ensuring you pay the correct amount of tax. This comprehensive guide explains how UK tax codes work, what the numbers and letters mean, and how to check if your tax code is correct.',
-    image: PostImg7,
+    image: TaxCodesImg,
     content: `
       <h2>What is a Tax Code?</h2>
       <p>Your tax code tells your employer or pension provider how much tax-free income you get in each tax year. Getting this right ensures you don't overpay or underpay tax.</p>
@@ -218,7 +1280,7 @@ export const posts: Post[] = [
     slug: 'child-benefit-changes-2024-uk-families',
     title: 'Child Benefit Changes 2024: UK Families',
     excerpt: 'Recent changes to Child Benefit rules affect thousands of UK families. This guide covers the new thresholds, eligibility criteria, and how to claim while maximizing your family\'s financial support.',
-    image: PostImg8,
+    image: ChildBenefitsImg,
     content: `
       <h2>2024 Child Benefit Updates</h2>
       <p>The government has made significant changes to Child Benefit thresholds and rules for the 2024/25 tax year, impacting how much support families can receive.</p>
@@ -237,7 +1299,7 @@ export const posts: Post[] = [
     slug: 'investment-beginners-complete-guide-2024',
     title: 'Investment for Beginners: Complete Guide 2024',
     excerpt: 'Starting your investment journey can be daunting, but it\'s essential for long-term wealth building. This complete beginner\'s guide covers the fundamentals of investing, risk management, and how to get started with as little as £50.',
-    image: PostImg9,
+    image: InvestmentBeginnersImg,
     content: `
       <h2>Why Start Investing?</h2>
       <p>Investing allows your money to work for you through compound growth. Even small, regular investments can grow significantly over time, helping you beat inflation and build wealth.</p>
@@ -257,7 +1319,7 @@ export const posts: Post[] = [
     slug: 'money-saving-apps-uk-2024-review',
     title: 'Money Saving Apps: UK 2024 Review',
     excerpt: 'Technology has revolutionized personal finance management. Discover the best money-saving apps available in the UK for 2024, from budgeting tools and cashback offers to automated saving and investment platforms.',
-    image: PostImg10,
+    image: MoneySavingAppImg,
     content: `
       <h2>Top Money-Saving Apps for 2024</h2>
       <p>Modern apps can help you save money effortlessly through automated features, cashback offers, and intelligent budgeting tools.</p>
@@ -278,7 +1340,7 @@ export const posts: Post[] = [
     slug: 'debt-management-strategies-2024-uk',
     title: 'Debt Management Strategies: 2024 UK',
     excerpt: 'Managing debt effectively is crucial for financial wellbeing. This guide covers proven debt management strategies, including snowball vs avalanche methods, negotiating with creditors, and accessing professional debt advice in the UK.',
-    image: PostImg11,
+    image: DebtManagementImg,
     content: `
       <h2>Understanding Your Debt Situation</h2>
       <p>The first step in effective debt management is understanding exactly what you owe, to whom, and at what interest rates.</p>
@@ -298,7 +1360,7 @@ export const posts: Post[] = [
     slug: 'first-time-buyer-mortgage-guide-2024',
     title: 'First-Time Buyer Mortgage Guide 2024',
     excerpt: 'Buying your first home is an exciting milestone. This comprehensive guide covers everything first-time buyers need to know about mortgages in 2024, including government schemes, deposit requirements, and navigating the current property market.',
-    image: PostImg12,
+    image: FirstTimeBuyerImg,
     content: `
       <h2>First-Time Buyer Challenges</h2>
       <p>The property market presents unique challenges for first-time buyers, from saving for a deposit to understanding mortgage options in a changing economic environment.</p>
@@ -321,7 +1383,7 @@ export const posts: Post[] = [
     slug: 'universal-credit-complete-guide-2024',
     title: 'Universal Credit: Complete Guide 2024',
     excerpt: 'Universal Credit is replacing six legacy benefits with a single monthly payment. This comprehensive guide explains eligibility, application process, payment amounts, and how to manage your claim effectively in 2024.',
-    image: PostImg13,
+    image: UniversalCreditImg,
     content: `
       <h2>What is Universal Credit?</h2>
       <p>Universal Credit is a single monthly payment for people on low income or out of work. It replaces six legacy benefits: Income-based Jobseeker's Allowance, Income-related Employment and Support Allowance, Income Support, Working Tax Credit, Child Tax Credit, and Housing Benefit.</p>
@@ -341,7 +1403,7 @@ export const posts: Post[] = [
     slug: 'car-finance-options-uk-2024-guide',
     title: 'Car Finance Options: UK 2024 Guide',
     excerpt: 'Understanding car finance options is crucial when purchasing a vehicle. This guide covers HP, PCP, leasing, and personal loans, helping you choose the right financing method for your circumstances and budget.',
-    image: PostImg14,
+    image: CarFinanceImg,
     content: `
       <h2>Car Finance Options Explained</h2>
       <p>Different car finance options suit different needs and financial situations. Understanding the pros and cons of each can save you money and prevent financial stress.</p>
@@ -364,7 +1426,7 @@ export const posts: Post[] = [
     slug: 'emergency-fund-why-how-much-2024',
     title: 'Emergency Fund: Why & How Much 2024',
     excerpt: 'An emergency fund is your financial safety net for unexpected expenses. This guide explains why everyone needs one, how much you should save, and where to keep your emergency fund for optimal security and accessibility.',
-    image: PostImg15,
+    image: EmergencyFundsImg,
     content: `
       <h2>The Importance of Emergency Funds</h2>
       <p>An emergency fund prevents you from going into debt when unexpected expenses arise, such as job loss, medical emergencies, or urgent home repairs.</p>
@@ -386,7 +1448,7 @@ export const posts: Post[] = [
     slug: 'self-assessment-tax-return-guide-2024',
     title: 'Self-Assessment Tax Return Guide 2024',
     excerpt: 'If you\'re self-employed, have multiple income streams, or receive significant untaxed income, you may need to complete a Self-Assessment tax return. This guide covers deadlines, paperwork, and common pitfalls to avoid.',
-    image: PostImg16,
+    image: SelfAssessmentImg,
     content: `
       <h2>Who Needs to Complete Self-Assessment?</h2>
       <p>You must complete a Self-Assessment tax return if you're self-employed as a sole trader earning more than £1,000, a partner in a business partnership, or have untaxed income from various sources.</p>
@@ -409,7 +1471,7 @@ export const posts: Post[] = [
     slug: 'insurance-guide-essential-policies-2024',
     title: 'Insurance Guide: Essential Policies 2024',
     excerpt: 'Having the right insurance coverage is crucial for financial protection. This guide explains which insurance policies are essential, how much coverage you need, and tips for finding the best deals on your premiums.',
-    image: PostImg17,
+    image: InsuranceGuideImg,
     content: `
       <h2>Essential Insurance Policies</h2>
       <p>Certain insurance policies are crucial for financial security, while others may be optional depending on your circumstances.</p>
@@ -432,7 +1494,7 @@ export const posts: Post[] = [
     slug: 'side-hustles-extra-income-uk-2024',
     title: 'Side Hustles: Extra Income UK 2024',
     excerpt: 'In today\'s economy, many people are turning to side hustles for extra income. Discover legitimate ways to earn additional money outside your main job, from freelancing and online businesses to gig economy opportunities.',
-    image: PostImg18,
+    image: SideHustlesImg,
     content: `
       <h2>Why Consider a Side Hustle?</h2>
       <p>Side hustles can provide extra income, help pay off debt faster, build savings, or even transition to full-time self-employment.</p>
@@ -1472,6 +2534,861 @@ export const posts: Post[] = [
     author: 'Financial Goals Team',
     date: 'March 17, 2024',
     tags: ['New Year Resolutions', 'Financial Goals', 'Planning', 'Achievement']
+  },
+  {
+    id: 61,
+    slug: 'is-money-your-servant-or-your-master',
+    title: 'Is Money Your Servant or Your Master?',
+    excerpt: 'Money is an important part of our lives, but when we think about it, we don\'t usually think about our relationship with it. Explore questions to determine if money serves you or controls you, and learn tips for ensuring that money is your servant rather than your master.',
+    image: PostImg0,
+    content: `
+      <p>Money is an important part of our lives, but when we think about it, we don't usually think about our relationship with it. Some people might even find it strange to think that they have a relationship with money, but we all do.</p>
+
+      <p>It's also important to think about how we feel about money. By taking the time to look at how we use money and how we think about it.</p>
+
+      <p>Contrary to what we might think, how we feel about money has nothing to do with how much or how little we have.</p>
+
+      <p>So, how do you know if money serves you or controls you? There are a few questions to ask.</p>
+
+      <p>In this blog post, we'll explore some of these questions and provide tips for ensuring that money is your servant rather than your master.</p>
+
+      <h2>Can money buy happiness?</h2>
+
+      <p>The question of whether money can buy happiness is a complex one, and research on the topic has yielded mixed results. Some studies have found a positive relationship between income and happiness, while others have found little or no correlation.</p>
+
+      <p>One main factor influencing the relationship between money and happiness is how people use their wealth.</p>
+
+      <p>Some research suggests that people who spend <strong>money on experiences and activities that bring them joy and meaning are more likely to be happy than those who focus solely on accumulating material possessions.</strong></p>
+
+      <p>Overall, money can buy some happiness, but it's not the only thing that makes a difference. Other things that make people happy are good health, strong relationships, and a sense that their lives have a purpose and meaning.</p>
+
+      <p>So, it's important to be financially stable, but it's also important to pay attention to other parts of our lives that bring us happiness and satisfaction.</p>
+
+      <p><em>According to P.T Barnum, Money is a terrible master but a faithful servant.</em> So, please think carefully about each of these questions. If you are married, send these questions to your partner and then sit down together to talk about your answers.</p>
+
+      <h2>Do you feel like you need more money, no matter how much you have?</h2>
+
+      <p>One question to consider when determining if money is your good servant or a bad master is whether you can never have enough.</p>
+
+      <p>If you're constantly striving for more wealth and material possessions, it could be a sign that you're letting money control your decisions and actions.</p>
+
+      <p>This unhealthy fixation on money can lead to a number of bad things. For example, you might worry or feel stressed about your finances even if they are fine. You might also ignore your relationships or your own health.</p>
+
+      <p>Additionally, an unhealthy focus on money can lead to dissatisfaction and emptiness rather than true happiness and fulfillment.</p>
+
+      <ul>
+        <li>Would you know when you have enough money?</li>
+        <li>Do you feel like you need more money, no matter how much you have?</li>
+      </ul>
+
+      <p>To understand how much is enough start by Calculating your FI number and also read your money of your life by Vicki Robin</p>
+
+      <blockquote>
+        <p>Money is a terrible master but a faithful servant</p>
+        <p>— P.T Barnum</p>
+      </blockquote>
+
+      <h2>Do you feel jealous or resentful of others who seem to have more wealth than you do?</h2>
+
+      <p>It's human nature to compare ourselves to others, and it's especially easy to do so when it comes to money and things.</p>
+
+      <p>This type of comparison can be damaging in several ways.</p>
+
+      <p>it can lead to feelings of inadequacy or self-doubt.</p>
+
+      <p>It can lead to unhealthy behaviors like overspending or taking on more debt in an attempt to "keep up."</p>
+
+      <p>This can lead to financial stress and even ruin our relationships and well-being. So don't keep up with the Joneses.</p>
+
+      <p>"Too many people spend money they haven't earned to buy things they don't want, to impress people they don't like."</p>
+
+      <p>Here are a few more questions to ask yourself:</p>
+
+      <ul>
+        <li>Do you frequently compare your possessions or lifestyle to those of others and feel like you need to keep up or surpass them?</li>
+        <li>Do you feel you need the latest gadgets, clothes, or home accessories to feel successful or satisfied?</li>
+        <li>Do you feel like you're constantly falling behind or lacking in comparison to others, no matter how much you have?</li>
+      </ul>
+
+      <p>Remember, material possessions or riches don't measure success and happiness instead, focus on the things that truly matter to you and be content with what you have.</p>
+
+      <h2>Do you make decisions based solely on financial gain, even if it means sacrificing your values or relationships?</h2>
+
+      <p>Do you make decisions based solely on if it increases your bank account? This can have serious consequences if you trade your ideals or relationships for money.</p>
+
+      <p><em>"For the love of money is the root of all evil. Some people, eager for money, have wandered from the faith and pierced themselves with many griefs."</em> The Bible</p>
+
+      <p>On the other hand, aligning your actions with your values can bring a sense of fulfillment and purpose to your life. When you're true to your principles and treat others with respect, you're more likely to build strong, meaningful relationships and positively impact the world.</p>
+
+      <h2>How much stuff do you have that you don't need and don't use?</h2>
+
+      <p>We are all guilty of buying things we don't need</p>
+
+      <p>The problem is not just about the money we spend on things but the more stuff we have, the more time and energy it takes to maintain them.</p>
+
+      <p>If you're always buying things you don't need or if your house is full of clutter and things you don't use, it could be a sign that money is controlling you and not an excellent servant.</p>
+
+      <p>Here are a few more questions to ask yourself:</p>
+
+      <ul>
+        <li>Do you buy things without thinking about whether or not you really need them?</li>
+        <li>Do you have a lot of things that you've bought but never opened or used?</li>
+        <li>Do you have to follow the latest trends and buy the newest gadgets, even if you don't need them?</li>
+        <li>Do you find it hard to let go of things, even when they're no longer useful?</li>
+        <li>Are you using stuff to find joy and fulfillment?</li>
+      </ul>
+
+      <h2>Do you give consistently?</h2>
+
+      <p>Giving is one of the most powerful ways to change your life and the lives of others and its been here for a long time.</p>
+
+      <p>When you give to charity or volunteer, you not only give yourself more money, happiness, and a sense of purpose, but you also help others do the same. It works out well for everyone.</p>
+
+      <p>Here are some questions you can ask yourself to see if you're spending your money in a way that helps other people:</p>
+
+      <ul>
+        <li>Do you habitually give back to your community, whether through financial donations or volunteer work?</li>
+        <li>Do you feel a sense of joy and fulfillment when you're able to help others, or do you feel like you're obligated to do so?</li>
+        <li>Do you prioritize giving back to others in your budget, or only give when you have extra money left over?</li>
+        <li>Do you view giving as an opportunity to make a difference, or do you see it as a burden?</li>
+      </ul>
+
+      <h2>Do you find it difficult to relax and enjoy your Money, or do you always need to work to earn more?</h2>
+
+      <p>This behavior can lead to a cycle of constant striving and stress rather than true happiness and fulfillment.</p>
+
+      <p>On the other hand, a healthy relationship with money involves finding a balance. It's important to work hard and try to get ahead financially, but it's also important to take breaks and enjoy what you've earned. If you take it easy and enjoy your money, you're more likely to feel happy and satisfied than if you're always looking for more.</p>
+
+      <p>Here are some things to think about when you are trying to find that balance:</p>
+
+      <ul>
+        <li>Do you frequently work long hours or take on extra projects to pursue financial success or financial freedom?</li>
+        <li>Do you find it hard to relax or take breaks, even when you're financially comfortable?</li>
+        <li>Do you feel like you always need to be working or striving for more, even when you're already successful?</li>
+        <li>Do you feel like you're constantly falling behind or lacking in comparison to others, no matter how much you have?</li>
+      </ul>
+
+      <p>By finding balance and focusing on the things that truly matter to you, you can ensure that money is a great servant rather than your master.</p>
+
+      <h2>Do you take shortcuts to make money?</h2>
+
+      <p>If you're willing to compromise your values or do things that you know are wrong to make a quick buck?</p>
+
+      <p>You might be able to make more money if you cut corners but at what price?</p>
+
+      <ul>
+        <li>Do you prioritize financial gain above all else, even if it means sacrificing your integrity or doing things you're uncomfortable with?</li>
+        <li>Do you feel guilty or ashamed about how you've made money in the past?</li>
+      </ul>
+
+      <p>Money is not worth sacrificing your values or integrity for. By focusing on your values and ensuring that your actions align with them, you can ensure that money is your servant rather than your master.</p>
+
+      <h2>Do you easily fall for get-rich-quick schemes?</h2>
+
+      <p>Many of these schemes promise easy and quick money, but they are usually too good to be true. If you fall for these scams over and over again, it could mean that you let money control you.</p>
+
+      <ul>
+        <li>Do you frequently invest in opportunities that promise quick and easy financial returns?</li>
+        <li>Do you ignore warning signs or red flags when considering these opportunities?</li>
+        <li>Do you feel like you're always one step away from financial success and need to find the right opportunity to make it happen?</li>
+        <li>Do you feel like you're constantly chasing after the next big financial opportunity, even if it means putting other things on the back burner?</li>
+      </ul>
+
+      <p>Remember that getting money the right way takes time and hard work. But if you are realistic and careful with your financial investments, even when dealing with financial planners, you can make sure that money works for you instead of controlling you.</p>
+
+      <h2>Do you spend more than you earn?</h2>
+
+      <p>If you find yourself consistently spending more than you earn, it could be a sign that money has become your master. When we spend more than we can afford, we may go into debt, leading to financial stress and anxiety.</p>
+
+      <ul>
+        <li>Do you often buy things you can't afford with credit cards or loans?</li>
+        <li>Do you find it hard to stick to a budget or save money?</li>
+        <li>Do you worry or feel stressed about your money, especially when it comes to paying bills or other financial responsibilities?</li>
+        <li>Do you find it hard to say no to things that cost money, even if you can't afford them?</li>
+      </ul>
+
+      <p>By being mindful of your spending habits and focusing on building a solid financial foundation, you can make sure that money is your servant rather than your master.</p>
+
+      <h2>In Summary</h2>
+
+      <p>If we view money as our servants, we use it to achieve our goals and improve our lives. We save and invest wisely, using our financial resources to build a secure future and pursue our passions. We also give back to our communities, using our wealth to impact the world positively.</p>
+
+      <p>On the other hand,If money is our master, we may be apprehensive about our finances and always try to earn more. We may make judgments focused entirely on financial offerings.</p>
+
+      <h3>Further Reading</h3>
+      <ul>
+        <li>Financial Independence – 6 Reasons to Pursue FI</li>
+        <li>How to Protect Yourself from Financial Fraud</li>
+        <li>What is financial wellness</li>
+        <li>How to budget in 6 simple steps</li>
+        <li>How to pay off debt even on a low income</li>
+      </ul>
+    `,
+    author: 'The Wealthy Post Team',
+    date: 'January 20, 2025',
+    tags: ['Money Management', 'Personal Finance', 'Financial Wellness', 'Financial Mindset', 'Wealth Building']
+  },
+  {
+    id: 62,
+    slug: 'how_to_make_money_without_selling_anything_in_2023',
+    title: 'How to Make Money Without Selling Anything in 2023',
+    excerpt: 'Discover creative ways to generate income without selling physical products. Learn about service-based income, digital products, and passive income streams that don\'t require inventory or sales.',
+    image: PostImg0,
+    content: `
+      <p>Discover creative ways to generate income without selling physical products. Learn about service-based income, digital products, and passive income streams that don't require inventory or sales.</p>
+      <p>Content will be added from the source URL.</p>
+    `,
+    author: 'The Wealthy Post Team',
+    date: 'January 21, 2025',
+    tags: ['Making Money', 'Passive Income', 'Side Hustles', 'Income Generation']
+  },
+  {
+    id: 63,
+    slug: '25-money-myths-debunked-dont-fall-for-them',
+    title: '25 Money Myths Debunked: Don\'t Fall For Them',
+    excerpt: 'Separate fact from fiction with these 25 common money myths. Learn the truth about personal finance, investing, and wealth building to make better financial decisions.',
+    image: PostImg1,
+    content: `
+      <p>Separate fact from fiction with these 25 common money myths. Learn the truth about personal finance, investing, and wealth building to make better financial decisions.</p>
+      <p>Content will be added from the source URL.</p>
+    `,
+    author: 'The Wealthy Post Team',
+    date: 'January 21, 2025',
+    tags: ['Money Myths', 'Financial Education', 'Personal Finance', 'Financial Literacy']
+  },
+  {
+    id: 64,
+    slug: 'how-to-start-an-online-coffee-business-7-easy-steps',
+    title: 'How to Start an Online Coffee Business: 7 Easy Steps',
+    excerpt: 'Learn how to launch your own online coffee business with this step-by-step guide. From sourcing beans to setting up your e-commerce store, discover everything you need to know.',
+    image: PostImg2,
+    content: `
+      <p>Learn how to launch your own online coffee business with this step-by-step guide. From sourcing beans to setting up your e-commerce store, discover everything you need to know.</p>
+      <p>Content will be added from the source URL.</p>
+    `,
+    author: 'The Wealthy Post Team',
+    date: 'January 21, 2025',
+    tags: ['Business', 'Entrepreneurship', 'Coffee Business', 'Online Business']
+  },
+  {
+    id: 65,
+    slug: '35-successful-business-ideas-for-college-towns',
+    title: '35 Successful Business Ideas for College Towns',
+    excerpt: 'Explore profitable business opportunities perfect for college towns. Discover ideas that cater to students and capitalize on the unique market dynamics of university communities.',
+    image: PostImg3,
+    content: `
+      <p>Explore profitable business opportunities perfect for college towns. Discover ideas that cater to students and capitalize on the unique market dynamics of university communities.</p>
+      <p>Content will be added from the source URL.</p>
+    `,
+    author: 'The Wealthy Post Team',
+    date: 'January 21, 2025',
+    tags: ['Business Ideas', 'Entrepreneurship', 'College Business', 'Startups']
+  },
+  {
+    id: 66,
+    slug: 'how-to-retire-with-2-million-pounds',
+    title: 'How to Retire With 2 Million Pounds',
+    excerpt: 'A comprehensive guide to building a £2 million retirement fund. Learn about savings strategies, investment approaches, and long-term planning to achieve your retirement goals.',
+    image: PostImg4,
+    content: `
+      <p>A comprehensive guide to building a £2 million retirement fund. Learn about savings strategies, investment approaches, and long-term planning to achieve your retirement goals.</p>
+      <p>Content will be added from the source URL.</p>
+    `,
+    author: 'The Wealthy Post Team',
+    date: 'January 21, 2025',
+    tags: ['Retirement Planning', 'Wealth Building', 'Financial Planning', 'Investing']
+  },
+  {
+    id: 67,
+    slug: 'frugal-vs-cheap-knowing-the-difference-matters',
+    title: 'Frugal vs Cheap: Knowing the Difference Matters',
+    excerpt: 'Understanding the difference between being frugal and being cheap can transform your financial mindset. Learn how to be smart with money without compromising quality or relationships.',
+    image: PostImg5,
+    content: `
+      <p>Understanding the difference between being frugal and being cheap can transform your financial mindset. Learn how to be smart with money without compromising quality or relationships.</p>
+      <p>Content will be added from the source URL.</p>
+    `,
+    author: 'The Wealthy Post Team',
+    date: 'January 21, 2025',
+    tags: ['Frugal Living', 'Money Management', 'Personal Finance', 'Financial Mindset']
+  },
+  {
+    id: 68,
+    slug: 'salary-problems',
+    title: 'Salary Problems: Common Issues and Solutions',
+    excerpt: 'Address common salary-related problems and learn how to negotiate better pay, handle salary disputes, and maximize your earning potential throughout your career.',
+    image: PostImg6,
+    content: `
+      <p>Address common salary-related problems and learn how to negotiate better pay, handle salary disputes, and maximize your earning potential throughout your career.</p>
+      <p>Content will be added from the source URL.</p>
+    `,
+    author: 'The Wealthy Post Team',
+    date: 'January 21, 2025',
+    tags: ['Salary', 'Career', 'Negotiation', 'Income']
+  },
+  {
+    id: 69,
+    slug: 'how-much-does-it-cost-to-have-a-baby-in-uk',
+    title: 'How Much Does It Cost to Have a Baby in UK?',
+    excerpt: 'A detailed breakdown of the costs associated with having a baby in the UK. From pregnancy to the first year, learn what to budget for and how to prepare financially.',
+    image: PostImg7,
+    content: `
+      <p>A detailed breakdown of the costs associated with having a baby in the UK. From pregnancy to the first year, learn what to budget for and how to prepare financially.</p>
+      <p>Content will be added from the source URL.</p>
+    `,
+    author: 'The Wealthy Post Team',
+    date: 'January 21, 2025',
+    tags: ['Family Finance', 'Baby Costs', 'Budgeting', 'UK Finance']
+  },
+  {
+    id: 70,
+    slug: '7-simple-rules-for-a-wealthy-life',
+    title: '7 Simple Rules for a Wealthy Life',
+    excerpt: 'Discover seven fundamental principles for building and maintaining wealth. These simple rules can guide you toward financial success and a more prosperous future.',
+    image: PostImg8,
+    content: `
+      <p>Discover seven fundamental principles for building and maintaining wealth. These simple rules can guide you toward financial success and a more prosperous future.</p>
+      <p>Content will be added from the source URL.</p>
+    `,
+    author: 'The Wealthy Post Team',
+    date: 'January 21, 2025',
+    tags: ['Wealth Building', 'Financial Success', 'Personal Finance', 'Financial Rules']
+  },
+  {
+    id: 71,
+    slug: '22-new-things-to-negotiate-besides-salary',
+    title: '22 New Things to Negotiate Besides Salary',
+    excerpt: 'Expand your negotiation skills beyond salary. Learn about 22 valuable benefits and perks you can negotiate in your job, from flexible hours to professional development opportunities.',
+    image: PostImg9,
+    content: `
+      <p>Expand your negotiation skills beyond salary. Learn about 22 valuable benefits and perks you can negotiate in your job, from flexible hours to professional development opportunities.</p>
+      <p>Content will be added from the source URL.</p>
+    `,
+    author: 'The Wealthy Post Team',
+    date: 'January 21, 2025',
+    tags: ['Negotiation', 'Career', 'Benefits', 'Job Skills']
+  },
+  {
+    id: 72,
+    slug: '7-things-to-do-if-you-have-no-savings-no-matter-the-age',
+    title: '7 Things to Do If You Have No Savings (No Matter the Age)',
+    excerpt: 'It\'s never too late to start saving. Discover seven actionable steps you can take right now to build your savings, regardless of your current age or financial situation.',
+    image: PostImg10,
+    content: `
+      <p>It's never too late to start saving. Discover seven actionable steps you can take right now to build your savings, regardless of your current age or financial situation.</p>
+      <p>Content will be added from the source URL.</p>
+    `,
+    author: 'The Wealthy Post Team',
+    date: 'January 21, 2025',
+    tags: ['Savings', 'Financial Planning', 'Emergency Fund', 'Money Management']
+  },
+  {
+    id: 73,
+    slug: 'what-is-my-liquid-net-worth-and-why-it-matters',
+    title: 'What is My Liquid Net Worth and Why It Matters',
+    excerpt: 'Understand the importance of liquid net worth and how it differs from total net worth. Learn why having liquid assets is crucial for financial security and flexibility.',
+    image: PostImg11,
+    content: `
+      <p>Understand the importance of liquid net worth and how it differs from total net worth. Learn why having liquid assets is crucial for financial security and flexibility.</p>
+      <p>Content will be added from the source URL.</p>
+    `,
+    author: 'The Wealthy Post Team',
+    date: 'January 21, 2025',
+    tags: ['Net Worth', 'Financial Planning', 'Assets', 'Wealth Management']
+  },
+  {
+    id: 74,
+    slug: '9-proven-steps-to-stop-being-broke',
+    title: '9 Proven Steps to Stop Being Broke',
+    excerpt: 'Break the cycle of being broke with these nine proven strategies. Learn practical steps to improve your financial situation and build a path toward financial stability.',
+    image: PostImg12,
+    content: `
+      <p>Break the cycle of being broke with these nine proven strategies. Learn practical steps to improve your financial situation and build a path toward financial stability.</p>
+      <p>Content will be added from the source URL.</p>
+    `,
+    author: 'The Wealthy Post Team',
+    date: 'January 21, 2025',
+    tags: ['Financial Freedom', 'Debt Management', 'Budgeting', 'Money Management']
+  },
+  {
+    id: 75,
+    slug: '25-ways-to-invest-in-yourself-and-your-future',
+    title: '25 Ways to Invest in Yourself and Your Future',
+    excerpt: 'The best investment you can make is in yourself. Discover 25 ways to invest in your personal and professional development to build a brighter future.',
+    image: PostImg13,
+    content: `
+      <p>The best investment you can make is in yourself. Discover 25 ways to invest in your personal and professional development to build a brighter future.</p>
+      <p>Content will be added from the source URL.</p>
+    `,
+    author: 'The Wealthy Post Team',
+    date: 'January 21, 2025',
+    tags: ['Self Improvement', 'Personal Development', 'Investing', 'Career Growth']
+  },
+  {
+    id: 76,
+    slug: 'uk-pensions-explained-everything-you-need-to-know',
+    title: 'UK Pensions Explained: Everything You Need to Know',
+    excerpt: 'A comprehensive guide to UK pensions. Learn about state pensions, workplace pensions, private pensions, and how to maximize your retirement income.',
+    image: PostImg14,
+    content: `
+      <p>A comprehensive guide to UK pensions. Learn about state pensions, workplace pensions, private pensions, and how to maximize your retirement income.</p>
+      <p>Content will be added from the source URL.</p>
+    `,
+    author: 'The Wealthy Post Team',
+    date: 'January 21, 2025',
+    tags: ['Pensions', 'Retirement Planning', 'UK Finance', 'Financial Planning']
+  },
+  {
+    id: 77,
+    slug: 'bonds-vs-mutual-funds-everything-you-need-to-know',
+    title: 'Bonds vs Mutual Funds: Everything You Need to Know',
+    excerpt: 'Compare bonds and mutual funds to understand their differences, risks, and potential returns. Learn which investment option might be right for your portfolio.',
+    image: PostImg15,
+    content: `
+      <p>Compare bonds and mutual funds to understand their differences, risks, and potential returns. Learn which investment option might be right for your portfolio.</p>
+      <p>Content will be added from the source URL.</p>
+    `,
+    author: 'The Wealthy Post Team',
+    date: 'January 21, 2025',
+    tags: ['Investing', 'Bonds', 'Mutual Funds', 'Investment Strategy']
+  },
+  {
+    id: 78,
+    slug: '121-side-hustle-quotes-to-motivate-and-inspire-you',
+    title: '121 Side Hustle Quotes to Motivate and Inspire You',
+    excerpt: 'Get inspired with 121 motivational quotes about side hustles and entrepreneurship. These quotes will motivate you to start or grow your side business.',
+    image: PostImg16,
+    content: `
+      <p>Get inspired with 121 motivational quotes about side hustles and entrepreneurship. These quotes will motivate you to start or grow your side business.</p>
+      <p>Content will be added from the source URL.</p>
+    `,
+    author: 'The Wealthy Post Team',
+    date: 'January 21, 2025',
+    tags: ['Side Hustles', 'Motivation', 'Entrepreneurship', 'Inspiration']
+  },
+  {
+    id: 79,
+    slug: '47-motivational-passive-income-quotes',
+    title: '47 Motivational Passive Income Quotes',
+    excerpt: 'Find inspiration with 47 powerful quotes about passive income. These motivational quotes will encourage you to build multiple income streams and achieve financial freedom.',
+    image: PostImg17,
+    content: `
+      <p>Find inspiration with 47 powerful quotes about passive income. These motivational quotes will encourage you to build multiple income streams and achieve financial freedom.</p>
+      <p>Content will be added from the source URL.</p>
+    `,
+    author: 'The Wealthy Post Team',
+    date: 'January 21, 2025',
+    tags: ['Passive Income', 'Motivation', 'Financial Freedom', 'Quotes']
+  },
+  {
+    id: 80,
+    slug: 'your-payslip-explained-understanding-what-is-on-it',
+    title: 'Your Payslip Explained: Understanding What Is On It',
+    excerpt: 'Decode your payslip and understand every line item. Learn about tax deductions, National Insurance, pension contributions, and other deductions that appear on your payslip.',
+    image: PostImg18,
+    content: `
+      <p>Decode your payslip and understand every line item. Learn about tax deductions, National Insurance, pension contributions, and other deductions that appear on your payslip.</p>
+      <p>Content will be added from the source URL.</p>
+    `,
+    author: 'The Wealthy Post Team',
+    date: 'January 21, 2025',
+    tags: ['Payslip', 'UK Finance', 'Tax', 'Employment']
+  },
+  {
+    id: 81,
+    slug: 'how-i-paid-off-80k-in-debt-in-just-three-years',
+    title: 'How I Paid Off £80k in Debt in Just Three Years',
+    excerpt: 'A personal story of paying off £80,000 in debt in just three years. Learn the strategies, sacrifices, and mindset shifts that made this financial transformation possible.',
+    image: PostImg19,
+    content: `
+      <p>A personal story of paying off £80,000 in debt in just three years. Learn the strategies, sacrifices, and mindset shifts that made this financial transformation possible.</p>
+      <p>Content will be added from the source URL.</p>
+    `,
+    author: 'The Wealthy Post Team',
+    date: 'January 21, 2025',
+    tags: ['Debt Payoff', 'Debt Management', 'Financial Success', 'Personal Finance']
+  },
+  {
+    id: 82,
+    slug: 'couples-money-5-steps-to-improve-your-finances',
+    title: 'Couples Money: 5 Steps to Improve Your Finances',
+    excerpt: 'Learn how couples can work together to improve their financial situation. Discover five essential steps for managing money as a team and building wealth together.',
+    image: PostImg20,
+    content: `
+      <p>Learn how couples can work together to improve their financial situation. Discover five essential steps for managing money as a team and building wealth together.</p>
+      <p>Content will be added from the source URL.</p>
+    `,
+    author: 'The Wealthy Post Team',
+    date: 'January 21, 2025',
+    tags: ['Couples Finance', 'Marriage', 'Financial Planning', 'Relationships']
+  },
+  {
+    id: 83,
+    slug: '15-financial-resolutions-to-make-in-the-new-year',
+    title: '15 Financial Resolutions to Make in the New Year',
+    excerpt: 'Start the new year with these 15 financial resolutions. From saving more to investing wisely, these goals will help you improve your financial health throughout the year.',
+    image: PostImg21,
+    content: `
+      <p>Start the new year with these 15 financial resolutions. From saving more to investing wisely, these goals will help you improve your financial health throughout the year.</p>
+      <p>Content will be added from the source URL.</p>
+    `,
+    author: 'The Wealthy Post Team',
+    date: 'January 21, 2025',
+    tags: ['New Year Resolutions', 'Financial Goals', 'Planning', 'Personal Finance']
+  },
+  {
+    id: 84,
+    slug: 'setting-financial-goals-for-the-new-year',
+    title: 'Setting Financial Goals for the New Year',
+    excerpt: 'Learn how to set effective financial goals for the new year. Discover strategies for creating achievable, measurable goals that will help you build wealth and financial security.',
+    image: PostImg22,
+    content: `
+      <p>Learn how to set effective financial goals for the new year. Discover strategies for creating achievable, measurable goals that will help you build wealth and financial security.</p>
+      <p>Content will be added from the source URL.</p>
+    `,
+    author: 'The Wealthy Post Team',
+    date: 'January 21, 2025',
+    tags: ['Financial Goals', 'Planning', 'New Year', 'Goal Setting']
+  },
+  {
+    id: 85,
+    slug: '25-things-im-grateful-for-in-the-year-2022',
+    title: '25 Things I\'m Grateful For in the Year 2022',
+    excerpt: 'Reflect on gratitude and appreciation with this personal list of 25 things to be grateful for. Discover how gratitude can improve your financial mindset and overall well-being.',
+    image: PostImg23,
+    content: `
+      <p>Reflect on gratitude and appreciation with this personal list of 25 things to be grateful for. Discover how gratitude can improve your financial mindset and overall well-being.</p>
+      <p>Content will be added from the source URL.</p>
+    `,
+    author: 'The Wealthy Post Team',
+    date: 'January 21, 2025',
+    tags: ['Gratitude', 'Mindset', 'Personal Development', 'Wellness']
+  },
+  {
+    id: 86,
+    slug: '14-common-mistakes-to-avoid-when-paying-off-debt',
+    title: '14 Common Mistakes to Avoid When Paying Off Debt',
+    excerpt: 'Avoid these 14 common mistakes when paying off debt. Learn what pitfalls to watch out for and how to stay on track with your debt payoff journey.',
+    image: PostImg24,
+    content: `
+      <p>Avoid these 14 common mistakes when paying off debt. Learn what pitfalls to watch out for and how to stay on track with your debt payoff journey.</p>
+      <p>Content will be added from the source URL.</p>
+    `,
+    author: 'The Wealthy Post Team',
+    date: 'January 21, 2025',
+    tags: ['Debt Management', 'Debt Payoff', 'Financial Mistakes', 'Personal Finance']
+  },
+  {
+    id: 87,
+    slug: '39-best-ebay-business-ideas-2',
+    title: '39 Best eBay Business Ideas',
+    excerpt: 'Discover 39 profitable business ideas you can start on eBay. From selling vintage items to dropshipping, learn about opportunities to build a successful eBay business.',
+    image: PostImg25,
+    content: `
+      <p>Discover 39 profitable business ideas you can start on eBay. From selling vintage items to dropshipping, learn about opportunities to build a successful eBay business.</p>
+      <p>Content will be added from the source URL.</p>
+    `,
+    author: 'The Wealthy Post Team',
+    date: 'January 21, 2025',
+    tags: ['eBay', 'Business Ideas', 'Online Business', 'Entrepreneurship']
+  },
+  {
+    id: 88,
+    slug: '15-passive-income-ideas-for-students',
+    title: '15 Passive Income Ideas for Students',
+    excerpt: 'Discover 15 passive income ideas perfect for students. Learn how to earn money while studying without compromising your education or taking up too much time.',
+    image: PostImg26,
+    content: `
+      <p>Discover 15 passive income ideas perfect for students. Learn how to earn money while studying without compromising your education or taking up too much time.</p>
+      <p>Content will be added from the source URL.</p>
+    `,
+    author: 'The Wealthy Post Team',
+    date: 'January 21, 2025',
+    tags: ['Passive Income', 'Students', 'Side Hustles', 'Making Money']
+  },
+  {
+    id: 89,
+    slug: 'how-to-start-an-ebay-business-a-step-by-step-guide',
+    title: 'How to Start an eBay Business: A Step-by-Step Guide',
+    excerpt: 'Learn how to start your own eBay business with this comprehensive step-by-step guide. From setting up your account to listing your first items, we cover everything you need to know.',
+    image: PostImg27,
+    content: `
+      <p>Learn how to start your own eBay business with this comprehensive step-by-step guide. From setting up your account to listing your first items, we cover everything you need to know.</p>
+      <p>Content will be added from the source URL.</p>
+    `,
+    author: 'The Wealthy Post Team',
+    date: 'January 21, 2025',
+    tags: ['eBay', 'Business', 'Entrepreneurship', 'Online Business']
+  },
+  {
+    id: 90,
+    slug: '11-reasons-why-retirement-planning-is-important',
+    title: '11 Reasons Why Retirement Planning Is Important',
+    excerpt: 'Understand why retirement planning is crucial for your future. Discover 11 compelling reasons to start planning for retirement today, regardless of your age.',
+    image: PostImg28,
+    content: `
+      <p>Understand why retirement planning is crucial for your future. Discover 11 compelling reasons to start planning for retirement today, regardless of your age.</p>
+      <p>Content will be added from the source URL.</p>
+    `,
+    author: 'The Wealthy Post Team',
+    date: 'January 21, 2025',
+    tags: ['Retirement Planning', 'Financial Planning', 'Future Planning', 'Pensions']
+  },
+  {
+    id: 91,
+    slug: '15-ways-to-get-paid-to-read-emails',
+    title: '15 Ways to Get Paid to Read Emails',
+    excerpt: 'Discover 15 legitimate ways to earn money by reading emails. Learn about paid email services, survey sites, and other opportunities to make extra income from your inbox.',
+    image: PostImg29,
+    content: `
+      <p>Discover 15 legitimate ways to earn money by reading emails. Learn about paid email services, survey sites, and other opportunities to make extra income from your inbox.</p>
+      <p>Content will be added from the source URL.</p>
+    `,
+    author: 'The Wealthy Post Team',
+    date: 'January 21, 2025',
+    tags: ['Making Money', 'Side Hustles', 'Online Income', 'Passive Income']
+  },
+  {
+    id: 92,
+    slug: 'debt-avalanche-vs-debt-snowball-what-is-the-best-way-to-pay-off-debt',
+    title: 'Debt Avalanche vs Debt Snowball: What Is the Best Way to Pay Off Debt?',
+    excerpt: 'Compare the debt avalanche and debt snowball methods to determine which debt payoff strategy works best for you. Learn the pros and cons of each approach.',
+    image: PostImg30,
+    content: `
+      <p>Compare the debt avalanche and debt snowball methods to determine which debt payoff strategy works best for you. Learn the pros and cons of each approach.</p>
+      <p>Content will be added from the source URL.</p>
+    `,
+    author: 'The Wealthy Post Team',
+    date: 'January 21, 2025',
+    tags: ['Debt Management', 'Debt Payoff', 'Financial Strategy', 'Personal Finance']
+  },
+  {
+    id: 93,
+    slug: 'how-to-make-money-writing-short-stories',
+    title: 'How to Make Money Writing Short Stories',
+    excerpt: 'Learn how to monetize your creative writing skills. Discover platforms, markets, and strategies for making money by writing and selling short stories.',
+    image: PostImg31,
+    content: `
+      <p>Learn how to monetize your creative writing skills. Discover platforms, markets, and strategies for making money by writing and selling short stories.</p>
+      <p>Content will be added from the source URL.</p>
+    `,
+    author: 'The Wealthy Post Team',
+    date: 'January 21, 2025',
+    tags: ['Writing', 'Making Money', 'Creative Income', 'Side Hustles']
+  },
+  {
+    id: 94,
+    slug: 'the-ultimate-beginners-guide-to-credit-card',
+    title: 'The Ultimate Beginners Guide to Credit Card',
+    excerpt: 'Everything you need to know about credit cards as a beginner. Learn about how credit cards work, how to use them responsibly, and how to build good credit.',
+    image: PostImg32,
+    content: `
+      <p>Everything you need to know about credit cards as a beginner. Learn about how credit cards work, how to use them responsibly, and how to build good credit.</p>
+      <p>Content will be added from the source URL.</p>
+    `,
+    author: 'The Wealthy Post Team',
+    date: 'January 21, 2025',
+    tags: ['Credit Cards', 'Credit', 'Financial Education', 'Beginners']
+  },
+  {
+    id: 95,
+    slug: '31-best-side-hustles-for-introverts-2022',
+    title: '31 Best Side Hustles for Introverts 2022',
+    excerpt: 'Discover 31 side hustle ideas perfect for introverts. These opportunities allow you to earn extra income while working independently and avoiding excessive social interaction.',
+    image: PostImg33,
+    content: `
+      <p>Discover 31 side hustle ideas perfect for introverts. These opportunities allow you to earn extra income while working independently and avoiding excessive social interaction.</p>
+      <p>Content will be added from the source URL.</p>
+    `,
+    author: 'The Wealthy Post Team',
+    date: 'January 21, 2025',
+    tags: ['Side Hustles', 'Introverts', 'Making Money', 'Work from Home']
+  },
+  {
+    id: 96,
+    slug: 'what-does-the-bible-say-about-debt',
+    title: 'What Does the Bible Say About Debt?',
+    excerpt: 'Explore biblical perspectives on debt, borrowing, and financial responsibility. Learn what scripture teaches about managing money and debt in a faith-based context.',
+    image: PostImg34,
+    content: `
+      <p>Explore biblical perspectives on debt, borrowing, and financial responsibility. Learn what scripture teaches about managing money and debt in a faith-based context.</p>
+      <p>Content will be added from the source URL.</p>
+    `,
+    author: 'The Wealthy Post Team',
+    date: 'January 21, 2025',
+    tags: ['Debt', 'Faith', 'Biblical Finance', 'Christian Finance']
+  },
+  {
+    id: 97,
+    slug: '10-smart-money-moves-to-make-in-your-20s',
+    title: '10 Smart Money Moves to Make in Your 20s',
+    excerpt: 'Set yourself up for financial success with these 10 smart money moves for your 20s. Learn about saving, investing, and building wealth while you\'re young.',
+    image: PostImg35,
+    content: `
+      <p>Set yourself up for financial success with these 10 smart money moves for your 20s. Learn about saving, investing, and building wealth while you're young.</p>
+      <p>Content will be added from the source URL.</p>
+    `,
+    author: 'The Wealthy Post Team',
+    date: 'January 21, 2025',
+    tags: ['Young Adults', 'Financial Planning', '20s', 'Wealth Building']
+  },
+  {
+    id: 98,
+    slug: '15-etsy-business-ideas-to-make-extra-income',
+    title: '15 Etsy Business Ideas to Make Extra Income',
+    excerpt: 'Discover 15 profitable business ideas you can start on Etsy. From handmade crafts to digital products, learn how to turn your creativity into income on this popular platform.',
+    image: PostImg36,
+    content: `
+      <p>Discover 15 profitable business ideas you can start on Etsy. From handmade crafts to digital products, learn how to turn your creativity into income on this popular platform.</p>
+      <p>Content will be added from the source URL.</p>
+    `,
+    author: 'The Wealthy Post Team',
+    date: 'January 21, 2025',
+    tags: ['Etsy', 'Business Ideas', 'Online Business', 'Creative Income']
+  },
+  {
+    id: 99,
+    slug: '11-finance-and-marriage-mistakes-to-avoid',
+    title: '11 Finance and Marriage Mistakes to Avoid',
+    excerpt: 'Learn about common financial mistakes couples make in marriage and how to avoid them. Discover strategies for managing money together and building a strong financial foundation.',
+    image: PostImg37,
+    content: `
+      <p>Learn about common financial mistakes couples make in marriage and how to avoid them. Discover strategies for managing money together and building a strong financial foundation.</p>
+      <p>Content will be added from the source URL.</p>
+    `,
+    author: 'The Wealthy Post Team',
+    date: 'January 21, 2025',
+    tags: ['Marriage', 'Couples Finance', 'Financial Mistakes', 'Relationships']
+  },
+
+  {
+    id: 100,
+    slug: '23-best-side-hustles-for-teens-to-make-easy-money',
+    title: '23 Best Side Hustles for Teens to Make Easy Money',
+    excerpt: 'Discover 23 side hustle ideas perfect for teenagers. Learn about age-appropriate ways to earn money, build skills, and start your financial journey early.',
+    image: PostImg38,
+    content: `
+      <p>Discover 23 side hustle ideas perfect for teenagers. Learn about age-appropriate ways to earn money, build skills, and start your financial journey early.</p>
+      <p>Content will be added from the source URL.</p>
+    `,
+    author: 'The Wealthy Post Team',
+    date: 'January 21, 2025',
+    tags: ['Teens', 'Side Hustles', 'Making Money', 'Young Adults']
+  },
+
+  {
+    id: 101,
+    slug: 'i-got-a-raise-now-what-9-things-to-do',
+    title: 'I Got a Raise, Now What? 9 Things to Do',
+    excerpt: 'Congratulations on your raise! Learn 9 smart things to do with your increased income, from increasing savings to paying off debt and investing for the future.',
+    image: PostImg39,
+    content: `
+      <p>Congratulations on your raise! Learn 9 smart things to do with your increased income, from increasing savings to paying off debt and investing for the future.</p>
+      <p>Content will be added from the source URL.</p>
+    `,
+    author: 'The Wealthy Post Team',
+    date: 'January 21, 2025',
+    tags: ['Salary', 'Raises', 'Financial Planning', 'Income']
+  },
+  {
+    id: 102,
+    slug: 'is-now-a-good-time-to-invest-in-stocks',
+    title: 'Is Now a Good Time to Invest in Stocks?',
+    excerpt: 'Evaluate whether the current market conditions are right for stock investing. Learn about market timing, dollar-cost averaging, and long-term investment strategies.',
+    image: PostImg40,
+    content: `
+      <p>Evaluate whether the current market conditions are right for stock investing. Learn about market timing, dollar-cost averaging, and long-term investment strategies.</p>
+      <p>Content will be added from the source URL.</p>
+    `,
+    author: 'The Wealthy Post Team',
+    date: 'January 21, 2025',
+    tags: ['Investing', 'Stocks', 'Market Timing', 'Investment Strategy']
+  },
+  {
+    id: 103,
+    slug: 'the-top-5-best-european-country-to-retire',
+    title: 'The Top 5 Best European Country to Retire',
+    excerpt: 'Explore the top 5 European countries for retirement. Learn about cost of living, healthcare, quality of life, and what makes these destinations ideal for retirees.',
+    image: PostImg41,
+    content: `
+      <p>Explore the top 5 European countries for retirement. Learn about cost of living, healthcare, quality of life, and what makes these destinations ideal for retirees.</p>
+      <p>Content will be added from the source URL.</p>
+    `,
+    author: 'The Wealthy Post Team',
+    date: 'January 21, 2025',
+    tags: ['Retirement', 'Europe', 'Retirement Planning', 'Expat Living']
+  },
+  {
+    id: 104,
+    slug: 'how-to-save-for-a-house-in-9-easy-steps',
+    title: 'How to Save for a House in 9 Easy Steps',
+    excerpt: 'Learn how to save for your first home with these 9 easy steps. From setting a savings goal to cutting expenses, discover practical strategies to build your house deposit.',
+    image: PostImg42,
+    content: `
+      <p>Learn how to save for your first home with these 9 easy steps. From setting a savings goal to cutting expenses, discover practical strategies to build your house deposit.</p>
+      <p>Content will be added from the source URL.</p>
+    `,
+    author: 'The Wealthy Post Team',
+    date: 'January 21, 2025',
+    tags: ['Saving', 'House Buying', 'First Time Buyer', 'Financial Planning']
+  },
+  {
+    id: 105,
+    slug: '11-financial-tips-for-fathers',
+    title: '11 Financial Tips for Fathers',
+    excerpt: 'Essential financial advice for fathers. Learn about saving for your children\'s education, life insurance, estate planning, and other important financial considerations for dads.',
+    image: PostImg43,
+    content: `
+      <p>Essential financial advice for fathers. Learn about saving for your children's education, life insurance, estate planning, and other important financial considerations for dads.</p>
+      <p>Content will be added from the source URL.</p>
+    `,
+    author: 'The Wealthy Post Team',
+    date: 'January 21, 2025',
+    tags: ['Fathers', 'Family Finance', 'Financial Planning', 'Parenting']
+  },
+  {
+    id: 106,
+    slug: 'how-to-change-your-money-mindset-9-simple-ways',
+    title: 'How to Change Your Money Mindset: 9 Simple Ways',
+    excerpt: 'Transform your relationship with money by changing your mindset. Discover 9 simple ways to develop a healthier, more positive attitude toward money and wealth.',
+    image: PostImg44,
+    content: `
+      <p>Transform your relationship with money by changing your mindset. Discover 9 simple ways to develop a healthier, more positive attitude toward money and wealth.</p>
+      <p>Content will be added from the source URL.</p>
+    `,
+    author: 'The Wealthy Post Team',
+    date: 'January 21, 2025',
+    tags: ['Money Mindset', 'Financial Psychology', 'Personal Development', 'Wealth Building']
+  },
+
+  {
+    id: 107,
+    slug: '9-simple-ways-to-boost-your-retirement-pot',
+    title: '9 Simple Ways to Boost Your Retirement Pot',
+    excerpt: 'Increase your retirement savings with these 9 simple strategies. Learn practical ways to boost your pension and build a more secure retirement fund.',
+    image: PostImg45,
+    content: `
+      <p>Increase your retirement savings with these 9 simple strategies. Learn practical ways to boost your pension and build a more secure retirement fund.</p>
+      <p>Content will be added from the source URL.</p>
+    `,
+    author: 'The Wealthy Post Team',
+    date: 'January 21, 2025',
+    tags: ['Retirement Planning', 'Pensions', 'Saving', 'Financial Planning']
+  },
+  
+  {
+    id: 108,
+    slug: '6-personal-finance-lessons-that-have-changed-my-life',
+    title: '6 Personal Finance Lessons That Have Changed My Life',
+    excerpt: 'Discover 6 powerful personal finance lessons that can transform your financial life. Learn from real experiences and apply these principles to improve your own financial situation.',
+    image: PostImg46,
+    content: `
+      <p>Discover 6 powerful personal finance lessons that can transform your financial life. Learn from real experiences and apply these principles to improve your own financial situation.</p>
+      <p>Content will be added from the source URL.</p>
+    `,
+    author: 'The Wealthy Post Team',
+    date: 'January 21, 2025',
+    tags: ['Personal Finance', 'Financial Lessons', 'Life Lessons', 'Financial Education']
   }
 
 ];

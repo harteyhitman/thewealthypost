@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 import { useRef, useState } from 'react';
 import styles from './testimonials.module.scss';
 import { ImQuotesLeft } from 'react-icons/im';
-import Image from 'next/image';
 
 const testimonialsData = [
   {
@@ -143,7 +142,7 @@ function TestimonialRow({ items }: { items: typeof testimonialsData }) {
             </span>
             <p className={styles.text}>{t.text}</p>
             <div className={styles.profile}>
-              <Image src={t.image} alt={t.author} className={styles.avatar} />
+              <img src={t.image} alt={t.author} className={styles.avatar} />
               <div>
                 <h3 className={styles.author}>{t.author}</h3>
                 <p className={styles.position}>{t.position}</p>

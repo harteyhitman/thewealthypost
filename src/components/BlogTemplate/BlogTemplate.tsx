@@ -1,5 +1,7 @@
 import Image, { StaticImageData } from 'next/image';
+import Link from 'next/link';
 import styles from './BlogTemplate.module.scss';
+import { getAllPosts } from '@/libs/posts-data';
 
 interface Post {
   id: number;
@@ -10,6 +12,7 @@ interface Post {
   author?: string;
   date?: string;
   tags?: string[];
+  excerpt?: string;
 }
 
 interface BlogTemplateProps {
@@ -17,13 +20,19 @@ interface BlogTemplateProps {
 }
 
 const BlogTemplate = ({ post }: BlogTemplateProps) => {
+  // Get recent posts for sidebar (excluding current post)
+  const recentPosts = getAllPosts()
+    .filter(p => p.id !== post.id)
+    .slice(0, 5);
+
   return (
     <section className={styles.blogWrapper}>
+      <div className={styles.blogContainer}>
       {/* Top bar */}
       <div className={styles.blogTopBar}>
-        <span className={styles.category}>Category 1</span>
-        <span className={styles.date}>{post.date}</span>
-        <span className={styles.comments}>3 Comments</span>
+          <span className={styles.category}>Finance</span>
+          {post.date && <span className={styles.date}>{post.date}</span>}
+          {post.author && <span className={styles.author}>By {post.author}</span>}
       </div>
 
       <div className={styles.blogLayout}>
@@ -31,13 +40,17 @@ const BlogTemplate = ({ post }: BlogTemplateProps) => {
         <article className={styles.blogMain}>
           <h1 className={styles.blogTitle}>{post.title}</h1>
 
+            {post.excerpt && (
+              <p className={styles.blogExcerpt}>{post.excerpt}</p>
+            )}
+
           {post.image && (
             <div className={styles.blogImage}>
               <Image
                 src={post.image}
                 alt={post.title}
                 width={800}
-                height={400}
+                  height={450}
                 className={styles.featuredImage}
                 priority
               />
@@ -46,9 +59,21 @@ const BlogTemplate = ({ post }: BlogTemplateProps) => {
 
           <div className={styles.blogBody}>
             <div
+                className={styles.blogContent}
               dangerouslySetInnerHTML={{ __html: post.content }}
             />
           </div>
+
+            {/* Tags */}
+            {post.tags && post.tags.length > 0 && (
+              <div className={styles.blogTags}>
+                {post.tags.map((tag, index) => (
+                  <span key={index} className={styles.tag}>
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            )}
         </article>
 
         {/* Sidebar */}
@@ -56,29 +81,40 @@ const BlogTemplate = ({ post }: BlogTemplateProps) => {
           <div className={styles.sidebarCard}>
             <h3>Recent Posts</h3>
             <ul>
-              <li>How to Save Money Smartly</li>
-              <li>5 Tips for Better Design</li>
-              <li>What Makes a Website Great?</li>
+                {recentPosts.map((recentPost) => (
+                  <li key={recentPost.id}>
+                    <Link href={`/blog/${recentPost.slug}`}>{recentPost.title}</Link>
+                  </li>
+                ))}
             </ul>
           </div>
 
           <div className={styles.sidebarCard}>
-            <h3>Recent Comments</h3>
-            <ul>
-              <li>John on Design Trends</li>
-              <li>Mary on UX Psychology</li>
-            </ul>
-          </div>
-
-          <div className={styles.sidebarCard}>
-            <h3>Get the Latest News!</h3>
-            <form>
-              <input type="text" placeholder="Your Name" />
-              <input type="email" placeholder="Your Email" />
+              <h3>Subscribe to Our Newsletter</h3>
+              <p className={styles.sidebarDescription}>
+                Get the latest financial tips and insights delivered to your inbox.
+              </p>
+              <form className={styles.subscribeForm}>
+                <input type="text" placeholder="Your Name" required />
+                <input type="email" placeholder="Your Email" required />
               <button type="submit">Subscribe</button>
             </form>
           </div>
+
+            {post.tags && post.tags.length > 0 && (
+              <div className={styles.sidebarCard}>
+                <h3>Related Topics</h3>
+                <div className={styles.tagCloud}>
+                  {post.tags.map((tag, index) => (
+                    <span key={index} className={styles.sidebarTag}>
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            )}
         </aside>
+        </div>
       </div>
     </section>
   );
