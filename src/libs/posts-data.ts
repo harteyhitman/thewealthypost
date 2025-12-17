@@ -77,14 +77,6 @@ import SavingsChallengesImg from '../../public/blog posts images/Savings challen
 import StudentBudgetingImg from '../../public/blog posts images/student budgeting survive university 2024.jpg';
 import TravelInsuranceImg from '../../public/blog posts images/Travel insurance.jpg';
 import WillWritingImg from '../../public/blog posts images/will writing.jpg';
-// Unsplash images for additional posts
-import UnsplashImg1 from '../../public/blog posts images/abenezer-shewaga-EPio3ML3_ak-unsplash.jpg';
-import UnsplashImg2 from '../../public/blog posts images/diane-helentjaris-8Eiq70dFgU0-unsplash.jpg';
-import UnsplashImg3 from '../../public/blog posts images/jakub-zerdzicki-SQMKCU7m0Lw-unsplash.jpg';
-import UnsplashImg4 from '../../public/blog posts images/kirill-pershin-75pnATGkwHg-unsplash.jpg';
-import UnsplashImg5 from '../../public/blog posts images/miles-burke-jorpPtCS2gs-unsplash.jpg';
-import UnsplashImg6 from '../../public/blog posts images/tim-mossholder-3I3WVoA-Gks-unsplash.jpg';
-import UnsplashImg7 from '../../public/blog posts images/towfiqu-barbhuiya-3aGZ7a97qwA-unsplash.jpg';
 
 export const posts: Post[] = [
   {
