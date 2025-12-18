@@ -1,0 +1,250 @@
+@use '../../styles/variables' as *;
+
+.footer {
+  background-color: var(--color-body-text);
+  // background:  var(--color-accent);
+  color: var(--color-text-light);
+  padding: $space-8 $space-4 $space-4;
+  position: relative;
+  overflow: hidden;
+
+  @include tablet {
+    padding: 5rem 2rem 2.5rem;
+  }
+
+  @include desktop {
+    padding: 6rem 3rem 3rem;
+  }
+
+  // Decorative elements
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  }
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  margin-bottom: 3rem;
+
+  @include tablet {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4rem;
+  }
+
+  @include desktop {
+    grid-template-columns: 1.2fr 1fr 1.3fr;
+    gap: 5rem;
+    margin-bottom: 4rem;
+  }
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: $space-6;
+}
+
+.logoWrapper {
+  display: inline-block;
+  transition: transform $transition-base;
+
+  &:hover {
+    transform: scale(1.02);
+  }
+}
+
+.logo {
+  filter: brightness(0) invert(1);
+  opacity: 0.95;
+  height: auto;
+  width: auto;
+  max-width: 200px;
+
+  @include desktop {
+    max-width: 240px;
+  }
+}
+
+.socialMedia {
+  display: flex;
+  align-items: center;
+  gap: $space-4;
+  flex-wrap: wrap;
+}
+
+.socialIcon {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: $radius-lg;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.25rem;
+  text-decoration: none;
+  transition: all $transition-base;
+  backdrop-filter: blur(10px);
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.4);
+    color: $white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.columnTitle {
+  font-size: $text-lg;
+  font-weight: 700;
+  color: $white;
+  margin-bottom: $space-4;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  font-size: $text-sm;
+
+  @include desktop {
+    font-size: $text-base;
+    margin-bottom: $space-5;
+  }
+}
+
+.nav {
+  width: 100%;
+}
+
+.navList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: $space-3;
+}
+
+.navLink {
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+  font-size: $text-base;
+  font-weight: 500;
+  transition: all $transition-base;
+  display: inline-block;
+  position: relative;
+  padding-left: $space-4;
+
+  &::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: all $transition-base;
+    color: $white;
+  }
+
+  &:hover {
+    color: $white;
+    transform: translateX(4px);
+    padding-left: $space-6;
+
+    &::before {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+}
+
+.contactInfo {
+  display: flex;
+  flex-direction: column;
+  gap: $space-5;
+}
+
+.contactItem {
+  display: flex;
+  align-items: flex-start;
+  gap: $space-3;
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+  font-size: $text-sm;
+  line-height: 1.6;
+  transition: color $transition-base;
+
+  @include desktop {
+    font-size: $text-base;
+  }
+
+  &:hover {
+    color: $white;
+  }
+
+  span {
+    flex: 1;
+  }
+}
+
+.contactIcon {
+  width: 20px;
+  height: 20px;
+  color: rgba(255, 255, 255, 0.8);
+  flex-shrink: 0;
+  margin-top: 2px;
+  transition: color $transition-base;
+
+  .contactItem:hover & {
+    color: $white;
+  }
+}
+
+.copyright {
+  padding-top: $space-8;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  text-align: center;
+
+  @include desktop {
+    padding-top: $space-10;
+  }
+}
+
+.copyrightText {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: $text-sm;
+  margin: 0;
+  font-weight: 500;
+
+  @include desktop {
+    font-size: $text-base;
+  }
+}
+

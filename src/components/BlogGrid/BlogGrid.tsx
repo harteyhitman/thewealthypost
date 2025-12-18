@@ -1,7 +1,7 @@
 // components/BlogGrid/BlogGrid.tsx
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import BlogCard from '../BlogCard/BlogCard';
 import styles from './BlogGrid.module.scss';
 
@@ -23,16 +23,41 @@ interface BlogGridProps {
 
 const BlogGrid = ({ posts, itemsPerPage = 9 }: BlogGridProps) => {
   const [currentPage, setCurrentPage] = useState(1);
+  const [selectedCategory, setSelectedCategory] = useState<string>('All');
 
-  // Calculate total pages
-  const totalPages = Math.ceil(posts.length / itemsPerPage);
+  // Get unique categories from posts
+  const categories = useMemo(() => {
+    const uniqueCategories = new Set<string>();
+    posts.forEach(post => {
+      if (post.category) {
+        uniqueCategories.add(post.category);
+      }
+    });
+    return ['All', ...Array.from(uniqueCategories).sort()];
+  }, [posts]);
+
+  // Filter posts by category
+  const filteredPosts = useMemo(() => {
+    if (selectedCategory === 'All') {
+      return posts;
+    }
+    return posts.filter(post => post.category === selectedCategory);
+  }, [posts, selectedCategory]);
+
+  // Reset to page 1 when category changes
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [selectedCategory]);
+
+  // Calculate total pages based on filtered posts
+  const totalPages = Math.ceil(filteredPosts.length / itemsPerPage);
 
   // Get current posts for the current page
   const currentPosts = useMemo(() => {
     const startIndex = (currentPage - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
-    return posts.slice(startIndex, endIndex);
-  }, [posts, currentPage, itemsPerPage]);
+    return filteredPosts.slice(startIndex, endIndex);
+  }, [filteredPosts, currentPage, itemsPerPage]);
 
   // Handle page change
   const handlePageChange = (page: number) => {
@@ -59,16 +84,55 @@ const getPageNumbers = () => {
   
   return pages;
 };
-  if (posts.length === 0) {
+  if (filteredPosts.length === 0) {
     return (
-      <div className={styles.noPosts}>
-        <p>No blog posts found.</p>
+      <div className={styles.blogGridContainer}>
+        {/* Category Filter */}
+        <div className={styles.categoryFilter}>
+          <label htmlFor="category-select" className={styles.categoryLabel}>
+            Filter by Category:
+          </label>
+          <select
+            id="category-select"
+            value={selectedCategory}
+            onChange={(e) => setSelectedCategory(e.target.value)}
+            className={styles.categorySelect}
+          >
+            {categories.map((category) => (
+              <option key={category} value={category}>
+                {category}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div className={styles.noPosts}>
+          <p>No blog posts found{selectedCategory !== 'All' ? ` in ${selectedCategory}` : ''}.</p>
+        </div>
       </div>
     );
   }
 
   return (
     <div className={styles.blogGridContainer}>
+      {/* Category Filter */}
+      <div className={styles.categoryFilter}>
+        <label htmlFor="category-select" className={styles.categoryLabel}>
+          Filter by Category:
+        </label>
+        <select
+          id="category-select"
+          value={selectedCategory}
+          onChange={(e) => setSelectedCategory(e.target.value)}
+          className={styles.categorySelect}
+        >
+          {categories.map((category) => (
+            <option key={category} value={category}>
+              {category}
+            </option>
+          ))}
+        </select>
+      </div>
+
       {/* Blog Grid */}
       <div className={styles.blogGrid}>
         {currentPosts.map((post, index) => (
@@ -125,7 +189,10 @@ const getPageNumbers = () => {
       {/* Page Info */}
       <div className={styles.pageInfo}>
         Showing {((currentPage - 1) * itemsPerPage) + 1} -{' '}
-        {Math.min(currentPage * itemsPerPage, posts.length)} of {posts.length} posts
+        {Math.min(currentPage * itemsPerPage, filteredPosts.length)} of {filteredPosts.length} posts
+        {selectedCategory !== 'All' && (
+          <span className={styles.categoryInfo}> in {selectedCategory}</span>
+        )}
       </div>
     </div>
   );

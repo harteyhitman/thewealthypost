@@ -180,7 +180,7 @@
 }
 
 .readMoreLink {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   justify-content: center;
   padding: $space-3 $space-5;
@@ -192,7 +192,8 @@
   font-size: $text-sm;
   transition: all $transition-base;
   margin-top: auto;
-  width: fit-content;
+  width: 100%;
+  text-align: center;
 
   &:hover {
     transform: translateY(-1px);

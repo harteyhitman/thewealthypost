@@ -183,7 +183,7 @@ export default function Testimonials() {
 
       <div className={styles.rows}>
         <TestimonialRow items={firstRow} />
-        <TestimonialRow items={secondRow} />
+        {/* <TestimonialRow items={secondRow} /> */}
       </div>
     </section>
   );

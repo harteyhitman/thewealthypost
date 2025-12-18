@@ -5,6 +5,71 @@
   padding: $space-8 0;
 }
 
+.categoryFilter {
+  display: flex;
+  align-items: center;
+  gap: $space-4;
+  margin-bottom: $space-8;
+  flex-wrap: wrap;
+
+  @include mobile {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: $space-3;
+  }
+}
+
+.categoryLabel {
+  font-size: $text-base;
+  font-weight: 600;
+  color: $text-primary;
+  white-space: nowrap;
+
+  @include mobile {
+    font-size: $text-sm;
+  }
+}
+
+.categorySelect {
+  padding: $space-3 $space-5;
+  border: 2px solid $border-color;
+  background: $white;
+  color: $text-primary;
+  border-radius: $radius-lg;
+  font-size: $text-base;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all $transition-base;
+  min-width: 200px;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23324a6d' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right $space-3 center;
+  padding-right: $space-10;
+
+  @include mobile {
+    width: 100%;
+    min-width: 100%;
+    font-size: $text-sm;
+  }
+
+  &:hover {
+    border-color: $primary;
+    box-shadow: $shadow-sm;
+  }
+
+  &:focus {
+    outline: none;
+    border-color: $primary;
+    box-shadow: 0 0 0 3px rgba($primary, 0.1);
+  }
+
+  option {
+    padding: $space-2;
+    font-weight: 500;
+  }
+}
+
 .blogGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -106,6 +171,11 @@
   color: $text-secondary;
   font-size: $text-sm;
   margin-top: $space-4;
+}
+
+.categoryInfo {
+  color: $primary;
+  font-weight: 600;
 }
 
 .noPosts {
