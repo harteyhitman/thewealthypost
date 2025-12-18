@@ -102,7 +102,8 @@
   border-radius: 1rem;
   overflow: hidden;
   max-width: 400px;
-  text-decoration: none;
+  display: flex;
+  flex-direction: column;
   transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
 
   &:hover {
@@ -123,6 +124,8 @@
   overflow: hidden;
   border-top-left-radius: 1rem;
   border-top-right-radius: 1rem;
+  text-decoration: none;
+  display: block;
 
   .image {
     width: 100%;
@@ -175,21 +178,28 @@
   margin-bottom: 0.75rem;
   color: inherit;
   text-align: center;
+  text-decoration: none;
+  display: block;
+  transition: color 0.3s ease;
 
   &:hover {
     color: var(--color-primary);
+  }
+
+  h3 {
+    margin: 0;
   }
 }
 
 .excerptItem {
   position: relative;
   font-size: 0.95rem;
-  color: var(--color-body-text);
   line-height: 1.6;
   font-weight: 500;
-  transition: color 0.3s ease, transform 0.3s ease;
+  transition: transform 0.3s ease;
   margin: 0 20px;
   gap: 1rem;
+  list-style: none;
 
   &::before {
     content: "◆"; // unique fancy diamond bullet
@@ -203,19 +213,38 @@
   }
 
   &:hover {
-    color: var(--color-secondary);
     transform: translateX(4px);
   }
 
   &:hover::before {
     transform: scale(1.3);
+    color: var(--color-secondary);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    font-weight: 600;
+    &::before {
       color: var(--color-secondary);
+    }
+  }
+}
+
+.excerptLink {
+  color: var(--color-body-text);
+  text-decoration: none;
+  transition: color 0.3s ease;
+  display: block;
+  width: 100%;
+
+  &:hover {
+    color: var(--color-secondary);
   }
 
   @media (prefers-color-scheme: dark) {
     color: var(--color-light);
     font-weight: 600;
-    &::before {
+    
+    &:hover {
       color: var(--color-secondary);
     }
   }

@@ -9,6 +9,41 @@ import FinanceIndependence from "../../../public/blogpost/finanace-independence.
 import RetirementPlan from "../../../public/blogpost/retirement-plans.jpg";
 import Link from "next/link";
 
+// Mapping function to convert excerpt titles to blog post slugs
+// Links to existing posts or blog listing page for posts not yet created
+const getSlugFromTitle = (title: string): string => {
+  const titleToSlugMap: { [key: string]: string } = {
+    // Investing posts - using existing investment guide
+    "Investing in Index Funds for Beginners": "investment-beginners-complete-guide-2024",
+    "Is Now a Good Time to Invest in Stocks?": "investment-beginners-complete-guide-2024",
+    "Bonds vs Mutual Funds: Everything You Need to Know": "investment-beginners-complete-guide-2024",
+    
+    // Debt Management posts - using existing debt management guide
+    "How to Pay Off Debt Fast Even on a Low Income": "debt-management-strategies-2024-uk",
+    "Debt Avalanche vs Debt Snowball: What is the Best Way to Pay Off Debt": "debt-management-strategies-2024-uk",
+    "14 Common Mistakes to Avoid When Paying Off Debt": "debt-management-strategies-2024-uk",
+    
+    // Saving & Emergency Funds posts - using existing emergency fund guide
+    "Emergency Fund: Everything You Need to Know": "emergency-fund-why-how-much-2024",
+    "Money-Saving Hacks: 15 Ways to Boost Your Savings": "savings-challenges-boost-emergency-fund-2024",
+    "Sinking Fund: Everything You Need to Know": "savings-accounts-best-rates-2024",
+    "How to Save Energy": "energy-bills-support-winter-2024",
+    
+    // Financial Independence & Wealth Building posts
+    "How to Build Wealth Without a Six-Figure Salary": "investment-beginners-complete-guide-2024",
+    "7 Simple Rules for a Wealthy Life": "financial-independence-retire-early-fire-2024",
+    "How to Change Your Money Mindset (9 Simple Ways)": "financial-independence-retire-early-fire-2024",
+    
+    // Retirement Planning posts - using existing retirement guide
+    "How Much Money Do I Need to Retire?": "retirement-planning-comprehensive-guide-2024",
+    "9 Simple Ways to Boost Your Retirement Pot": "retirement-planning-comprehensive-guide-2024",
+    "How to Retire with 2 Million Pounds": "retirement-planning-comprehensive-guide-2024",
+    "UK Pensions Explained: Everything You Need to Know": "retirement-planning-comprehensive-guide-2024",
+  };
+  
+  return titleToSlugMap[title] || "/blog";
+};
+
 const blogPosts = [
   {
     id: 1,
@@ -19,7 +54,7 @@ const blogPosts = [
       "Bonds vs Mutual Funds: Everything You Need to Know",
     ],
     image: Budgeting,
-    link: "#",
+    link: "/blog/investment-beginners-complete-guide-2024",
   },
   {
     id: 2,
@@ -30,7 +65,7 @@ const blogPosts = [
       "14 Common Mistakes to Avoid When Paying Off Debt",
     ],
     image: Debt,
-    link: "#",
+    link: "/blog/debt-management-strategies-2024-uk",
   },
   {
     id: 3,
@@ -42,7 +77,7 @@ const blogPosts = [
       "How to Save Energy",
     ],
     image: Savings,
-    link: "#",
+    link: "/blog/emergency-fund-why-how-much-2024",
   },
   {
     id: 4,
@@ -53,7 +88,7 @@ const blogPosts = [
       "Bonds vs Mutual Funds: Everything You Need to Know",
     ],
     image: Investing,
-    link: "#",
+    link: "/blog/investment-beginners-complete-guide-2024",
   },
   {
     id: 5,
@@ -64,7 +99,7 @@ const blogPosts = [
       "How to Change Your Money Mindset (9 Simple Ways)",
     ],
     image: FinanceIndependence,
-    link: "#",
+    link: "/blog/investment-beginners-complete-guide-2024",
   },
   {
     id: 6,
@@ -76,7 +111,7 @@ const blogPosts = [
       "UK Pensions Explained: Everything You Need to Know",
     ],
     image: RetirementPlan,
-    link: "#",
+    link: "/blog/retirement-planning-comprehensive-guide-2024",
   },
 ];
 
@@ -94,8 +129,8 @@ export default function BlogSection() {
 
       <div className={styles.posts}>
         {blogPosts.map((post) => (
-          <Link key={post.id} href={post.link} className={styles.card}>
-            <div className={styles.imageWrapper}>
+          <div key={post.id} className={styles.card}>
+            <Link href={post.link} className={styles.imageWrapper}>
               <Image
                 src={post.image}
                 alt={post.title}
@@ -103,18 +138,25 @@ export default function BlogSection() {
                 height={250}
                 className={styles.image}
               />
-            </div>
+            </Link>
             <div className={styles.content}>
-              <h3 className={styles.title}>{post.title}</h3>
+              <Link href={post.link} className={styles.title}>
+                <h3>{post.title}</h3>
+              </Link>
               <ul className={styles.excerptList}>
-                {post.excerpts.map((item, index) => (
-                  <li key={index} className={styles.excerptItem}>
-                    {item}
-                  </li>
-                ))}
+                {post.excerpts.map((item, index) => {
+                  const slug = getSlugFromTitle(item);
+                  return (
+                    <li key={index} className={styles.excerptItem}>
+                      <Link href={`/blog/${slug}`} className={styles.excerptLink}>
+                        {item}
+                      </Link>
+                    </li>
+                  );
+                })}
               </ul>
             </div>
-          </Link>
+          </div>
         ))}
       </div>
 
