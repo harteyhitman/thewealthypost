@@ -8,6 +8,7 @@ export default function BlogPage() {
     ...post,
     image: typeof post.image === 'string' ? post.image : post.image.src,
     slug: post.slug,
+    category: post.category, // Ensure category is included
   }));
   
   return (

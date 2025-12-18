@@ -139,6 +139,7 @@ export const posts: Post[] = [
     title: 'Student Finance England: Loans & Grants 2024',
     excerpt: 'Student Finance England (SFE) is a service provided by the UK government to help students finance their university education. It offers various financial products, including tuition fee loans, maintenance loans, and grants.',
     image: StudentFinanceImg,
+    category: 'Personal Finance',
     content: `
       <h2>Understanding Student Finance England</h2>
       <p>Student Finance England provides crucial financial support for higher education students across England. Understanding the available options can significantly impact your university experience and future financial health.</p>
@@ -158,6 +159,7 @@ export const posts: Post[] = [
     title: 'Energy Bills Support: Winter 2024',
     excerpt: 'As winter approaches, many households are concerned about rising energy costs. This guide covers available support schemes, government initiatives, and practical tips to manage your energy bills during the colder months.',
     image: EnergyBillsImg,
+    category: 'Saving Money',
     content: `
       <h2>Winter Energy Challenges</h2>
       <p>With temperatures dropping and energy prices fluctuating, many households face significant financial pressure during winter months. Understanding available support can make a substantial difference.</p>
@@ -177,6 +179,7 @@ export const posts: Post[] = [
     title: 'Retirement Planning: Comprehensive Guide 2024',
     excerpt: 'Proper retirement planning is essential for financial security in your later years. This comprehensive guide covers pension options, investment strategies, and government schemes to help you build a secure retirement fund.',
     image: RetirementPlanningImg,
+    category: 'Retirement',
     content: `
       <h2>The Importance of Early Retirement Planning</h2>
       <p>Starting your retirement planning early can significantly impact your financial comfort in later life. Compound growth and longer investment horizons work in your favor when you begin planning sooner rather than later.</p>
@@ -196,6 +199,7 @@ export const posts: Post[] = [
     title: 'Interest Rates: Impact on Savings & Mortgages 2024',
     excerpt: 'Current interest rate trends significantly affect both savers and borrowers. Understanding how these rates impact your savings accounts, mortgages, and loans can help you make informed financial decisions in the current economic climate.',
     image: InterestRatesImg,
+    category: 'Personal Finance',
     content: `
       <h2>Understanding Interest Rate Environment</h2>
       <p>The Bank of England's base rate decisions ripple through the entire financial system, affecting everything from savings account returns to mortgage payments.</p>
@@ -216,6 +220,7 @@ export const posts: Post[] = [
     title: 'Credit Score Improvement: Ultimate Guide 2024',
     excerpt: 'Your credit score plays a crucial role in your financial life, affecting everything from loan approvals to interest rates. This ultimate guide provides practical steps to understand, monitor, and improve your credit score effectively.',
     image: CreditScoreImg,
+    category: 'Personal Finance',
     content: `
       <h2>Why Credit Scores Matter</h2>
       <p>A good credit score can save you thousands in interest payments over your lifetime and open doors to better financial products and opportunities.</p>
@@ -237,6 +242,7 @@ export const posts: Post[] = [
     title: 'Tax Codes Explained: 2024 UK Guide',
     excerpt: 'Understanding your tax code is essential for ensuring you pay the correct amount of tax. This comprehensive guide explains how UK tax codes work, what the numbers and letters mean, and how to check if your tax code is correct.',
     image: TaxCodesImg,
+    category: 'Personal Finance',
     content: `
       <h2>What is a Tax Code?</h2>
       <p>Your tax code tells your employer or pension provider how much tax-free income you get in each tax year. Getting this right ensures you don't overpay or underpay tax.</p>
@@ -257,6 +263,7 @@ export const posts: Post[] = [
     title: 'Child Benefit Changes 2024: UK Families',
     excerpt: 'Recent changes to Child Benefit rules affect thousands of UK families. This guide covers the new thresholds, eligibility criteria, and how to claim while maximizing your family\'s financial support.',
     image: ChildBenefitsImg,
+    category: 'Personal Finance',
     content: `
       <h2>2024 Child Benefit Updates</h2>
       <p>The government has made significant changes to Child Benefit thresholds and rules for the 2024/25 tax year, impacting how much support families can receive.</p>
@@ -276,6 +283,7 @@ export const posts: Post[] = [
     title: 'Investment for Beginners: Complete Guide 2024',
     excerpt: 'Starting your investment journey can be daunting, but it\'s essential for long-term wealth building. This complete beginner\'s guide covers the fundamentals of investing, risk management, and how to get started with as little as £50.',
     image: InvestmentBeginnersImg,
+    category: 'Wealth Building',
     content: `
       <h2>Why Start Investing?</h2>
       <p>Investing allows your money to work for you through compound growth. Even small, regular investments can grow significantly over time, helping you beat inflation and build wealth.</p>
@@ -296,6 +304,7 @@ export const posts: Post[] = [
     title: 'Money Saving Apps: UK 2024 Review',
     excerpt: 'Technology has revolutionized personal finance management. Discover the best money-saving apps available in the UK for 2024, from budgeting tools and cashback offers to automated saving and investment platforms.',
     image: MoneySavingAppImg,
+    category: 'Saving Money',
     content: `
       <h2>Top Money-Saving Apps for 2024</h2>
       <p>Modern apps can help you save money effortlessly through automated features, cashback offers, and intelligent budgeting tools.</p>
@@ -317,6 +326,7 @@ export const posts: Post[] = [
     title: 'Debt Management Strategies: 2024 UK',
     excerpt: 'Managing debt effectively is crucial for financial wellbeing. This guide covers proven debt management strategies, including snowball vs avalanche methods, negotiating with creditors, and accessing professional debt advice in the UK.',
     image: DebtManagementImg,
+    category: 'Personal Finance',
     content: `
       <h2>Understanding Your Debt Situation</h2>
       <p>The first step in effective debt management is understanding exactly what you owe, to whom, and at what interest rates.</p>
@@ -337,6 +347,7 @@ export const posts: Post[] = [
     title: 'First-Time Buyer Mortgage Guide 2024',
     excerpt: 'Buying your first home is an exciting milestone. This comprehensive guide covers everything first-time buyers need to know about mortgages in 2024, including government schemes, deposit requirements, and navigating the current property market.',
     image: FirstTimeBuyerImg,
+    category: 'Property',
     content: `
       <h2>First-Time Buyer Challenges</h2>
       <p>The property market presents unique challenges for first-time buyers, from saving for a deposit to understanding mortgage options in a changing economic environment.</p>
@@ -360,6 +371,7 @@ export const posts: Post[] = [
     title: 'Universal Credit: Complete Guide 2024',
     excerpt: 'Universal Credit is replacing six legacy benefits with a single monthly payment. This comprehensive guide explains eligibility, application process, payment amounts, and how to manage your claim effectively in 2024.',
     image: UniversalCreditImg,
+    category: 'Personal Finance',
     content: `
       <h2>What is Universal Credit?</h2>
       <p>Universal Credit is a single monthly payment for people on low income or out of work. It replaces six legacy benefits: Income-based Jobseeker's Allowance, Income-related Employment and Support Allowance, Income Support, Working Tax Credit, Child Tax Credit, and Housing Benefit.</p>
@@ -380,6 +392,7 @@ export const posts: Post[] = [
     title: 'Car Finance Options: UK 2024 Guide',
     excerpt: 'Understanding car finance options is crucial when purchasing a vehicle. This guide covers HP, PCP, leasing, and personal loans, helping you choose the right financing method for your circumstances and budget.',
     image: CarFinanceImg,
+    category: 'Personal Finance',
     content: `
       <h2>Car Finance Options Explained</h2>
       <p>Different car finance options suit different needs and financial situations. Understanding the pros and cons of each can save you money and prevent financial stress.</p>
@@ -403,6 +416,7 @@ export const posts: Post[] = [
     title: 'Emergency Fund: Why & How Much 2024',
     excerpt: 'An emergency fund is your financial safety net for unexpected expenses. This guide explains why everyone needs one, how much you should save, and where to keep your emergency fund for optimal security and accessibility.',
     image: EmergencyFundsImg,
+    category: 'Saving Money',
     content: `
       <h2>The Importance of Emergency Funds</h2>
       <p>An emergency fund prevents you from going into debt when unexpected expenses arise, such as job loss, medical emergencies, or urgent home repairs.</p>
@@ -425,6 +439,7 @@ export const posts: Post[] = [
     title: 'Self-Assessment Tax Return Guide 2024',
     excerpt: 'If you\'re self-employed, have multiple income streams, or receive significant untaxed income, you may need to complete a Self-Assessment tax return. This guide covers deadlines, paperwork, and common pitfalls to avoid.',
     image: SelfAssessmentImg,
+    category: 'Personal Finance',
     content: `
       <h2>Who Needs to Complete Self-Assessment?</h2>
       <p>You must complete a Self-Assessment tax return if you're self-employed as a sole trader earning more than £1,000, a partner in a business partnership, or have untaxed income from various sources.</p>
@@ -448,6 +463,7 @@ export const posts: Post[] = [
     title: 'Insurance Guide: Essential Policies 2024',
     excerpt: 'Having the right insurance coverage is crucial for financial protection. This guide explains which insurance policies are essential, how much coverage you need, and tips for finding the best deals on your premiums.',
     image: InsuranceGuideImg,
+    category: 'Insurance',
     content: `
       <h2>Essential Insurance Policies</h2>
       <p>Certain insurance policies are crucial for financial security, while others may be optional depending on your circumstances.</p>
@@ -471,6 +487,7 @@ export const posts: Post[] = [
     title: 'Side Hustles: Extra Income UK 2024',
     excerpt: 'In today\'s economy, many people are turning to side hustles for extra income. Discover legitimate ways to earn additional money outside your main job, from freelancing and online businesses to gig economy opportunities.',
     image: SideHustlesImg,
+    category: 'Side Hustles',
     content: `
       <h2>Why Consider a Side Hustle?</h2>
       <p>Side hustles can provide extra income, help pay off debt faster, build savings, or even transition to full-time self-employment.</p>
@@ -495,6 +512,7 @@ export const posts: Post[] = [
     title: 'Credit Cards: Rewards & Cashback 2024',
     excerpt: 'Used wisely, credit cards can offer valuable rewards, cashback, and consumer protection. This guide explains how to choose the right card, maximize rewards, and avoid costly interest charges and fees.',
     image: CreditCardsImg,
+    category: 'Personal Finance',
     content: `
       <h2>Types of Reward Cards</h2>
       <p>Different credit cards offer different types of rewards suited to various spending habits and lifestyles.</p>
@@ -518,6 +536,7 @@ export const posts: Post[] = [
     title: 'Budgeting Methods: Which Works Best 2024',
     excerpt: 'Different budgeting methods work for different people and financial situations. Compare popular budgeting techniques like 50/30/20, zero-based budgeting, and envelope system to find what works for your money management style.',
     image: BudgetingImg,
+    category: 'Personal Finance',
     content: `
       <h2>Popular Budgeting Methods</h2>
       <p>There\'s no one-size-fits-all approach to budgeting. Understanding different methods can help you find the right fit for your financial personality.</p>
@@ -542,6 +561,7 @@ export const posts: Post[] = [
     title: 'Savings Accounts: Best Rates 2024',
     excerpt: 'With changing interest rates, it\'s important to regularly review your savings accounts. This guide covers the best savings rates available, different account types, and how to maximize your returns while keeping your money safe.',
     image: SavingsAccountImg,
+    category: 'Saving Money',
     content: `
       <h2>Types of Savings Accounts</h2>
       <p>Different savings accounts serve different purposes, from everyday access to long-term growth.</p>
@@ -566,6 +586,7 @@ export const posts: Post[] = [
     title: 'Payrise Negotiation Strategies 2024',
     excerpt: 'Asking for a payrise can be daunting but is essential for career progression. This guide provides proven strategies for preparing your case, timing your request, and negotiating effectively to achieve the salary you deserve.',
     image: PayriseNegotiationImg,
+    category: 'Wealth Building',
     content: `
       <h2>Preparation is Key</h2>
       <p>Successful payrise negotiations require thorough preparation, including research, documentation, and timing considerations.</p>
@@ -589,6 +610,7 @@ export const posts: Post[] = [
     title: 'Frugal Living: Money Saving Tips 2024',
     excerpt: 'Frugal living isn\'t about deprivation but about making intentional choices with your money. Discover practical tips for reducing expenses without sacrificing quality of life, from grocery shopping to entertainment and utilities.',
     image: FrugalLivingImg,
+    category: 'Saving Money',
     content: `
       <h2>What is Frugal Living?</h2>
       <p>Frugal living means being resourceful and intentional with your spending, focusing on value rather than simply cutting costs.</p>
@@ -613,6 +635,7 @@ export const posts: Post[] = [
     title: 'Financial Advisor: When & How to Choose 2024',
     excerpt: 'Knowing when to seek professional financial advice and how to choose the right advisor can significantly impact your financial success. This guide covers different types of advisors, fee structures, and questions to ask before committing.',
     image: FinancialAdvisorImg,
+    category: 'Financial Planning',
     content: `
       <h2>When to Seek Financial Advice</h2>
       <p>Consider professional advice for complex financial situations, major life changes, inheritance, retirement planning, or investment strategies beyond basic ISAs and pensions.</p>
@@ -636,6 +659,7 @@ export const posts: Post[] = [
     title: 'Inheritance Tax Planning: UK 2024',
     excerpt: 'Inheritance tax can significantly reduce what you pass on to your loved ones. This guide explains current thresholds, exemptions, and legal strategies to minimize inheritance tax liability while staying compliant with HMRC regulations.',
     image: InheritanceTaxImg,
+    category: 'Financial Planning',
     content: `
       <h2>Understanding Inheritance Tax</h2>
       <p>Inheritance Tax (IHT) is paid on an estate's value above £325,000 threshold. The current rate is 40% on amounts above this threshold, though various exemptions and reliefs can reduce liability.</p>
@@ -658,6 +682,7 @@ export const posts: Post[] = [
     title: 'Business Startup: Funding Options 2024',
     excerpt: 'Starting a business requires careful financial planning. This comprehensive guide covers various funding options available to UK startups, from government grants and loans to angel investors and crowdfunding platforms.',
     image: BusinessStartupImg,
+    category: 'Business',
     content: `
       <h2>Startup Funding Landscape</h2>
       <p>The UK offers diverse funding options for new businesses, each with different requirements, advantages, and considerations.</p>
@@ -683,6 +708,7 @@ export const posts: Post[] = [
     title: 'Divorce: Financial Implications 2024',
     excerpt: 'Divorce has significant financial consequences that require careful planning. This guide covers asset division, pension sharing, maintenance payments, and financial settlements to help you navigate this challenging process.',
     image: DivorceImg,
+    category: 'Financial Planning',
     content: `
       <h2>Financial Aspects of Divorce</h2>
       <p>Divorce involves complex financial considerations beyond emotional separation, requiring careful planning and often professional advice.</p>
@@ -707,6 +733,7 @@ export const posts: Post[] = [
     title: 'Student Budgeting: Survive University 2024',
     excerpt: 'Managing money at university is a crucial life skill. This practical guide provides budgeting templates, expense tracking methods, and money-saving tips specifically designed for student life and limited incomes.',
     image: StudentBudgetingImg,
+    category: 'Personal Finance',
     content: `
       <h2>Student Financial Challenges</h2>
       <p>University life presents unique financial challenges with limited income and multiple expense categories requiring careful management.</p>
@@ -731,6 +758,7 @@ export const posts: Post[] = [
     title: 'Ethical Investing: Growing Trend 2024',
     excerpt: 'Ethical investing allows you to align your investments with your values. This guide explains ESG criteria, impact investing, and how to build a portfolio that supports environmental and social causes while generating returns.',
     image: EthicalInvestingImg,
+    category: 'Wealth Building',
     content: `
       <h2>What is Ethical Investing?</h2>
       <p>Ethical investing involves selecting investments based on ethical, social, and environmental criteria alongside financial considerations.</p>
@@ -756,6 +784,7 @@ export const posts: Post[] = [
     title: 'Holiday Saving: Plan Affordable Break 2024',
     excerpt: 'You don\'t need to break the bank to enjoy a wonderful holiday. This guide provides strategies for saving for your trip, finding deals, and planning a memorable vacation that fits your budget without sacrificing enjoyment.',
     image: HolidaySavingsImg,
+    category: 'Saving Money',
     content: `
       <h2>Planning Your Holiday Budget</h2>
       <p>Successful budget holidays require careful planning and smart saving strategies throughout the year.</p>
@@ -780,6 +809,7 @@ export const posts: Post[] = [
     title: 'Pension Consolidation: Should You? 2024',
     excerpt: 'If you\'ve had multiple jobs, you likely have several pension pots. This guide explores the pros and cons of pension consolidation, helping you decide whether combining your pensions could save on fees and simplify retirement planning.',
     image: PensionConsolidationImg,
+    category: 'Retirement',
     content: `
       <h2>Understanding Pension Consolidation</h2>
       <p>Pension consolidation involves transferring multiple pension pots into a single plan, which can offer benefits but isn't right for everyone.</p>
@@ -803,6 +833,7 @@ export const posts: Post[] = [
     title: 'Credit Report: Check & Improve 2024',
     excerpt: 'Your credit report contains crucial information that lenders use to assess your creditworthiness. Learn how to check your report for errors, understand what factors influence your score, and take steps to improve your credit history.',
     image: CreditReportImg,
+    category: 'Personal Finance',
     content: `
       <h2>Understanding Credit Reports</h2>
       <p>Your credit report is a detailed record of your borrowing and repayment history used by lenders to assess risk.</p>
@@ -827,6 +858,7 @@ export const posts: Post[] = [
     title: 'Freelance Finance & Tax Management 2024',
     excerpt: 'Freelancing offers flexibility but requires diligent financial management. This guide covers invoicing, tracking expenses, tax obligations, and pension planning specifically for self-employed individuals and freelance professionals.',
     image: FreelanceFinanceImg,
+    category: 'Side Hustles',
     content: `
       <h2>Freelance Financial Challenges</h2>
       <p>Freelancers face unique financial challenges including irregular income, client payment delays, and complex tax responsibilities.</p>
@@ -851,6 +883,7 @@ export const posts: Post[] = [
     title: 'Mortgage Overpayment: Calculator & Benefits 2024',
     excerpt: 'Making mortgage overpayments can save thousands in interest and reduce your mortgage term significantly. Use our calculator and learn strategies for making extra payments that fit your budget while maximizing long-term savings.',
     image: MortgageOverpaymentImg,
+    category: 'Property',
     content: `
       <h2>Benefits of Mortgage Overpayments</h2>
       <p>Even small regular overpayments can dramatically reduce total interest paid and shorten your mortgage term.</p>
@@ -877,6 +910,7 @@ export const posts: Post[] = [
     title: 'Cost of Living Crisis: Survival Guide 2024',
     excerpt: 'With rising prices affecting households across the UK, this survival guide provides practical strategies for managing increased costs, accessing available support, and making your money go further during challenging economic times.',
     image: CostOfLivingImg,
+    category: 'Saving Money',
     content: `
       <h2>Understanding the Cost of Living Crisis</h2>
       <p>The current economic situation sees prices rising faster than incomes, requiring strategic adjustments to household budgets.</p>
@@ -901,6 +935,7 @@ export const posts: Post[] = [
     title: 'Financial Goals: Setting & Achieving 2024',
     excerpt: 'Setting clear financial goals is the first step toward financial success. This guide provides frameworks for defining SMART financial objectives, creating actionable plans, and staying motivated throughout your financial journey.',
     image: FinancialGoalsImg,
+    category: 'Financial Planning',
     content: `
       <h2>Importance of Financial Goals</h2>
       <p>Clear financial goals provide direction, motivation, and measurable targets for your money management efforts.</p>
@@ -930,6 +965,7 @@ export const posts: Post[] = [
     title: 'Will Writing: Why & How 2024',
     excerpt: 'Having a valid will ensures your assets are distributed according to your wishes. This guide explains why everyone needs a will, the consequences of dying intestate, and step-by-step instructions for creating a legally binding will.',
     image: WillWritingImg,
+    category: 'Financial Planning',
     content: `
       <h2>Importance of Having a Will</h2>
       <p>A will is the only way to ensure your assets go to the people you choose. Without one, your estate is distributed according to intestacy rules which may not reflect your wishes.</p>
@@ -953,6 +989,7 @@ export const posts: Post[] = [
     title: 'Remortgaging: Complete Guide 2024',
     excerpt: 'Remortgaging can save you thousands when your current deal ends. This comprehensive guide covers when to remortgage, how to find the best deals, and the step-by-step process for switching to a new mortgage provider or product.',
     image: RemortgagingImg,
+    category: 'Property',
     content: `
       <h2>When to Consider Remortgaging</h2>
       <p>Remortgaging at the right time can significantly reduce your monthly payments and total interest costs over the mortgage term.</p>
@@ -977,6 +1014,7 @@ export const posts: Post[] = [
     title: 'Childcare Costs: Saving Strategies 2024',
     excerpt: 'Childcare is one of the largest expenses for working parents. This guide explains available government support, tax-free childcare, and practical strategies for managing childcare costs without compromising on quality or care.',
     image: ChildCareCostImg,
+    category: 'Saving Money',
     content: `
       <h2>Understanding Childcare Costs</h2>
       <p>Childcare expenses can consume a significant portion of family income, but various support schemes can make it more affordable.</p>
@@ -1000,6 +1038,7 @@ export const posts: Post[] = [
     title: 'Investment Risk: Tolerance Assessment 2024',
     excerpt: 'Understanding your risk tolerance is crucial for successful investing. This guide helps you assess your comfort with market fluctuations, match investments to your risk profile, and build a portfolio that aligns with your financial goals and personality.',
     image: InvestmentRiskImg,
+    category: 'Wealth Building',
     content: `
       <h2>What is Investment Risk?</h2>
       <p>Investment risk refers to the possibility of losing some or all of your original investment, and the volatility of investment returns over time.</p>
@@ -1024,6 +1063,7 @@ export const posts: Post[] = [
     title: 'Banking Switching: Incentives 2024',
     excerpt: 'Many banks offer cash incentives for switching your current account. This guide covers the best switching deals available, eligibility criteria, and the step-by-step process for changing banks while maintaining your direct debits and standing orders.',
     image: BankingSwitchingImg,
+    category: 'Saving Money',
     content: `
       <h2>Current Account Switching Service</h2>
       <p>The Current Account Switch Service guarantees a smooth transition within 7 working days, moving all payments and closing your old account automatically.</p>
@@ -1047,6 +1087,7 @@ export const posts: Post[] = [
     title: 'Debt Consolidation: Pros & Cons 2024',
     excerpt: 'Debt consolidation can simplify multiple payments and reduce interest costs, but it\'s not right for everyone. This balanced guide explores when consolidation makes sense, different consolidation methods, and potential pitfalls to avoid.',
     image: DebtConsolidationImg,
+    category: 'Personal Finance',
     content: `
       <h2>What is Debt Consolidation?</h2>
       <p>Debt consolidation involves combining multiple debts into a single loan or payment plan, ideally with lower interest rates and simplified management.</p>
@@ -1071,6 +1112,7 @@ export const posts: Post[] = [
     title: 'Financial Literacy: Improving Knowledge 2024',
     excerpt: 'Financial literacy is the foundation of good money management. This guide provides resources, learning pathways, and practical exercises to improve your understanding of personal finance concepts and build confidence in managing your money.',
     image: FinancialLiteracyImg,
+    category: 'Financial Planning',
     content: `
       <h2>Why Financial Literacy Matters</h2>
       <p>Strong financial literacy leads to better decision-making, reduced financial stress, and improved long-term financial security.</p>
@@ -1096,6 +1138,7 @@ export const posts: Post[] = [
     title: 'Holiday Money: Best Ways to Pay 2024',
     excerpt: 'Choosing how to pay abroad can significantly impact your travel budget. Compare credit cards, debit cards, prepaid travel cards, and cash options to find the most cost-effective methods for accessing money while traveling internationally.',
     image: HolidayMoneyImg,
+    category: 'Saving Money',
     content: `
       <h2>Travel Money Options Compared</h2>
       <p>Different payment methods offer varying exchange rates, fees, and security features for international travel.</p>
@@ -1120,6 +1163,7 @@ export const posts: Post[] = [
     title: 'Passive Income Ideas: UK 2024',
     excerpt: 'Building passive income streams can provide financial security and eventual freedom from active work. Explore legitimate passive income opportunities suitable for the UK, from property investment and dividend stocks to digital products and peer-to-peer lending.',
     image: PassiveIncomeImg,
+    category: 'Wealth Building',
     content: `
       <h2>What is Passive Income?</h2>
       <p>Passive income requires initial effort to set up but generates ongoing revenue with minimal daily involvement, unlike active income from trading time for money.</p>
@@ -1145,6 +1189,7 @@ export const posts: Post[] = [
     title: 'Insurance Claims: Successful Guide 2024',
     excerpt: 'Filing an insurance claim can be stressful, but proper preparation increases your chances of success. This guide provides step-by-step instructions for documenting losses, dealing with adjusters, and appealing denied claims effectively.',
     image: InsuranceClaimsImg,
+    category: 'Insurance',
     content: `
       <h2>Preparing for Insurance Claims</h2>
       <p>Proper documentation and timely action significantly improve claim outcomes across all insurance types.</p>
@@ -1170,6 +1215,7 @@ export const posts: Post[] = [
     title: 'Money Psychology: Behavioral Finance 2024',
     excerpt: 'Understanding the psychological factors behind financial decisions can help you overcome common money mistakes. Explore behavioral finance concepts, cognitive biases, and strategies for making more rational financial choices.',
     image: MoneyPsychologyImg,
+    category: 'Financial Planning',
     content: `
       <h2>Behavioral Finance Basics</h2>
       <p>Behavioral finance studies how psychology influences financial decisions, explaining why people often make irrational choices with money.</p>
@@ -1195,6 +1241,7 @@ export const posts: Post[] = [
     title: 'Financial Independence Retire Early (FIRE): 2024',
     excerpt: 'The FIRE movement advocates aggressive saving and investing to achieve financial independence much earlier than traditional retirement age. This guide explains different FIRE approaches, calculation methods, and practical steps to start your journey.',
     image: FinancialIndependenceImg,
+    category: 'Wealth Building',
     content: `
       <h2>What is the FIRE Movement?</h2>
       <p>FIRE stands for Financial Independence, Retire Early - a lifestyle movement focused on extreme savings and investment to achieve financial freedom decades before traditional retirement age.</p>
@@ -1221,6 +1268,7 @@ export const posts: Post[] = [
     title: 'Council Tax Reduction: Eligibility 2024',
     excerpt: 'Council Tax Reduction can significantly lower your council tax bill if you\'re on a low income. This guide explains eligibility criteria, application process, and how much reduction you could receive based on your circumstances.',
     image: CouncilTaxReductionImg,
+    category: 'Saving Money',
     content: `
       <h2>What is Council Tax Reduction?</h2>
       <p>Council Tax Reduction (CTR) is a scheme that helps people on low incomes pay their council tax. The amount you get depends on your income, savings, household composition, and your local council's rules.</p>
@@ -1244,6 +1292,7 @@ export const posts: Post[] = [
     title: 'Mortgage Protection Insurance Guide 2024',
     excerpt: 'Mortgage protection insurance provides peace of mind by covering your mortgage payments if you can\'t work due to illness, accident, or unemployment. Compare different policy types and understand what coverage you really need.',
     image: MortgageProtectionImg,
+    category: 'Insurance',
     content: `
       <h2>Types of Mortgage Protection</h2>
       <p>Different insurance products can protect your mortgage payments in various circumstances, from temporary inability to work to permanent disability or death.</p>
@@ -1268,6 +1317,7 @@ export const posts: Post[] = [
     title: 'Pension Contributions: Tax Relief 2024',
     excerpt: 'Tax relief on pension contributions is one of the most valuable incentives for retirement saving. Understand how different relief systems work, contribution limits, and how to claim your full entitlement.',
     image: PensionContributionImg,
+    category: 'Retirement',
     content: `
       <h2>How Pension Tax Relief Works</h2>
       <p>The government adds money to your pension contributions through tax relief, effectively reducing the cost of saving for retirement.</p>
@@ -1293,6 +1343,7 @@ export const posts: Post[] = [
     title: 'Home Improvement Loans: Financing 2024',
     excerpt: 'Funding home improvements can increase your property\'s value and enhance your living space. Compare different financing options from personal loans and remortgaging to credit cards and savings strategies.',
     image: HomeImprovementImg,
+    category: 'Property',
     content: `
       <h2>Home Improvement Financing Options</h2>
       <p>Different financing methods suit different project sizes, timelines, and financial situations.</p>
@@ -1318,6 +1369,7 @@ export const posts: Post[] = [
     title: 'Savings Challenges: Boost Emergency Fund 2024',
     excerpt: 'Savings challenges make building your emergency fund more engaging and achievable. Discover popular challenges like the 52-week money challenge, no-spend months, and automated saving strategies.',
     image: SavingsChallengesImg,
+    category: 'Saving Money',
     content: `
       <h2>Popular Savings Challenges</h2>
       <p>Structured savings challenges provide motivation and clear targets for building financial security.</p>
@@ -1343,6 +1395,7 @@ export const posts: Post[] = [
     title: 'Travel Insurance: Comprehensive Guide 2024',
     excerpt: 'Adequate travel insurance is essential for protecting your holiday investment and providing peace of mind. Understand different coverage types, exclusions, and how to choose the right policy for your travel plans.',
     image: TravelInsuranceImg,
+    category: 'Insurance',
     content: `
       <h2>Essential Travel Insurance Coverage</h2>
       <p>Comprehensive travel insurance should protect against common travel risks and unexpected emergencies.</p>
@@ -1368,6 +1421,7 @@ export const posts: Post[] = [
     title: 'Debt Management Plans: Formal Options 2024',
     excerpt: 'When informal debt solutions aren\'t enough, formal debt management options can provide structured relief. Understand Debt Management Plans, IVAs, bankruptcy, and debt relief orders to find the right solution.',
     image: DebtManagementPlansImg,
+    category: 'Personal Finance',
     content: `
       <h2>Formal Debt Solutions</h2>
       <p>Formal debt arrangements provide legal protection and structured repayment plans for unmanageable debt situations.</p>
@@ -1392,6 +1446,7 @@ export const posts: Post[] = [
     title: 'Fuel Costs: Saving Strategies 2024',
     excerpt: 'With fluctuating fuel prices, smart driving and purchasing strategies can significantly reduce your transportation costs. Learn fuel-efficient driving techniques, loyalty schemes, and alternative transport options.',
     image: FuelCostsImg,
+    category: 'Saving Money',
     content: `
       <h2>Reducing Fuel Consumption</h2>
       <p>Small changes to driving habits and vehicle maintenance can substantially improve fuel efficiency.</p>
@@ -1416,6 +1471,7 @@ export const posts: Post[] = [
     title: 'Investment Platforms: Comparison 2024',
     excerpt: 'Choosing the right investment platform can significantly impact your investment costs and experience. Compare fees, features, and investment options across major UK platforms to find your perfect match.',
     image: InvestmentPlatformImg,
+    category: 'Wealth Building',
     content: `
       <h2>Investment Platform Features</h2>
       <p>Different platforms offer varying fee structures, investment options, and user experiences suited to different investor types.</p>
@@ -1441,6 +1497,7 @@ export const posts: Post[] = [
     title: 'Funeral Costs: Planning & Prepaid 2024',
     excerpt: 'Funeral costs can create financial stress for grieving families. Understand average costs, prepaid funeral plans, and alternative options for managing funeral expenses in advance.',
     image: FuneralCostImg,
+    category: 'Financial Planning',
     content: `
       <h2>Understanding Funeral Costs</h2>
       <p>The average UK funeral costs £4,000-£5,000, with significant regional variations and optional extras increasing costs.</p>
@@ -1467,6 +1524,7 @@ export const posts: Post[] = [
     title: 'Mobile Phone Contracts: Saving Tips 2024',
     excerpt: 'Mobile contracts represent significant ongoing expenses. Learn negotiation strategies, SIM-only options, and timing tips to reduce your mobile costs without sacrificing service quality.',
     image: MobilePhonesImg,
+    category: 'Saving Money',
     content: `
       <h2>Mobile Contract Options</h2>
       <p>Different contract types suit different usage patterns and budget requirements.</p>
@@ -1492,6 +1550,7 @@ export const posts: Post[] = [
     title: 'Financial New Year Resolutions: Achievable 2024',
     excerpt: 'Transform your financial future with achievable New Year resolutions. Set realistic money goals, create actionable plans, and maintain motivation throughout the year with these proven strategies.',
     image: FinancialNewYearImg,
+    category: 'Financial Planning',
     content: `
       <h2>Setting Achievable Financial Resolutions</h2>
       <p>Successful financial resolutions are specific, measurable, and broken into manageable steps.</p>

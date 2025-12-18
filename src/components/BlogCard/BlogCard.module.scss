@@ -66,7 +66,6 @@
 .blogCategory {
   display: inline-block;
   padding: $space-1 $space-3;
-  background: linear-gradient(135deg, $primary, $tertiary);
   color: $white;
   border-radius: $radius-full;
   font-size: $text-xs;
@@ -76,11 +75,63 @@
   margin-bottom: $space-3;
   width: fit-content;
   transition: all $transition-base;
+  background: linear-gradient(135deg, $primary, $tertiary); // Default fallback
 
   .blogCard:hover & {
     transform: scale(1.05);
     box-shadow: $shadow-sm;
   }
+}
+
+// Category-specific badge styles - single solid colors
+.badgePersonalFinance {
+  background: #667eea;
+  color: $white;
+}
+
+.badgeBusiness {
+  background: #f5576c;
+  color: $white;
+}
+
+.badgeRetirement {
+  background: #4facfe;
+  color: $white;
+}
+
+.badgeInsurance {
+  background: #43e97b;
+  color: $white;
+}
+
+.badgeProperty {
+  background: #fa709a;
+  color: $white;
+}
+
+.badgeWealthBuilding {
+  background: #30cfd0;
+  color: $white;
+}
+
+.badgeFinancialPlanning {
+  background: #a8edea;
+  color: #333;
+}
+
+.badgeSavingMoney {
+  background: #ff9a9e;
+  color: $white;
+}
+
+.badgeSideHustles {
+  background: #fcb69f;
+  color: $white;
+}
+
+.badgeDefault {
+  background: $primary;
+  color: $white;
 }
 
 .blogTitle {

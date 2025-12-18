@@ -23,6 +23,33 @@ const BlogCard = ({ post, index }: BlogCardProps) => {
   // Calculate animation delay based on index for staggering effect
   const animationDelay = `${index * 0.1}s`;
 
+  // Get category-specific badge class
+  const getCategoryBadgeClass = (category?: string) => {
+    if (!category) return styles.badgeDefault;
+    
+    // Normalize category name for class mapping
+    const normalizedCategory = category.toLowerCase().replace(/\s+/g, '-');
+    
+    // Map categories to badge styles
+    const categoryMap: { [key: string]: string } = {
+      'personal-finance': styles.badgePersonalFinance,
+      'business': styles.badgeBusiness,
+      'retirement': styles.badgeRetirement,
+      'insurance': styles.badgeInsurance,
+      'property': styles.badgeProperty,
+      'wealth-building': styles.badgeWealthBuilding,
+      'wealth building': styles.badgeWealthBuilding,
+      'financial-planning': styles.badgeFinancialPlanning,
+      'financial planning': styles.badgeFinancialPlanning,
+      'saving-money': styles.badgeSavingMoney,
+      'saving money': styles.badgeSavingMoney,
+      'side-hustles': styles.badgeSideHustles,
+      'side hustles': styles.badgeSideHustles,
+    };
+
+    return categoryMap[normalizedCategory] || styles.badgeDefault;
+  };
+
   return (
     <div 
       className={styles.blogCard}
@@ -43,7 +70,11 @@ const BlogCard = ({ post, index }: BlogCardProps) => {
       </div>
       <div className={styles.blogContent}>
         {post.category && (
-          <span className={styles.blogCategory}>{post.category}</span>
+          <span 
+            className={`${styles.blogCategory} ${getCategoryBadgeClass(post.category)}`}
+          >
+            {post.category}
+          </span>
         )}
         <h3 className={styles.blogTitle}>{post.title}</h3>
         <p className={styles.blogExcerpt}>{post.excerpt}</p>
