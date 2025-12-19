@@ -147,11 +147,11 @@ export default function BlogSection() {
                 {post.excerpts.map((item, index) => {
                   const slug = getSlugFromTitle(item);
                   return (
-                    <li key={index} className={styles.excerptItem}>
+                  <li key={index} className={styles.excerptItem}>
                       <Link href={`/blog/${slug}`} className={styles.excerptLink}>
-                        {item}
+                    {item}
                       </Link>
-                    </li>
+                  </li>
                   );
                 })}
               </ul>

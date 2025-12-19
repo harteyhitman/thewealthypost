@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
@@ -13,9 +14,28 @@ import {
   FaTiktok 
 } from "react-icons/fa";
 import { HiMail, HiLocationMarker } from "react-icons/hi";
+import { HiPaperAirplane } from "react-icons/hi2";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
+  const [email, setEmail] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    
+    // Simulate API call
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    
+    setSubmitted(true);
+    setEmail("");
+    setIsSubmitting(false);
+    
+    // Reset success message after 3 seconds
+    setTimeout(() => setSubmitted(false), 3000);
+  };
 
   const socialLinks = [
     { icon: FaMedium, href: "https://medium.com/@thewealthypost", label: "Medium" },
@@ -126,6 +146,55 @@ export default function Footer() {
                 </span>
               </div>
             </div>
+          </motion.div>
+
+          {/* Newsletter Column */}
+          <motion.div
+            className={styles.column}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            viewport={{ once: true }}
+          >
+            <h3 className={styles.columnTitle}>Newsletter</h3>
+            <p className={styles.newsletterDescription}>
+              Subscribe to receive our latest updates directly in your inbox!
+            </p>
+            <form onSubmit={handleSubmit} className={styles.newsletterForm}>
+              <div className={styles.newsletterInputWrapper}>
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Email"
+                  className={styles.newsletterInput}
+                  required
+                  disabled={isSubmitting}
+                />
+                <button
+                  type="submit"
+                  className={styles.newsletterButton}
+                  disabled={isSubmitting || submitted}
+                >
+                  {isSubmitting ? (
+                    <span className={styles.spinner}></span>
+                  ) : submitted ? (
+                    "✓"
+                  ) : (
+                    <HiPaperAirplane />
+                  )}
+                </button>
+              </div>
+              {submitted && (
+                <motion.p
+                  className={styles.successMessage}
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                >
+                  Thank you for subscribing!
+                </motion.p>
+              )}
+            </form>
           </motion.div>
         </div>
 

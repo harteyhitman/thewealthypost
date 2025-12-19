@@ -101,7 +101,7 @@ export const posts: Post[] = [
 
       <h2>What Led to Birmingham's Financial Crisis?</h2>
       <p>The council's financial troubles stem from several factors including equal pay claims, issues with an IT system, and rising costs. These challenges mirror common personal finance pitfalls that individuals face.</p>
-
+      
       <h2>Personal Finance Lessons from Birmingham's Crisis</h2>
       
       <h3>1. Live Within Your Means</h3>

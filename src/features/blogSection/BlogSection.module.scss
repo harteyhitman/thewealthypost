@@ -218,7 +218,7 @@
 
   &:hover::before {
     transform: scale(1.3);
-    color: var(--color-secondary);
+      color: var(--color-secondary);
   }
 
   @media (prefers-color-scheme: dark) {

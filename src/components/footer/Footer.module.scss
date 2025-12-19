@@ -57,8 +57,8 @@
   }
 
   @include desktop {
-    grid-template-columns: 1.2fr 1fr 1.3fr;
-    gap: 5rem;
+    grid-template-columns: 1.2fr 1fr 1fr 1.3fr;
+    gap: 4rem;
     margin-bottom: 4rem;
   }
 }
@@ -246,5 +246,118 @@
   @include desktop {
     font-size: $text-base;
   }
+}
+
+// Newsletter Styles
+.newsletterDescription {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: $text-sm;
+  line-height: 1.6;
+  margin-bottom: $space-4;
+
+  @include desktop {
+    font-size: $text-base;
+  }
+}
+
+.newsletterForm {
+  display: flex;
+  flex-direction: column;
+  gap: $space-3;
+}
+
+.newsletterInputWrapper {
+  display: flex;
+  gap: $space-2;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: $radius-lg;
+  padding: $space-1;
+  backdrop-filter: blur(10px);
+  transition: all $transition-base;
+
+  &:focus-within {
+    border-color: rgba(255, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+}
+
+.newsletterInput {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: $white;
+  font-size: $text-base;
+  padding: $space-3 $space-4;
+  outline: none;
+  font-family: inherit;
+
+  &::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+.newsletterButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  background: var(--color-primary);
+  border: none;
+  border-radius: $radius-lg;
+  color: $white;
+  cursor: pointer;
+  transition: all $transition-base;
+  flex-shrink: 0;
+
+  &:hover:not(:disabled) {
+    background: var(--color-secondary);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  }
+
+  &:active:not(:disabled) {
+    transform: translateY(0);
+  }
+
+  &:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.spinner {
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: $white;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.successMessage {
+  color: var(--color-accent);
+  font-size: $text-sm;
+  font-weight: 600;
+  margin: 0;
+  text-align: center;
 }
 
