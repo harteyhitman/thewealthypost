@@ -23,7 +23,7 @@ export default function Navbar() {
             label="Products"
             items={[
               { href: "/pricing", label: "Pricing" },
-              { href: "/about", label: "About Us" },
+              { href: "/about-us", label: "About Us" },
             ]}
           />
           <Dropdown

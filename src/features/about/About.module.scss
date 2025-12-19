@@ -2,7 +2,7 @@
 
 .about {
   padding: 6rem 1.5rem;
-  background: linear-gradient(180deg, #FAFBFC 0%, $white 50%, #F8F9FA 100%);
+  background: var(--color-tertiary);
   position: relative;
   overflow: hidden;
 
