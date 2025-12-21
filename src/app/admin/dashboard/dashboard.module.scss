@@ -1,0 +1,179 @@
+@use '../../../styles/variables' as *;
+
+.dashboard {
+  min-height: 100vh;
+  background: var(--color-tertiary);
+}
+
+.header {
+  background: $white;
+  border-bottom: 1px solid $border-color;
+  padding: $space-6;
+  box-shadow: $shadow-sm;
+}
+
+.headerContent {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  h1 {
+    font-size: $text-2xl;
+    font-weight: 700;
+    color: $text-primary;
+    margin: 0;
+  }
+}
+
+.headerActions {
+  display: flex;
+  gap: $space-4;
+}
+
+.newButton {
+  padding: $space-3 $space-6;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  color: $white;
+  text-decoration: none;
+  border-radius: $radius-lg;
+  font-weight: 600;
+  transition: all $transition-base;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: $shadow-md;
+  }
+}
+
+.logoutButton {
+  padding: $space-3 $space-6;
+  background: $white;
+  color: $text-primary;
+  border: 2px solid $border-color;
+  border-radius: $radius-lg;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all $transition-base;
+
+  &:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+  }
+}
+
+.main {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: $space-8;
+}
+
+.error {
+  padding: $space-4;
+  background: #fee;
+  color: #c33;
+  border-radius: $radius-lg;
+  margin-bottom: $space-6;
+}
+
+.postsList {
+  background: $white;
+  border-radius: $radius-2xl;
+  padding: $space-6;
+  box-shadow: $shadow-md;
+
+  h2 {
+    font-size: $text-xl;
+    font-weight: 700;
+    color: $text-primary;
+    margin-bottom: $space-6;
+  }
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+
+  th {
+    text-align: left;
+    padding: $space-4;
+    border-bottom: 2px solid $border-color;
+    font-weight: 600;
+    color: $text-primary;
+  }
+
+  td {
+    padding: $space-4;
+    border-bottom: 1px solid $border-color;
+    color: $text-secondary;
+  }
+
+  tr:hover {
+    background: var(--color-tertiary);
+  }
+}
+
+.published {
+  padding: $space-1 $space-3;
+  background: #d4edda;
+  color: #155724;
+  border-radius: $radius-full;
+  font-size: $text-xs;
+  font-weight: 600;
+}
+
+.draft {
+  padding: $space-1 $space-3;
+  background: #fff3cd;
+  color: #856404;
+  border-radius: $radius-full;
+  font-size: $text-xs;
+  font-weight: 600;
+}
+
+.actions {
+  display: flex;
+  gap: $space-2;
+}
+
+.editButton {
+  padding: $space-2 $space-4;
+  background: var(--color-primary);
+  color: $white;
+  text-decoration: none;
+  border-radius: $radius-base;
+  font-size: $text-sm;
+  font-weight: 600;
+  transition: all $transition-base;
+
+  &:hover {
+    background: var(--color-secondary);
+  }
+}
+
+.deleteButton {
+  padding: $space-2 $space-4;
+  background: #dc3545;
+  color: $white;
+  border: none;
+  border-radius: $radius-base;
+  font-size: $text-sm;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all $transition-base;
+
+  &:hover {
+    background: #c82333;
+  }
+}
+
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  font-size: $text-lg;
+  color: $text-secondary;
+}
+

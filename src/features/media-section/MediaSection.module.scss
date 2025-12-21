@@ -1,0 +1,381 @@
+@use '../../styles/variables' as *;
+
+.mediaSection {
+  padding: $space-16 $space-4;
+  background: linear-gradient(135deg, var(--color-tertiary) 0%, var(--color-background) 100%);
+  position: relative;
+  overflow: hidden;
+
+  @include desktop {
+    padding: $space-20 $space-6;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+      radial-gradient(circle at 20% 30%, rgba(110, 97, 255, 0.05) 0%, transparent 50%),
+      radial-gradient(circle at 80% 70%, rgba(16, 159, 159, 0.05) 0%, transparent 50%);
+    pointer-events: none;
+  }
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: $space-12;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $space-6;
+
+  @include desktop {
+    margin-bottom: $space-16;
+  }
+}
+
+.title {
+  font-size: $text-4xl;
+  font-weight: 800;
+  color: $text-primary;
+  margin: 0;
+  letter-spacing: -0.02em;
+
+  @include mobile {
+    font-size: $text-3xl;
+  }
+}
+
+.mainCTA {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-3;
+  padding: $space-4 $space-8;
+  background: linear-gradient(135deg, #FF0000, #CC0000);
+  color: $white;
+  text-decoration: none;
+  border-radius: $radius-lg;
+  font-weight: 600;
+  font-size: $text-base;
+  transition: all $transition-base;
+  box-shadow: $shadow-md;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: $shadow-lg;
+    background: linear-gradient(135deg, #CC0000, #990000);
+  }
+
+  .youtubeIcon {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.row {
+  margin-bottom: $space-12;
+
+  @include desktop {
+    margin-bottom: $space-16;
+  }
+}
+
+.rowHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: $space-6;
+  padding-bottom: $space-4;
+  border-bottom: 2px solid $border-color;
+}
+
+.rowTitle {
+  font-size: $text-2xl;
+  font-weight: 700;
+  color: $text-primary;
+  margin: 0;
+
+  @include mobile {
+    font-size: $text-xl;
+  }
+}
+
+.scrollButtons {
+  display: flex;
+  gap: $space-2;
+}
+
+.scrollButton {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid $border-color;
+  background: $white;
+  color: $text-primary;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all $transition-base;
+
+  &:hover {
+    border-color: var(--color-primary);
+    background: var(--color-primary);
+    color: $white;
+    transform: scale(1.1);
+  }
+
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.scrollContainer {
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.mediaRow {
+  display: flex;
+  gap: $space-6;
+  padding-bottom: $space-4;
+  width: max-content;
+}
+
+.mediaCard {
+  cursor: pointer;
+  border-radius: $radius-xl;
+  overflow: hidden;
+  background: $white;
+  box-shadow: $shadow-md;
+  transition: all $transition-base;
+  width: 320px;
+  flex-shrink: 0;
+
+  @include mobile {
+    width: 280px;
+  }
+
+  &:hover {
+    box-shadow: $shadow-lg;
+    
+    .thumbnailWrapper img {
+      transform: scale(1.05);
+    }
+    .playOverlay,
+    .readOverlay {
+      opacity: 1;
+    }
+  }
+}
+
+.thumbnailWrapper {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%; // 16:9 aspect ratio
+  overflow: hidden;
+  background: $border-color;
+
+  img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform $transition-slow;
+  }
+}
+
+.playOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity $transition-base;
+  backdrop-filter: blur(2px);
+}
+
+.playIcon {
+  width: 64px;
+  height: 64px;
+  color: $white;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  padding: $space-4;
+  border: 3px solid $white;
+  transition: all $transition-base;
+
+  .mediaCard:hover & {
+    transform: scale(1.1);
+  }
+}
+
+.readOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(110, 97, 255, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity $transition-base;
+
+  span {
+    color: $white;
+    font-weight: 600;
+    font-size: $text-lg;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+}
+
+.duration {
+  position: absolute;
+  bottom: $space-2;
+  right: $space-2;
+  background: rgba(0, 0, 0, 0.8);
+  color: $white;
+  padding: $space-1 $space-3;
+  border-radius: $radius-base;
+  font-size: $text-xs;
+  font-weight: 600;
+}
+
+.cardContent {
+  padding: $space-4;
+}
+
+.mediaTitle {
+  font-size: $text-base;
+  font-weight: 600;
+  color: $text-primary;
+  margin: 0 0 $space-2;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+.metadata {
+  font-size: $text-sm;
+  color: $text-secondary;
+  display: flex;
+  align-items: center;
+  gap: $space-1;
+}
+
+// Modal Styles
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: $space-4;
+  backdrop-filter: blur(10px);
+}
+
+.modalContent {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  background: $black;
+  border-radius: $radius-2xl;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.closeButton {
+  position: absolute;
+  top: $space-4;
+  right: $space-4;
+  width: 44px;
+  height: 44px;
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  color: $white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: all $transition-base;
+  backdrop-filter: blur(10px);
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: rotate(90deg);
+  }
+
+  svg {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.playerWrapper {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%; // 16:9 aspect ratio
+  background: $black;
+}
+
+.player {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.modalTitle {
+  padding: $space-6;
+  color: $white;
+  font-size: $text-xl;
+  font-weight: 700;
+  margin: 0;
+  text-align: center;
+
+  @include mobile {
+    font-size: $text-lg;
+    padding: $space-4;
+  }
+}
+
