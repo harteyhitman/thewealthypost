@@ -25,6 +25,7 @@ export default function EditPost() {
   const isNew = postId === 'new';
 
   const [post, setPost] = useState<Post>({
+    id: 0,
     slug: '',
     title: '',
     excerpt: '',
