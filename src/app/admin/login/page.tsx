@@ -104,11 +104,11 @@ export default function AdminLogin() {
           </p>
         </div>
 
-        <div className={styles.info}>
+        {/* <div className={styles.info}>
           <p>Default credentials:</p>
           <p>Username: <strong>admin</strong></p>
           <p>Password: <strong>admin123</strong></p>
-        </div>
+        </div> */}
       </div>
     </div>
   );

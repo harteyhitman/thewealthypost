@@ -47,9 +47,9 @@ export default function Footer() {
 
   const navLinks = [
     { href: "/", label: "Home" },
-    { href: "/about", label: "About" },
+    { href: "/about-us", label: "About" },
     { href: "/blog", label: "Blog" },
-    { href: "/privacy-policy", label: "Privacy Policy" },
+    { href: "/resources", label: "Resources" },
   ];
 
   return (

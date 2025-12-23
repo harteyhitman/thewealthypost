@@ -1,13 +1,13 @@
-import Image, { StaticImageData } from 'next/image';
+import Image from 'next/image';
 import Link from 'next/link';
 import styles from './BlogTemplate.module.scss';
-import { getAllPosts } from '@/libs/posts-data';
+import { getAllMergedPosts } from '@/libs/posts-utils';
 
 interface Post {
   id: number;
   slug: string;
   title: string;
-  image: StaticImageData;
+  image: string;
   content: string;
   author?: string;
   date?: string;
@@ -19,9 +19,10 @@ interface BlogTemplateProps {
   post: Post;
 }
 
-const BlogTemplate = ({ post }: BlogTemplateProps) => {
+const BlogTemplate = async ({ post }: BlogTemplateProps) => {
   // Get recent posts for sidebar (excluding current post)
-  const recentPosts = getAllPosts()
+  const allPosts = await getAllMergedPosts();
+  const recentPosts = allPosts
     .filter(p => p.id !== post.id)
     .slice(0, 5);
 
@@ -50,9 +51,10 @@ const BlogTemplate = ({ post }: BlogTemplateProps) => {
                 src={post.image}
                 alt={post.title}
                 width={800}
-                  height={450}
+                height={450}
                 className={styles.featuredImage}
                 priority
+                unoptimized={post.image.includes('blog posts images')}
               />
             </div>
           )}

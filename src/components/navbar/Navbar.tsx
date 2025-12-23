@@ -18,14 +18,28 @@ export default function Navbar() {
 
         {/* Desktop Menu */}
         <div className={styles.menu}>
-          <NavItem href="/" label="Home" />
-          <Dropdown
-            label="Products"
+          <NavItem href="/" label="Home" />    
+            <Dropdown
+            label="About"
             items={[
-              { href: "/pricing", label: "Pricing" },
               { href: "/about-us", label: "About Us" },
             ]}
           />
+          <Dropdown
+            label="Blogs"
+            items={[
+              { href: "/blog", label: "Blogs" },
+            ]}
+          />
+    
+         <Dropdown
+            label="Resources"
+            items={[
+              { href: "/resources", label: "Resources" },
+              { href: "/pension-checklist-form", label: "The Ultimate Pension Checklist" },
+            ]}
+          />
+{/* 
           <Dropdown
             label="FAQs"
             items={[
@@ -40,22 +54,9 @@ export default function Navbar() {
               { href: "/terms", label: "Terms" },
               { href: "/conditions", label: "Conditions" },
             ]}
-          />
-          <Dropdown
-            label="About"
-            items={[
-              { href: "/team", label: "Our Team" },
-              { href: "/contact", label: "Contact" },
-            ]}
-          />
-          <Dropdown
-            label="Resources"
-            items={[
-              { href: "/podcast", label: "Podcast" },
-              { href: "/blog", label: "Blogs" },
-            ]}
-          />
-          <CTAButton href="/discover-more" label="Discover More" />
+          /> */}
+
+          <CTAButton href="/admin/login" label="Admin Login" />
         </div>
 
         {/* Mobile Toggle */}

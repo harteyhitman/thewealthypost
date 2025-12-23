@@ -1,7 +1,11 @@
 // src/app/blog/[slug]/page.tsx
 import { notFound } from 'next/navigation';
 import BlogTemplate from '@/components/BlogTemplate/BlogTemplate';
-import { getPostBySlug, getAllPosts } from '../../../libs/posts-data';
+import { getAllMergedPosts, getMergedPostBySlug } from '../../../libs/posts-utils';
+
+// Force dynamic rendering to ensure fresh data
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
 interface PageProps {
   params: Promise<{
@@ -9,19 +13,23 @@ interface PageProps {
   }>;
 }
 
-// Generate static params for all blog posts
+// Generate static params for all blog posts (static + API)
 export async function generateStaticParams() {
-  const posts = getAllPosts();
-  
-  return posts.map((post) => ({
-    slug: post.slug,
-  }));
+  try {
+    const posts = await getAllMergedPosts();
+    return posts.map((post) => ({
+      slug: post.slug,
+    }));
+  } catch (error) {
+    console.error('Error generating static params:', error);
+    return [];
+  }
 }
 
 // Generate metadata for SEO
 export async function generateMetadata({ params }: PageProps) {
   const { slug } = await params;
-  const post = getPostBySlug(slug);
+  const post = await getMergedPostBySlug(slug);
   
   if (!post) {
     return {
@@ -37,7 +45,7 @@ export async function generateMetadata({ params }: PageProps) {
 
 export default async function BlogPost({ params }: PageProps) {
   const { slug } = await params;
-  const post = getPostBySlug(slug);
+  const post = await getMergedPostBySlug(slug);
   
   if (!post) {
     notFound();

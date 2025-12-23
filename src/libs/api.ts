@@ -18,27 +18,36 @@ export interface Post {
 
 export async function fetchAllPosts(): Promise<Post[]> {
   try {
-    const response = await fetch(`${API_BASE_URL}/posts`);
+    // Add cache: 'no-store' to ensure fresh data on each request
+    const response = await fetch(`${API_BASE_URL}/posts`, {
+      cache: 'no-store',
+      next: { revalidate: 0 }, // Revalidate immediately
+    });
     if (!response.ok) {
-      throw new Error('Failed to fetch posts');
+      throw new Error(`Failed to fetch posts: ${response.status}`);
     }
     return response.json();
   } catch (error) {
-    console.error('Error fetching posts:', error);
-    // Fallback to empty array if API fails
-    return [];
+    // Re-throw the error so the caller can handle it
+    // This allows posts-utils to gracefully fallback to static posts
+    throw error;
   }
 }
 
 export async function fetchPostBySlug(slug: string): Promise<Post | null> {
   try {
-    const response = await fetch(`${API_BASE_URL}/posts/slug/${slug}`);
+    // Add cache: 'no-store' to ensure fresh data on each request
+    const response = await fetch(`${API_BASE_URL}/posts/slug/${slug}`, {
+      cache: 'no-store',
+      next: { revalidate: 0 }, // Revalidate immediately
+    });
     if (!response.ok) {
       return null;
     }
     return response.json();
   } catch (error) {
-    console.error('Error fetching post:', error);
-    return null;
+    // Re-throw the error so the caller can handle it
+    // This allows posts-utils to gracefully fallback to static posts
+    throw error;
   }
 }

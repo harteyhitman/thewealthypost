@@ -1,15 +1,15 @@
 // pages/blog/index.tsx
-import { getAllPosts } from '../../libs/posts-data';
+import { getAllMergedPosts } from '../../libs/posts-utils';
 import BlogGrid from '../../components/BlogGrid/BlogGrid';
 import styles from './Blog.module.scss';
 
-export default function BlogPage() {
-  const posts = getAllPosts().map(post => ({
-    ...post,
-    image: typeof post.image === 'string' ? post.image : post.image.src,
-    slug: post.slug,
-    category: post.category, // Ensure category is included
-  }));
+// Force dynamic rendering to ensure fresh data
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
+export default async function BlogPage() {
+  // Get merged posts (static + API)
+  const posts = await getAllMergedPosts();
   
   return (
     <div className={styles.blogPage}>

@@ -2,7 +2,7 @@
 
 .mediaSection {
   padding: $space-16 $space-4;
-  background: linear-gradient(135deg, var(--color-tertiary) 0%, var(--color-background) 100%);
+  background: #FFF;
   position: relative;
   overflow: hidden;
 
@@ -282,7 +282,6 @@
   line-height: 1.4;
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
   overflow: hidden;
 }
 
@@ -379,3 +378,164 @@
   }
 }
 
+/* YouTube Community Post Style Cards */
+.mediaCard[data-type="post"] {
+  background: #1a1a1a;
+  border-radius: 12px;
+  padding: $space-4;
+  width: 420px;
+  min-width: 420px;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  transition: all $transition-base;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  
+  &:hover {
+    background: #252525;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  }
+  
+  .postHeader {
+    margin-bottom: $space-4;
+  }
+  
+  .postProfile {
+    display: flex;
+    align-items: center;
+    gap: $space-3;
+  }
+  
+  .profilePicture {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+    background: #6e61ff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2px;
+    
+    .profileImg {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background: #ffffff;
+      border-radius: 50%;
+      padding: 2px;
+    }
+  }
+  
+  .postChannelInfo {
+    display: flex;
+    align-items: center;
+    gap: $space-2;
+    flex: 1;
+  }
+  
+  .channelName {
+    font-size: $text-sm;
+    font-weight: 500;
+    color: #ffffff;
+  }
+  
+  .postTimestamp {
+    font-size: $text-sm;
+    color: #aaaaaa;
+  }
+  
+  .postBody {
+    display: flex;
+    gap: $space-4;
+    margin-bottom: $space-4;
+  }
+  
+  .postTextContent {
+    flex: 1;
+    min-width: 0;
+  }
+  
+  .postText {
+    font-size: $text-sm;
+    line-height: 1.5;
+    color: #ffffff;
+    margin: 0;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+    line-clamp: 4;
+    overflow: hidden;
+  }
+  
+  .postThumbnail {
+    width: 120px;
+    height: 90px;
+    border-radius: 8px;
+    overflow: hidden;
+    flex-shrink: 0;
+    background: #2a2a2a;
+    
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  
+  .postEngagement {
+    display: flex;
+    align-items: center;
+    gap: $space-4;
+    padding-top: $space-3;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .engagementButton {
+    background: none;
+    border: none;
+    color: #aaaaaa;
+    cursor: pointer;
+    padding: $space-1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color $transition-base;
+    
+    &:hover {
+      color: #ffffff;
+    }
+    
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+  
+  // Hide old styles
+  .thumbnailWrapper,
+  .readOverlay,
+  .cardContent,
+  .mediaTitle,
+  .postContent,
+  .postTitle,
+  .postMetadata {
+    display: none;
+  }
+  
+  @include mobile {
+    width: 320px;
+    min-width: 320px;
+    
+    .postBody {
+      flex-direction: column;
+    }
+    
+    .postThumbnail {
+      width: 100%;
+      height: 180px;
+    }
+  }
+}

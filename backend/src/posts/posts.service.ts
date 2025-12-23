@@ -16,6 +16,8 @@ export class PostsService {
     const post = this.postsRepository.create({
       ...createPostDto,
       date: createPostDto.date || new Date().toISOString().split('T')[0],
+      // Ensure published defaults to true if not specified
+      published: createPostDto.published !== undefined ? createPostDto.published : true,
     });
     return this.postsRepository.save(post);
   }
