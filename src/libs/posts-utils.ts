@@ -28,11 +28,14 @@ export async function getAllMergedPosts(): Promise<MergedPost[]> {
   let apiPosts: ApiPost[] = [];
   try {
     apiPosts = await fetchAllPosts();
+    if (process.env.NODE_ENV === 'development') {
+      console.log(`[getAllMergedPosts] Fetched ${apiPosts.length} posts from API`);
+    }
   } catch (error) {
     // Silently fallback to static posts if API is unavailable
     // This allows the site to work even when backend is not running
     if (process.env.NODE_ENV === 'development') {
-      console.warn('Backend API unavailable, using static posts only. Start the backend server to see new posts.');
+      console.warn('Backend API unavailable, using static posts only. Start the backend server to see new posts.', error);
     }
   }
   
@@ -76,32 +79,72 @@ export async function getAllMergedPosts(): Promise<MergedPost[]> {
     mergedPostsMap.set(post.slug, post);
   });
   
-  // Then, add/override with API posts
+  // Then, add/override with API posts (only published ones)
+  let addedApiPostsCount = 0;
   apiPosts.forEach(apiPost => {
-    mergedPostsMap.set(apiPost.slug, {
-      id: apiPost.id,
-      slug: apiPost.slug,
-      title: apiPost.title,
-      excerpt: apiPost.excerpt,
-      content: apiPost.content,
-      image: apiPost.image || '',
-      author: apiPost.author,
-      date: apiPost.date,
-      tags: apiPost.tags,
-      category: apiPost.category,
-      published: apiPost.published,
-    });
+    // Only include published posts (treat undefined/null as published)
+    // This ensures all API posts are included unless explicitly set to false
+    const isPublished = apiPost.published !== false;
+    
+    if (process.env.NODE_ENV === 'development') {
+      console.log(`[getAllMergedPosts] Processing API post: "${apiPost.title}" - published: ${apiPost.published}, isPublished: ${isPublished}`);
+    }
+    
+    if (isPublished) {
+      // Normalize image path - ensure it starts with / if it's a relative path
+      let imagePath = apiPost.image || '';
+      if (imagePath && !imagePath.startsWith('http') && !imagePath.startsWith('/')) {
+        imagePath = '/' + imagePath;
+      }
+      
+      const mergedPost: MergedPost = {
+        id: apiPost.id,
+        slug: apiPost.slug,
+        title: apiPost.title,
+        excerpt: apiPost.excerpt,
+        content: apiPost.content,
+        image: imagePath,
+        author: apiPost.author,
+        date: apiPost.date,
+        tags: apiPost.tags,
+        category: apiPost.category,
+        published: true, // Ensure it's marked as published
+      };
+      
+      mergedPostsMap.set(apiPost.slug, mergedPost);
+      addedApiPostsCount++;
+      
+      if (process.env.NODE_ENV === 'development') {
+        console.log(`[getAllMergedPosts] Added API post to map: "${apiPost.title}" (slug: "${apiPost.slug}")`);
+      }
+    } else {
+      if (process.env.NODE_ENV === 'development') {
+        console.log(`[getAllMergedPosts] Skipping unpublished API post: "${apiPost.title}"`);
+      }
+    }
   });
+  
+  if (process.env.NODE_ENV === 'development') {
+    console.log(`[getAllMergedPosts] Added ${addedApiPostsCount} API posts to merged map`);
+  }
   
   // Convert map to array and sort by date (newest first) or id
   const mergedPosts = Array.from(mergedPostsMap.values()).sort((a, b) => {
     // Try to sort by date if available
     if (a.date && b.date) {
-      return new Date(b.date).getTime() - new Date(a.date).getTime();
+      const dateA = new Date(a.date).getTime();
+      const dateB = new Date(b.date).getTime();
+      if (!isNaN(dateA) && !isNaN(dateB)) {
+        return dateB - dateA; // Newest first
+      }
     }
     // Fallback to id (API posts typically have higher IDs)
     return b.id - a.id;
   });
+  
+  if (process.env.NODE_ENV === 'development') {
+    console.log(`[getAllMergedPosts] Final merged posts count: ${mergedPosts.length} (Static: ${staticPosts.length}, API: ${apiPosts.length})`);
+  }
   
   return mergedPosts;
 }

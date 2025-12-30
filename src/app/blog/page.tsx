@@ -11,6 +11,13 @@ export default async function BlogPage() {
   // Get merged posts (static + API)
   const posts = await getAllMergedPosts();
   
+  // Debug: Log the number of posts (only in development)
+  if (process.env.NODE_ENV === 'development') {
+    console.log(`[BlogPage] Total merged posts: ${posts.length}`);
+    const apiPostsCount = posts.filter(p => p.id > 1000 || p.id < 100).length; // API posts typically have different ID ranges
+    console.log(`[BlogPage] Estimated API posts: ${apiPostsCount}`);
+  }
+  
   return (
     <div className={styles.blogPage}>
       <div className={styles.blogHeader}>

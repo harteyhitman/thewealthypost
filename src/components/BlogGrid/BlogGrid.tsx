@@ -137,7 +137,7 @@ const getPageNumbers = () => {
       <div className={styles.blogGrid}>
         {currentPosts.map((post, index) => (
           <BlogCard 
-            key={post.id} 
+            key={post.slug} 
             post={post} 
             index={index}
           />
