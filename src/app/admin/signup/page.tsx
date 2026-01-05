@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import styles from './signup.module.scss';
 import { HiEye, HiEyeOff } from 'react-icons/hi';
+import { getApiEndpoint } from '@/libs/admin-api';
 
 export default function AdminSignup() {
   const router = useRouter();
@@ -39,7 +40,7 @@ export default function AdminSignup() {
     setLoading(true);
 
     try {
-      const response = await fetch('http://localhost:3001/auth/signup', {
+      const response = await fetch(getApiEndpoint('auth/signup'), {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -75,7 +76,7 @@ export default function AdminSignup() {
     setVerifying(true);
 
     try {
-      const response = await fetch('http://localhost:3001/auth/verify-email', {
+      const response = await fetch(getApiEndpoint('auth/verify-email'), {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -104,7 +105,7 @@ export default function AdminSignup() {
   const handleResendCode = async () => {
     setError('');
     try {
-      const response = await fetch('http://localhost:3001/auth/resend-code', {
+      const response = await fetch(getApiEndpoint('auth/resend-code'), {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

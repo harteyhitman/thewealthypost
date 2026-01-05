@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import styles from './login.module.scss';
 import { HiEye, HiEyeOff } from 'react-icons/hi';
+import { getApiEndpoint } from '@/libs/admin-api';
 
 export default function AdminLogin() {
   const router = useRouter();
@@ -20,7 +21,7 @@ export default function AdminLogin() {
     setLoading(true);
 
     try {
-      const response = await fetch('http://localhost:3001/auth/login', {
+      const response = await fetch(getApiEndpoint('auth/login'), {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
