@@ -4,9 +4,9 @@ To fix the admin login in production, you need to set the `NEXT_PUBLIC_API_URL` 
 
 ## Steps
 
-### 1. Get Your Render Backend URL
+### 1. Your Render Backend URL
 
-After deploying to Render, you'll get a URL like:
+Your Render backend URL is:
 ```
 https://thewealthypost-backend.onrender.com
 ```
@@ -18,7 +18,7 @@ https://thewealthypost-backend.onrender.com
 3. **Go to Settings** → **Environment Variables**
 4. **Add a new variable**:
    - **Name**: `NEXT_PUBLIC_API_URL`
-   - **Value**: `https://your-backend-url.onrender.com` (your Render backend URL)
+   - **Value**: `https://thewealthypost-backend.onrender.com`
    - **Environment**: Select all (Production, Preview, Development)
 5. **Click "Save"**
 
@@ -84,7 +84,7 @@ To test with your production backend locally:
 
 1. **Update `.env.local`**:
    ```env
-   NEXT_PUBLIC_API_URL=https://your-backend-url.onrender.com
+   NEXT_PUBLIC_API_URL=https://thewealthypost-backend.onrender.com
    ```
 
 2. **Restart dev server**:
