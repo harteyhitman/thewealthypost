@@ -1,96 +1,56 @@
-# Setting Up Environment Variables in Vercel
+# Vercel Environment Variables Setup
 
-To fix the admin login in production, you need to set the `NEXT_PUBLIC_API_URL` environment variable in Vercel.
+To fix the CORS error and connect your Vercel frontend to your Render backend, you need to set environment variables in Vercel.
 
-## Steps
-
-### 1. Your Render Backend URL
-
-Your Render backend URL is:
-```
-https://thewealthypost-backend.onrender.com
-```
-
-### 2. Set Environment Variable in Vercel
+## Steps:
 
 1. **Go to your Vercel Dashboard**: [vercel.com/dashboard](https://vercel.com/dashboard)
-2. **Select your project** (`thewealthypost`)
+
+2. **Select your project** (`thewealthypost-01` or your project name)
+
 3. **Go to Settings** → **Environment Variables**
-4. **Add a new variable**:
+
+4. **Add the following environment variable**:
+
    - **Name**: `NEXT_PUBLIC_API_URL`
    - **Value**: `https://thewealthypost-backend.onrender.com`
    - **Environment**: Select all (Production, Preview, Development)
+
 5. **Click "Save"**
 
-### 3. Redeploy Your Frontend
+6. **Redeploy your application**:
+   - Go to **Deployments** tab
+   - Click the **"..."** menu on the latest deployment
+   - Select **"Redeploy"**
+   - Or push a new commit to trigger a redeploy
 
-After adding the environment variable:
+## Verify Setup
 
-1. **Option A: Automatic Redeploy**
-   - Push a new commit to trigger a redeploy
-   ```bash
-   git commit --allow-empty -m "Trigger redeploy for env vars"
-   git push
-   ```
+After redeploying, your frontend should now:
+- ✅ Use the Render backend URL instead of localhost
+- ✅ Work without CORS errors
+- ✅ Connect to your deployed backend
 
-2. **Option B: Manual Redeploy**
-   - Go to Vercel Dashboard → Your Project → Deployments
-   - Click the three dots (⋯) on the latest deployment
-   - Select "Redeploy"
+## Backend CORS Configuration
 
-### 4. Verify It's Working
+Make sure your Render backend has the `FRONTEND_URL` environment variable set:
 
-1. **Check the environment variable is set**:
-   - In Vercel Dashboard → Settings → Environment Variables
-   - You should see `NEXT_PUBLIC_API_URL` listed
+1. **Go to Render Dashboard**: [dashboard.render.com](https://dashboard.render.com)
 
-2. **Test the admin login**:
-   - Visit `https://thewealthypost.vercel.app/admin/login`
-   - Try logging in with your admin credentials
-   - Should no longer see CORS errors
+2. **Select your backend service**
 
-## Important Notes
+3. **Go to Environment** tab
 
-- **`NEXT_PUBLIC_` prefix**: This is required for Next.js to expose the variable to the browser
-- **No trailing slash**: Make sure your backend URL doesn't have a trailing slash
-- **HTTPS**: Use `https://` not `http://` for production
-- **CORS**: Make sure your Render backend has `FRONTEND_URL` set to `https://thewealthypost.vercel.app`
+4. **Set or update**:
+   - **Name**: `FRONTEND_URL`
+   - **Value**: `https://thewealthypost-01.vercel.app` (your Vercel URL)
 
-## Troubleshooting
+5. **Save and restart** the service
 
-### Still seeing CORS errors?
+## Testing
 
-1. **Check Render backend CORS settings**:
-   - In Render dashboard, verify `FRONTEND_URL` environment variable is set to your Vercel URL
-   - Should be: `https://thewealthypost.vercel.app`
-
-2. **Check the backend URL**:
-   - Make sure `NEXT_PUBLIC_API_URL` in Vercel matches your Render backend URL exactly
-   - No trailing slashes
-
-3. **Clear browser cache**:
-   - Hard refresh: `Ctrl+Shift+R` (Windows/Linux) or `Cmd+Shift+R` (Mac)
-   - Or use incognito mode
-
-### Environment variable not working?
-
-1. **Redeploy**: Environment variables require a redeploy to take effect
-2. **Check spelling**: Make sure it's exactly `NEXT_PUBLIC_API_URL` (case-sensitive)
-3. **Check environment**: Make sure it's enabled for Production environment
-
-## Testing Locally
-
-To test with your production backend locally:
-
-1. **Update `.env.local`**:
-   ```env
-   NEXT_PUBLIC_API_URL=https://thewealthypost-backend.onrender.com
-   ```
-
-2. **Restart dev server**:
-   ```bash
-   npm run dev
-   ```
-
-3. **Test admin login** at `http://localhost:3000/admin/login`
+After both are configured:
+1. Visit your Vercel frontend
+2. Try logging into the admin dashboard
+3. Should work without CORS errors!
 

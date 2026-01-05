@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import styles from './signup.module.scss';
 import { HiEye, HiEyeOff } from 'react-icons/hi';
-import { getApiEndpoint } from '@/libs/admin-api';
+import { getApiUrl } from '@/libs/api';
 
 export default function AdminSignup() {
   const router = useRouter();
@@ -40,7 +40,7 @@ export default function AdminSignup() {
     setLoading(true);
 
     try {
-      const response = await fetch(getApiEndpoint('auth/signup'), {
+      const response = await fetch(`${getApiUrl()}/auth/signup`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -76,7 +76,7 @@ export default function AdminSignup() {
     setVerifying(true);
 
     try {
-      const response = await fetch(getApiEndpoint('auth/verify-email'), {
+      const response = await fetch(`${getApiUrl()}/auth/verify-email`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -105,7 +105,7 @@ export default function AdminSignup() {
   const handleResendCode = async () => {
     setError('');
     try {
-      const response = await fetch(getApiEndpoint('auth/resend-code'), {
+      const response = await fetch(`${getApiUrl()}/auth/resend-code`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

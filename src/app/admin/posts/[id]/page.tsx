@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { useRouter, useParams } from 'next/navigation';
 import { HiUpload, HiX, HiPhotograph } from 'react-icons/hi';
 import styles from './edit.module.scss';
-import { getApiEndpoint } from '@/libs/admin-api';
+import { getApiUrl } from '@/libs/api';
 
 interface Post {
   id: number;
@@ -63,7 +63,7 @@ export default function EditPost() {
   const fetchPost = async () => {
     try {
       const token = localStorage.getItem('admin_token');
-      const response = await fetch(getApiEndpoint(`posts/${postId}`), {
+      const response = await fetch(`${getApiUrl()}/posts/${postId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -115,7 +115,7 @@ export default function EditPost() {
       const formData = new FormData();
       formData.append('image', file);
 
-      const response = await fetch(getApiEndpoint('posts/upload-image'), {
+      const response = await fetch(`${getApiUrl()}/posts/upload-image`, {
         method: 'POST',
         headers: {
           Authorization: `Bearer ${token}`,
@@ -185,8 +185,8 @@ export default function EditPost() {
     try {
       const token = localStorage.getItem('admin_token');
       const url = isNew
-        ? getApiEndpoint('posts')
-        : getApiEndpoint(`posts/${postId}`);
+        ? `${getApiUrl()}/posts`
+        : `${getApiUrl()}/posts/${postId}`;
       const method = isNew ? 'POST' : 'PATCH';
 
       const response = await fetch(url, {

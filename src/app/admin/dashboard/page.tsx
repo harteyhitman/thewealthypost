@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import styles from './dashboard.module.scss';
-import { getApiEndpoint } from '@/libs/admin-api';
+import { getApiUrl } from '@/libs/api';
 
 interface Post {
   id: number;
@@ -37,7 +37,7 @@ export default function AdminDashboard() {
   const fetchPosts = async () => {
     try {
       const token = localStorage.getItem('admin_token');
-      const response = await fetch(getApiEndpoint('posts/admin'), {
+      const response = await fetch(`${getApiUrl()}/posts/admin`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -63,7 +63,7 @@ export default function AdminDashboard() {
 
     try {
       const token = localStorage.getItem('admin_token');
-      const response = await fetch(getApiEndpoint(`posts/${id}`), {
+      const response = await fetch(`${getApiUrl()}/posts/${id}`, {
         method: 'DELETE',
         headers: {
           Authorization: `Bearer ${token}`,

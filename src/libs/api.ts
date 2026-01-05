@@ -1,4 +1,14 @@
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
+// Get API URL - use environment variable or default to localhost for development
+export const getApiUrl = () => {
+  if (typeof window !== 'undefined') {
+    // Client-side: use environment variable
+    return process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
+  }
+  // Server-side: use environment variable
+  return process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
+};
+
+const API_BASE_URL = getApiUrl();
 
 export interface Post {
   id: number;
