@@ -72,10 +72,9 @@ export default function Navbar() {
       <div className={`${styles.mobileMenu} ${isOpen ? styles.open : ""}`}>
         <NavItem href="/" label="Home" />
         <Dropdown
-          label="Products"
+          label="About"
           items={[
-            { href: "/pricing", label: "Pricing" },
-            { href: "/about", label: "About Us" },
+            { href: "/about-us", label: "About Us" },
           ]}
           activeDropdown={activeDropdown}
           setActiveDropdown={setActiveDropdown}
@@ -83,26 +82,7 @@ export default function Navbar() {
         <Dropdown
           label="Blogs"
           items={[
-            { href: "/blog1", label: "Blog 1" },
-            { href: "/blog2", label: "Blog 2" },
-          ]}
-          activeDropdown={activeDropdown}
-          setActiveDropdown={setActiveDropdown}
-        />
-        <Dropdown
-          label="Podcast"
-          items={[
-            { href: "/podcast1", label: "Podcast 1" },
-            { href: "/podcast2", label: "Podcast 2" },
-          ]}
-          activeDropdown={activeDropdown}
-          setActiveDropdown={setActiveDropdown}
-        />
-        <Dropdown
-          label="About"
-          items={[
-            { href: "/team", label: "Our Team" },
-            { href: "/contact", label: "Contact" },
+            { href: "/blog", label: "Blogs" },
           ]}
           activeDropdown={activeDropdown}
           setActiveDropdown={setActiveDropdown}
@@ -110,13 +90,13 @@ export default function Navbar() {
         <Dropdown
           label="Resources"
           items={[
-            { href: "/guides", label: "Guides" },
-            { href: "/faq", label: "FAQ" },
+            { href: "/resources", label: "Resources" },
+            { href: "/pension-checklist-form", label: "The Ultimate Pension Checklist" },
           ]}
           activeDropdown={activeDropdown}
           setActiveDropdown={setActiveDropdown}
         />
-        <CTAButton href="/discover-more" label="Discover More" />
+        <CTAButton href="/admin/login" label="Admin Login" />
       </div>
     </nav>
   );
