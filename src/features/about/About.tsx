@@ -70,7 +70,7 @@ export default function About() {
             </div>
 
             <div className={styles.actions}>
-              <Link href="/about" className={styles.readMoreBtn}>
+              <Link href="/about-us" className={styles.readMoreBtn}>
                 <span>READ MORE</span>
                 <FiArrowRight className={styles.arrowIcon} />
               </Link>

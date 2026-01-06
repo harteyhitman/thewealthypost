@@ -14,11 +14,21 @@ export const getApiUrl = () => {
     if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
       return 'http://localhost:3001';
     }
+    
+    // Production fallback - use Render backend URL if we're on production domain
+    // This is a safety fallback, but env var should always be set
+    if (window.location.hostname.includes('vercel.app') || window.location.hostname.includes('thewealthypost')) {
+      // Only warn in development mode
+      if (process.env.NODE_ENV === 'development') {
+        console.warn('NEXT_PUBLIC_API_URL not set. Using production fallback. Please set the environment variable in Vercel.');
+      }
+      return 'https://thewealthypost-backend.onrender.com';
+    }
   }
   
-  // Default fallback (should not happen in production if env var is set)
-  if (typeof window !== 'undefined') {
-    console.warn('NEXT_PUBLIC_API_URL not set, using fallback. This may cause issues in production.');
+  // Default fallback for development
+  if (typeof window !== 'undefined' && process.env.NODE_ENV === 'development') {
+    console.warn('NEXT_PUBLIC_API_URL not set, using localhost fallback.');
   }
   return 'http://localhost:3001';
 };

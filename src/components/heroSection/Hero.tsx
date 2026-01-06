@@ -41,10 +41,10 @@ export default function Hero() {
 
           <div className={styles.buttons}>
             <motion.div whileHover={{ scale: 1.05 }}>
-              <CTAButton href="/discover-more" label="Discover More" />
+              <CTAButton href="/blog" label="Discover More" />
             </motion.div>
             <motion.a
-              href="/why-us"
+              href="/about-us"
               className={styles.secondaryBtn}
               whileHover={{ scale: 1.05 }}
             >
