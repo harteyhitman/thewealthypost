@@ -1,11 +1,51 @@
 // Get API URL - use environment variable or default to localhost for development
 export const getApiUrl = () => {
-  if (typeof window !== 'undefined') {
-    // Client-side: use environment variable
-    return process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
+  // Client-side: Next.js exposes NEXT_PUBLIC_* vars at build time
+  // Access it directly - it's available in the browser
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+  
+  if (apiUrl) {
+    return apiUrl;
   }
-  // Server-side: use environment variable
-  return process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
+  
+  // Fallback for development
+  if (typeof window !== 'undefined') {
+    // In browser, check if we're on localhost
+    if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+      return 'http://localhost:3001';
+    }
+  }
+  
+  // Default fallback (should not happen in production if env var is set)
+  if (typeof window !== 'undefined') {
+    console.warn('NEXT_PUBLIC_API_URL not set, using fallback. This may cause issues in production.');
+  }
+  return 'http://localhost:3001';
+};
+
+// Helper function for fetch with timeout and better error handling
+export const fetchWithTimeout = async (
+  url: string,
+  options: RequestInit = {},
+  timeout: number = 10000
+): Promise<Response> => {
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), timeout);
+  
+  try {
+    const response = await fetch(url, {
+      ...options,
+      signal: controller.signal,
+    });
+    clearTimeout(timeoutId);
+    return response;
+  } catch (error: any) {
+    clearTimeout(timeoutId);
+    if (error.name === 'AbortError') {
+      throw new Error('Request timed out. Please check your internet connection and try again.');
+    }
+    throw error;
+  }
 };
 
 const API_BASE_URL = getApiUrl();
