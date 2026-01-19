@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import styles from './signup.module.scss';
 import { HiEye, HiEyeOff } from 'react-icons/hi';
-import { getApiUrl, fetchWithTimeout } from '@/libs/api';
+import { getApiUrl } from '@/libs/api';
 
 export default function AdminSignup() {
   const router = useRouter();
@@ -40,25 +40,17 @@ export default function AdminSignup() {
     setLoading(true);
 
     try {
-      const apiUrl = getApiUrl();
-      const signupUrl = `${apiUrl}/auth/signup`;
-      
-      // Use fetchWithTimeout for better error handling
-      const response = await fetchWithTimeout(
-        signupUrl,
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            username: formData.username,
-            email: formData.email,
-            password: formData.password,
-          }),
+      const response = await fetch(`${getApiUrl()}/auth/signup`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
         },
-        15000 // 15 second timeout for mobile networks
-      );
+        body: JSON.stringify({
+          username: formData.username,
+          email: formData.email,
+          password: formData.password,
+        }),
+      });
 
       const data = await response.json();
 
@@ -72,16 +64,7 @@ export default function AdminSignup() {
 
       setStep('verify');
     } catch (err: any) {
-      console.error('Signup error:', err);
-      
-      // Provide more specific error messages
-      if (err.name === 'AbortError') {
-        setError('Request timed out. Please check your internet connection and try again.');
-      } else if (err.message.includes('Failed to fetch') || err.message.includes('NetworkError')) {
-        setError('Unable to connect to server. Please check your internet connection or try again later.');
-      } else {
-        setError(err.message || 'Signup failed. Please try again.');
-      }
+      setError(err.message || 'Signup failed. Please try again.');
     } finally {
       setLoading(false);
     }
@@ -93,23 +76,16 @@ export default function AdminSignup() {
     setVerifying(true);
 
     try {
-      const apiUrl = getApiUrl();
-      const verifyUrl = `${apiUrl}/auth/verify-email`;
-      
-      const response = await fetchWithTimeout(
-        verifyUrl,
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            email: formData.email,
-            code: verificationCode,
-          }),
+      const response = await fetch(`${getApiUrl()}/auth/verify-email`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
         },
-        15000
-      );
+        body: JSON.stringify({
+          email: formData.email,
+          code: verificationCode,
+        }),
+      });
 
       const data = await response.json();
 
@@ -120,16 +96,7 @@ export default function AdminSignup() {
       // Redirect to login
       router.push('/admin/login?verified=true');
     } catch (err: any) {
-      console.error('Verification error:', err);
-      
-      // Provide more specific error messages
-      if (err.name === 'AbortError' || err.message.includes('timed out')) {
-        setError('Request timed out. Please check your internet connection and try again.');
-      } else if (err.message.includes('Failed to fetch') || err.message.includes('NetworkError')) {
-        setError('Unable to connect to server. Please check your internet connection or try again later.');
-      } else {
-        setError(err.message || 'Verification failed');
-      }
+      setError(err.message || 'Verification failed');
     } finally {
       setVerifying(false);
     }
@@ -138,20 +105,13 @@ export default function AdminSignup() {
   const handleResendCode = async () => {
     setError('');
     try {
-      const apiUrl = getApiUrl();
-      const resendUrl = `${apiUrl}/auth/resend-code`;
-      
-      const response = await fetchWithTimeout(
-        resendUrl,
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ email: formData.email }),
+      const response = await fetch(`${getApiUrl()}/auth/resend-code`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
         },
-        15000
-      );
+        body: JSON.stringify({ email: formData.email }),
+      });
 
       const data = await response.json();
 
@@ -161,16 +121,7 @@ export default function AdminSignup() {
 
       alert('Verification code sent to your email');
     } catch (err: any) {
-      console.error('Resend code error:', err);
-      
-      // Provide more specific error messages
-      if (err.name === 'AbortError' || err.message.includes('timed out')) {
-        setError('Request timed out. Please check your internet connection and try again.');
-      } else if (err.message.includes('Failed to fetch') || err.message.includes('NetworkError')) {
-        setError('Unable to connect to server. Please check your internet connection or try again later.');
-      } else {
-        setError(err.message || 'Failed to resend code');
-      }
+      setError(err.message || 'Failed to resend code');
     }
   };
 

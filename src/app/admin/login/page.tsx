@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import styles from './login.module.scss';
 import { HiEye, HiEyeOff } from 'react-icons/hi';
-import { getApiUrl, fetchWithTimeout } from '@/libs/api';
+import { getApiUrl } from '@/libs/api';
 
 export default function AdminLogin() {
   const router = useRouter();
@@ -21,28 +21,19 @@ export default function AdminLogin() {
     setLoading(true);
 
     try {
-      const apiUrl = getApiUrl();
-      const loginUrl = `${apiUrl}/auth/login`;
-      
-      // Use fetchWithTimeout for better error handling
-      const response = await fetchWithTimeout(
-        loginUrl,
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ username, password }),
+      const response = await fetch(`${getApiUrl()}/auth/login`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
         },
-        15000 // 15 second timeout for mobile networks
-      );
-
-      if (!response.ok) {
-        const errorData = await response.json().catch(() => ({ message: 'Login failed' }));
-        throw new Error(errorData.message || `Login failed: ${response.status} ${response.statusText}`);
-      }
+        body: JSON.stringify({ username, password }),
+      });
 
       const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || 'Login failed');
+      }
 
       // Store token
       localStorage.setItem('admin_token', data.access_token);
@@ -51,16 +42,7 @@ export default function AdminLogin() {
       // Redirect to dashboard
       router.push('/admin/dashboard');
     } catch (err: any) {
-      console.error('Login error:', err);
-      
-      // Provide more specific error messages
-      if (err.name === 'AbortError') {
-        setError('Request timed out. Please check your internet connection and try again.');
-      } else if (err.message.includes('Failed to fetch') || err.message.includes('NetworkError')) {
-        setError('Unable to connect to server. Please check your internet connection or try again later.');
-      } else {
-        setError(err.message || 'Invalid credentials. Please try again.');
-      }
+      setError(err.message || 'Invalid credentials');
     } finally {
       setLoading(false);
     }

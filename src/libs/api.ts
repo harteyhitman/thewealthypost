@@ -1,61 +1,11 @@
 // Get API URL - use environment variable or default to localhost for development
 export const getApiUrl = () => {
-  // Client-side: Next.js exposes NEXT_PUBLIC_* vars at build time
-  // Access it directly - it's available in the browser
-  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
-  
-  if (apiUrl) {
-    return apiUrl;
-  }
-  
-  // Fallback for development
   if (typeof window !== 'undefined') {
-    // In browser, check if we're on localhost
-    if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
-      return 'http://localhost:3001';
-    }
-    
-    // Production fallback - use Render backend URL if we're on production domain
-    // This is a safety fallback, but env var should always be set
-    if (window.location.hostname.includes('vercel.app') || window.location.hostname.includes('thewealthypost')) {
-      // Only warn in development mode
-      if (process.env.NODE_ENV === 'development') {
-        console.warn('NEXT_PUBLIC_API_URL not set. Using production fallback. Please set the environment variable in Vercel.');
-      }
-      return 'https://thewealthypost-backend.onrender.com';
-    }
+    // Client-side: use environment variable
+    return process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
   }
-  
-  // Default fallback for development
-  if (typeof window !== 'undefined' && process.env.NODE_ENV === 'development') {
-    console.warn('NEXT_PUBLIC_API_URL not set, using localhost fallback.');
-  }
-  return 'http://localhost:3001';
-};
-
-// Helper function for fetch with timeout and better error handling
-export const fetchWithTimeout = async (
-  url: string,
-  options: RequestInit = {},
-  timeout: number = 10000
-): Promise<Response> => {
-  const controller = new AbortController();
-  const timeoutId = setTimeout(() => controller.abort(), timeout);
-  
-  try {
-    const response = await fetch(url, {
-      ...options,
-      signal: controller.signal,
-    });
-    clearTimeout(timeoutId);
-    return response;
-  } catch (error: any) {
-    clearTimeout(timeoutId);
-    if (error.name === 'AbortError') {
-      throw new Error('Request timed out. Please check your internet connection and try again.');
-    }
-    throw error;
-  }
+  // Server-side: use environment variable
+  return process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
 };
 
 const API_BASE_URL = getApiUrl();

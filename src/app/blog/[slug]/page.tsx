@@ -17,9 +17,9 @@ interface PageProps {
 export async function generateStaticParams() {
   try {
     const posts = await getAllMergedPosts();
-    return posts.map((post) => ({
-      slug: post.slug,
-    }));
+  return posts.map((post) => ({
+    slug: post.slug,
+  }));
   } catch (error) {
     console.error('Error generating static params:', error);
     return [];
