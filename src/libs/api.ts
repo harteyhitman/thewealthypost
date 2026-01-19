@@ -2,29 +2,29 @@
 
 /**
  * Get API base URL
- * - REQUIRED in production
- * - Optional fallback to localhost only in development
+ * - Uses NEXT_PUBLIC_API_URL if set
+ * - Falls back to localhost in development
+ * - Falls back to Render backend in production (for build time)
  */
 export const getApiUrl = (): string => {
   const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
-  if (!apiUrl) {
-    if (process.env.NODE_ENV === 'development') {
-      // Dev fallback
-      return 'http://localhost:3001';
-    }
-    // Production: crash build early
-    throw new Error(
-      'NEXT_PUBLIC_API_URL is not defined. Set it in your environment variables.'
-    );
+  if (apiUrl) {
+    // Remove trailing slash if present
+    return apiUrl.replace(/\/$/, '');
   }
 
-  // Remove trailing slash if present
-  return apiUrl.replace(/\/$/, '');
-};
+  // Fallback logic
+  if (process.env.NODE_ENV === 'development') {
+    // Dev fallback
+    return 'http://localhost:3001';
+  }
 
-// Single source of truth for API base URL
-export const API_BASE_URL = getApiUrl();
+  // Production build-time fallback (prevents build errors)
+  // This allows the build to complete even if env var is not set
+  // The env var should still be set in Vercel for runtime
+  return 'https://thewealthypost-backend.onrender.com';
+};
 
 /* ============================================================
    Types
@@ -66,7 +66,7 @@ const fetchWithTimeout = async (url: string) => {
  * Fetch all posts
  */
 export async function fetchAllPosts(): Promise<Post[]> {
-  const url = `${API_BASE_URL}/posts`;
+  const url = `${getApiUrl()}/posts`;
 
   try {
     const response = await fetchWithTimeout(url);
@@ -93,7 +93,7 @@ export async function fetchAllPosts(): Promise<Post[]> {
  * Fetch a single post by slug
  */
 export async function fetchPostBySlug(slug: string): Promise<Post | null> {
-  const url = `${API_BASE_URL}/posts/slug/${slug}`;
+  const url = `${getApiUrl()}/posts/slug/${slug}`;
 
   try {
     const response = await fetchWithTimeout(url);

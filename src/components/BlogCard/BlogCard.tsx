@@ -31,7 +31,7 @@ const BlogCard = ({ post, index }: BlogCardProps) => {
       }}
     >
       <div className={styles.blogImage}>
-        <Image
+        <Image 
           src={post.image}
           alt={post.title}
           width={400}
