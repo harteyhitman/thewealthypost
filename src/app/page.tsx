@@ -4,6 +4,7 @@ import BlogSection from "@/features/blogSection/BlogSection";
 import Testimonials from "@/features/testimonials";
 import ValueProp from "@/features/value-prep/valuePrep";
 import MediaSection from "@/features/media-section/MediaSection";
+import ContactSection from "@/features/contact/ContactSection";
 
 export default function Home() {
   return (
@@ -13,7 +14,8 @@ export default function Home() {
       <ValueProp />
       <BlogSection />
       <MediaSection />
-      <Testimonials /> 
+      <Testimonials />
+      <ContactSection />
     </div>
   );
 }

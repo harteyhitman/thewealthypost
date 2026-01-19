@@ -13,9 +13,12 @@ const testimonialsData = [
     company: 'ABC Company',
  image: "https://i.pravatar.cc/150?img=1"
   },
+
+
+  
   {
     id: 2,
-    text: 'Your article, Nnamdi, has been life-changing. It helped me identify and address my negative money mindsets, empowering me to take charge of my finances especially as an immigrant in a new country.',
+    text: 'Thank you, Nnamdi, for being a patient and supportive guide. Your one-on-one sessions were instrumental in helping me navigate the complexities of pensions.',
     author: 'Sarah ',
     position: 'London',
     company: 'ABC Company',

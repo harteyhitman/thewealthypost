@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import { 
   HiCalculator, 
   HiBookOpen, 
@@ -97,31 +98,31 @@ export default function ResourcesPage() {
       id: 'rich-dad',
       title: 'Rich Dad Poor Dad',
       author: 'Robert Kiyosaki',
-      cover: '/book-covers/rich-dad-poor-dad.jpg',
+      cover: '/weeklyrecommendedbooks/poordadrichdad.jpeg',
     },
     {
       id: 'richest-man',
       title: 'The Richest Man in Babylon',
       author: 'George S. Clason',
-      cover: '/book-covers/richest-man-babylon.jpg',
+      cover: '/weeklyrecommendedbooks/therichestmaninbabylon.jpeg',
     },
     {
       id: 'think-grow',
       title: 'Think and Grow Rich',
       author: 'Napoleon Hill',
-      cover: '/book-covers/think-grow-rich.jpg',
+      cover: '/weeklyrecommendedbooks/thinkandgrowrich.jpeg',
     },
     {
       id: 'psychology-money',
       title: 'Psychology of Money',
       author: 'Morgan Housel',
-      cover: '/book-covers/psychology-money.jpg',
+      cover: '/weeklyrecommendedbooks/psychologyofmoney.jpeg',
     },
     {
       id: 'shoe-dog',
       title: 'Shoe Dog',
       author: 'Phil Knight',
-      cover: '/book-covers/shoe-dog.jpg',
+      cover: '/weeklyrecommendedbooks/shoedogphilnight.jpeg',
     },
   ];
 
@@ -290,9 +291,14 @@ export default function ResourcesPage() {
                     transition={{ duration: 0.4 }}
                   >
                     <div className={styles.bookCover}>
-                      <div className={styles.bookPlaceholder}>
-                        <HiBookOpen />
-                      </div>
+                      <Image
+                        src={book.cover}
+                        alt={`${book.title} by ${book.author}`}
+                        width={200}
+                        height={300}
+                        className={styles.bookImage}
+                        priority={isActive}
+                      />
                     </div>
                     <div className={styles.bookInfo}>
                       <h3 className={styles.bookTitle}>{book.title}</h3>
