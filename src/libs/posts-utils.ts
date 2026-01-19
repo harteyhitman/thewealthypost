@@ -1,6 +1,21 @@
 // Utility functions to merge static posts with API posts
-import { getAllPosts, getPostBySlug as getStaticPostBySlug } from './posts-data';
-import { fetchAllPosts, fetchPostBySlug as fetchApiPostBySlug, Post as ApiPost } from './api';
+
+import {
+  getAllPosts,
+  getPostBySlug as getStaticPostBySlug,
+} from './posts-data';
+
+import {
+  fetchAllPosts,
+  fetchPostBySlug as fetchApiPostBySlug,
+  Post as ApiPost,
+} from './api';
+
+import { getApiUrl } from './api';
+
+/* ============================================================
+   Types
+============================================================ */
 
 export interface MergedPost {
   id: number;
@@ -16,47 +31,82 @@ export interface MergedPost {
   published?: boolean;
 }
 
+/* ============================================================
+   Helpers
+============================================================ */
+
 /**
- * Merges static posts with API posts
- * API posts take precedence if there's a duplicate slug
+ * Normalize image paths so they ALWAYS work
  */
+const normalizeImagePath = (image?: string): string => {
+  if (!image) return '';
+
+  // Already absolute URL
+  if (image.startsWith('http')) {
+    return image;
+  }
+
+  // Already absolute path
+  if (image.startsWith('/')) {
+    return image;
+  }
+
+  // Relative path → make absolute
+  return `/${image}`;
+};
+
+/**
+ * Normalize API image paths for frontend usage
+ */
+const normalizeApiImage = (image?: string): string => {
+  if (!image) return '';
+
+  // If backend serves images itself
+  if (image.startsWith('/')) {
+    return image;
+  }
+
+  // Absolute URL
+  if (image.startsWith('http')) {
+    return image;
+  }
+
+  // Relative → prefix with API base
+  return `${getApiUrl()}/${image}`;
+};
+
+/* ============================================================
+   Merge all posts
+============================================================ */
+
 export async function getAllMergedPosts(): Promise<MergedPost[]> {
-  // Get static posts
   const staticPosts = getAllPosts();
-  
-  // Get API posts (gracefully handle if backend is not running)
+
   let apiPosts: ApiPost[] = [];
+
   try {
     apiPosts = await fetchAllPosts();
-    if (process.env.NODE_ENV === 'development') {
-      console.log(`[getAllMergedPosts] Fetched ${apiPosts.length} posts from API`);
-    }
-  } catch (error) {
-    // Silently fallback to static posts if API is unavailable
-    // This allows the site to work even when backend is not running
-    if (process.env.NODE_ENV === 'development') {
-      console.warn('Backend API unavailable, using static posts only. Start the backend server to see new posts.', error);
-    }
+  } catch {
+    // Silent fallback — static posts only
   }
-  
-  // Create a map of API posts by slug for quick lookup
-  const apiPostsMap = new Map<string, ApiPost>();
-  apiPosts.forEach(post => {
-    apiPostsMap.set(post.slug, post);
-  });
-  
-  // Transform static posts to merged format
-  const mergedStaticPosts: MergedPost[] = staticPosts.map(post => {
-    // Convert StaticImageData to string path
+
+  const mergedPostsMap = new Map<string, MergedPost>();
+
+  /* ---------- Static posts first ---------- */
+  staticPosts.forEach((post) => {
     let imagePath = '';
+
     if (typeof post.image === 'string') {
-      imagePath = post.image;
-    } else if (post.image && typeof post.image === 'object' && 'src' in post.image) {
-      // StaticImageData has a src property that's already a valid path
+      imagePath = normalizeImagePath(post.image);
+    } else if (
+      post.image &&
+      typeof post.image === 'object' &&
+      'src' in post.image
+    ) {
       imagePath = (post.image as any).src || '';
     }
-    
-    return {
+
+    mergedPostsMap.set(post.slug, {
       id: post.id,
       slug: post.slug,
       title: post.title,
@@ -67,140 +117,95 @@ export async function getAllMergedPosts(): Promise<MergedPost[]> {
       date: post.date,
       tags: post.tags,
       category: post.category,
-      published: true, // Static posts are always published
-    };
+      published: true,
+    });
   });
-  
-  // Add API posts, replacing static posts with same slug
-  const mergedPostsMap = new Map<string, MergedPost>();
-  
-  // First, add all static posts
-  mergedStaticPosts.forEach(post => {
-    mergedPostsMap.set(post.slug, post);
-  });
-  
-  // Then, add/override with API posts (only published ones)
-  let addedApiPostsCount = 0;
-  apiPosts.forEach(apiPost => {
-    // Only include published posts (treat undefined/null as published)
-    // This ensures all API posts are included unless explicitly set to false
+
+  /* ---------- API posts override ---------- */
+  apiPosts.forEach((apiPost) => {
     const isPublished = apiPost.published !== false;
-    
-    if (process.env.NODE_ENV === 'development') {
-      console.log(`[getAllMergedPosts] Processing API post: "${apiPost.title}" - published: ${apiPost.published}, isPublished: ${isPublished}`);
-    }
-    
-    if (isPublished) {
-      // Normalize image path - ensure it starts with / if it's a relative path
-      let imagePath = apiPost.image || '';
-      if (imagePath && !imagePath.startsWith('http') && !imagePath.startsWith('/')) {
-        imagePath = '/' + imagePath;
-      }
-      
-      const mergedPost: MergedPost = {
-        id: apiPost.id,
-        slug: apiPost.slug,
-        title: apiPost.title,
-        excerpt: apiPost.excerpt,
-        content: apiPost.content,
-        image: imagePath,
-        author: apiPost.author,
-        date: apiPost.date,
-        tags: apiPost.tags,
-        category: apiPost.category,
-        published: true, // Ensure it's marked as published
-      };
-      
-      mergedPostsMap.set(apiPost.slug, mergedPost);
-      addedApiPostsCount++;
-      
-      if (process.env.NODE_ENV === 'development') {
-        console.log(`[getAllMergedPosts] Added API post to map: "${apiPost.title}" (slug: "${apiPost.slug}")`);
-      }
-    } else {
-      if (process.env.NODE_ENV === 'development') {
-        console.log(`[getAllMergedPosts] Skipping unpublished API post: "${apiPost.title}"`);
-      }
-    }
+    if (!isPublished) return;
+
+    mergedPostsMap.set(apiPost.slug, {
+      id: apiPost.id,
+      slug: apiPost.slug,
+      title: apiPost.title,
+      excerpt: apiPost.excerpt,
+      content: apiPost.content,
+      image: normalizeApiImage(apiPost.image),
+      author: apiPost.author,
+      date: apiPost.date,
+      tags: apiPost.tags,
+      category: apiPost.category,
+      published: true,
+    });
   });
-  
-  if (process.env.NODE_ENV === 'development') {
-    console.log(`[getAllMergedPosts] Added ${addedApiPostsCount} API posts to merged map`);
-  }
-  
-  // Convert map to array and sort by date (newest first) or id
-  const mergedPosts = Array.from(mergedPostsMap.values()).sort((a, b) => {
-    // Try to sort by date if available
+
+  return Array.from(mergedPostsMap.values()).sort((a, b) => {
     if (a.date && b.date) {
-      const dateA = new Date(a.date).getTime();
-      const dateB = new Date(b.date).getTime();
-      if (!isNaN(dateA) && !isNaN(dateB)) {
-        return dateB - dateA; // Newest first
-      }
+      return new Date(b.date).getTime() - new Date(a.date).getTime();
     }
-    // Fallback to id (API posts typically have higher IDs)
     return b.id - a.id;
   });
-  
-  if (process.env.NODE_ENV === 'development') {
-    console.log(`[getAllMergedPosts] Final merged posts count: ${mergedPosts.length} (Static: ${staticPosts.length}, API: ${apiPosts.length})`);
-  }
-  
-  return mergedPosts;
 }
 
-/**
- * Gets a post by slug, checking API first, then static posts
- */
-export async function getMergedPostBySlug(slug: string): Promise<MergedPost | null> {
-  // First try API
+/* ============================================================
+   Get post by slug
+============================================================ */
+
+export async function getMergedPostBySlug(
+  slug: string,
+): Promise<MergedPost | null> {
+  /* ---------- Try API first ---------- */
   try {
     const apiPost = await fetchApiPostBySlug(slug);
-    if (apiPost) {
+
+    if (apiPost && apiPost.published !== false) {
       return {
         id: apiPost.id,
         slug: apiPost.slug,
         title: apiPost.title,
         excerpt: apiPost.excerpt,
         content: apiPost.content,
-        image: apiPost.image || '',
+        image: normalizeApiImage(apiPost.image),
         author: apiPost.author,
         date: apiPost.date,
         tags: apiPost.tags,
         category: apiPost.category,
-        published: apiPost.published,
+        published: true,
       };
     }
-  } catch (error) {
-    // Silently fallback to static posts if API is unavailable
+  } catch {
+    // fallback
   }
-  
-  // Fallback to static posts
-  const staticPost = getStaticPostBySlug(slug);
-  if (staticPost) {
-    let imagePath = '';
-    if (typeof staticPost.image === 'string') {
-      imagePath = staticPost.image;
-    } else if (staticPost.image && typeof staticPost.image === 'object' && 'src' in staticPost.image) {
-      // StaticImageData has a src property that's already a valid path
-      imagePath = (staticPost.image as any).src || '';
-    }
-    
-    return {
-      id: staticPost.id,
-      slug: staticPost.slug,
-      title: staticPost.title,
-      excerpt: staticPost.excerpt,
-      content: staticPost.content,
-      image: imagePath,
-      author: staticPost.author,
-      date: staticPost.date,
-      tags: staticPost.tags,
-      category: staticPost.category,
-      published: true,
-    };
-  }
-  
-  return null;
-}
 
+  /* ---------- Static fallback ---------- */
+  const staticPost = getStaticPostBySlug(slug);
+  if (!staticPost) return null;
+
+  let imagePath = '';
+
+  if (typeof staticPost.image === 'string') {
+    imagePath = normalizeImagePath(staticPost.image);
+  } else if (
+    staticPost.image &&
+    typeof staticPost.image === 'object' &&
+    'src' in staticPost.image
+  ) {
+    imagePath = (staticPost.image as any).src || '';
+  }
+
+  return {
+    id: staticPost.id,
+    slug: staticPost.slug,
+    title: staticPost.title,
+    excerpt: staticPost.excerpt,
+    content: staticPost.content,
+    image: imagePath,
+    author: staticPost.author,
+    date: staticPost.date,
+    tags: staticPost.tags,
+    category: staticPost.category,
+    published: true,
+  };
+}

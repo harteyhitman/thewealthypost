@@ -4,25 +4,20 @@
  * Get API base URL
  * - Uses NEXT_PUBLIC_API_URL if set
  * - Falls back to localhost in development
- * - Falls back to Render backend in production (for build time)
+ * - Falls back to production backend during build
  */
 export const getApiUrl = (): string => {
   const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
   if (apiUrl) {
-    // Remove trailing slash if present
     return apiUrl.replace(/\/$/, '');
   }
 
-  // Fallback logic
   if (process.env.NODE_ENV === 'development') {
-    // Dev fallback
     return 'http://localhost:3001';
   }
 
-  // Production build-time fallback (prevents build errors)
-  // This allows the build to complete even if env var is not set
-  // The env var should still be set in Vercel for runtime
+  // Build-time / production fallback
   return 'https://thewealthypost-backend.onrender.com';
 };
 
@@ -47,15 +42,28 @@ export interface Post {
 }
 
 /* ============================================================
-   Fetch helper with timeout
+   Fetch helper (SSR + Client safe)
 ============================================================ */
 
-const fetchWithTimeout = async (url: string) => {
-  return fetch(url, {
-    cache: 'no-store',
-    next: { revalidate: 0 },
-    signal: AbortSignal.timeout(5000), // 5 second timeout
-  });
+const fetchWithTimeout = async (url: string, timeout = 5000) => {
+  const controller = new AbortController();
+  const id = setTimeout(() => controller.abort(), timeout);
+
+  try {
+    return await fetch(url, {
+      signal: controller.signal,
+
+      // Server-only caching control
+      ...(typeof window === 'undefined'
+        ? {
+            cache: 'no-store',
+            next: { revalidate: 0 },
+          }
+        : {}),
+    });
+  } finally {
+    clearTimeout(id);
+  }
 };
 
 /* ============================================================
@@ -73,14 +81,14 @@ export async function fetchAllPosts(): Promise<Post[]> {
 
     if (!response.ok) {
       throw new Error(
-        `Failed to fetch posts: ${response.status} ${response.statusText}`
+        `Failed to fetch posts: ${response.status} ${response.statusText}`,
       );
     }
 
     return await response.json();
   } catch (error: any) {
     if (process.env.NODE_ENV === 'development') {
-      console.error('[fetchAllPosts] Error details:', {
+      console.error('[fetchAllPosts]', {
         message: error.message,
         url,
       });
@@ -92,7 +100,9 @@ export async function fetchAllPosts(): Promise<Post[]> {
 /**
  * Fetch a single post by slug
  */
-export async function fetchPostBySlug(slug: string): Promise<Post | null> {
+export async function fetchPostBySlug(
+  slug: string,
+): Promise<Post | null> {
   const url = `${getApiUrl()}/posts/slug/${slug}`;
 
   try {
@@ -105,7 +115,7 @@ export async function fetchPostBySlug(slug: string): Promise<Post | null> {
     return await response.json();
   } catch (error: any) {
     if (process.env.NODE_ENV === 'development') {
-      console.error('[fetchPostBySlug] Error details:', {
+      console.error('[fetchPostBySlug]', {
         message: error.message,
         slug,
         url,
