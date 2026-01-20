@@ -11,8 +11,6 @@ import {
   Post as ApiPost,
 } from './api';
 
-import { getApiUrl } from './api';
-
 /* ============================================================
    Types
 ============================================================ */
@@ -36,43 +34,39 @@ export interface MergedPost {
 ============================================================ */
 
 /**
- * Normalize image paths so they ALWAYS work
+ * Normalize image paths so they ALWAYS work in Next.js
  */
 const normalizeImagePath = (image?: string): string => {
   if (!image) return '';
 
-  // Already absolute URL
+  // Absolute URL (Cloudinary, CDN, etc.)
   if (image.startsWith('http')) {
     return image;
   }
 
-  // Already absolute path
+  // Absolute public path
   if (image.startsWith('/')) {
     return image;
   }
 
-  // Relative path → make absolute
+  // Relative → make public
   return `/${image}`;
 };
 
 /**
- * Normalize API image paths for frontend usage
+ * Normalize API image paths
+ * Backend already serves images publicly
  */
 const normalizeApiImage = (image?: string): string => {
   if (!image) return '';
 
-  // If backend serves images itself
-  if (image.startsWith('/')) {
+  // Already valid
+  if (image.startsWith('http') || image.startsWith('/')) {
     return image;
   }
 
-  // Absolute URL
-  if (image.startsWith('http')) {
-    return image;
-  }
-
-  // Relative → prefix with API base
-  return `${getApiUrl()}/${image}`;
+  // Relative path → public path
+  return `/${image}`;
 };
 
 /* ============================================================
@@ -81,7 +75,6 @@ const normalizeApiImage = (image?: string): string => {
 
 export async function getAllMergedPosts(): Promise<MergedPost[]> {
   const staticPosts = getAllPosts();
-
   let apiPosts: ApiPost[] = [];
 
   try {
@@ -123,8 +116,7 @@ export async function getAllMergedPosts(): Promise<MergedPost[]> {
 
   /* ---------- API posts override ---------- */
   apiPosts.forEach((apiPost) => {
-    const isPublished = apiPost.published !== false;
-    if (!isPublished) return;
+    if (apiPost.published === false) return;
 
     mergedPostsMap.set(apiPost.slug, {
       id: apiPost.id,
@@ -141,6 +133,7 @@ export async function getAllMergedPosts(): Promise<MergedPost[]> {
     });
   });
 
+  /* ---------- Sort newest first ---------- */
   return Array.from(mergedPostsMap.values()).sort((a, b) => {
     if (a.date && b.date) {
       return new Date(b.date).getTime() - new Date(a.date).getTime();

@@ -45,15 +45,19 @@ export interface Post {
    Fetch helper (SSR + Client safe)
 ============================================================ */
 
-const fetchWithTimeout = async (url: string, timeout = 5000) => {
+const fetchWithTimeout = async (
+  url: string,
+  timeout = 5000,
+): Promise<Response> => {
+  // AbortController is available in modern Node & browsers
   const controller = new AbortController();
-  const id = setTimeout(() => controller.abort(), timeout);
+  const timer = setTimeout(() => controller.abort(), timeout);
 
   try {
     return await fetch(url, {
       signal: controller.signal,
 
-      // Server-only caching control
+      // Server-side only options (Next.js)
       ...(typeof window === 'undefined'
         ? {
             cache: 'no-store',
@@ -61,8 +65,13 @@ const fetchWithTimeout = async (url: string, timeout = 5000) => {
           }
         : {}),
     });
+  } catch (error: any) {
+    if (error.name === 'AbortError') {
+      throw new Error(`Request timeout after ${timeout}ms`);
+    }
+    throw error;
   } finally {
-    clearTimeout(id);
+    clearTimeout(timer);
   }
 };
 
@@ -76,25 +85,22 @@ const fetchWithTimeout = async (url: string, timeout = 5000) => {
 export async function fetchAllPosts(): Promise<Post[]> {
   const url = `${getApiUrl()}/posts`;
 
-  try {
-    const response = await fetchWithTimeout(url);
+  const response = await fetchWithTimeout(url);
 
-    if (!response.ok) {
-      throw new Error(
-        `Failed to fetch posts: ${response.status} ${response.statusText}`,
-      );
-    }
-
-    return await response.json();
-  } catch (error: any) {
-    if (process.env.NODE_ENV === 'development') {
-      console.error('[fetchAllPosts]', {
-        message: error.message,
-        url,
-      });
-    }
-    throw error;
+  if (!response.ok) {
+    throw new Error(
+      `Failed to fetch posts: ${response.status} ${response.statusText}`,
+    );
   }
+
+  const data = await response.json();
+
+  // Defensive guard
+  if (!Array.isArray(data)) {
+    throw new Error('Invalid posts response format');
+  }
+
+  return data as Post[];
 }
 
 /**
@@ -105,22 +111,18 @@ export async function fetchPostBySlug(
 ): Promise<Post | null> {
   const url = `${getApiUrl()}/posts/slug/${slug}`;
 
-  try {
-    const response = await fetchWithTimeout(url);
+  const response = await fetchWithTimeout(url);
 
-    if (!response.ok) {
-      return null;
-    }
-
-    return await response.json();
-  } catch (error: any) {
-    if (process.env.NODE_ENV === 'development') {
-      console.error('[fetchPostBySlug]', {
-        message: error.message,
-        slug,
-        url,
-      });
-    }
-    throw error;
+  if (!response.ok) {
+    return null;
   }
+
+  const data = await response.json();
+
+  // Defensive guard
+  if (!data || typeof data !== 'object') {
+    return null;
+  }
+
+  return data as Post;
 }
