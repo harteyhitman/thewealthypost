@@ -19,9 +19,7 @@ export default function AdminSignup() {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
-  const [step, setStep] = useState<'signup' | 'verify'>('signup');
-  const [verificationCode, setVerificationCode] = useState('');
-  const [verifying, setVerifying] = useState(false);
+  const [success, setSuccess] = useState(false);
 
   const handleSignup = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -55,14 +53,13 @@ export default function AdminSignup() {
       const data = await response.json();
 
       if (!response.ok) {
-        // Handle specific error messages from backend
         if (response.status === 409) {
           throw new Error(data.message || 'Username or email already exists');
         }
         throw new Error(data.message || 'Signup failed');
       }
 
-      setStep('verify');
+      setSuccess(true);
     } catch (err: any) {
       setError(err.message || 'Signup failed. Please try again.');
     } finally {
@@ -70,103 +67,17 @@ export default function AdminSignup() {
     }
   };
 
-  const handleVerify = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setError('');
-    setVerifying(true);
-
-    try {
-      const response = await fetch(`${getApiUrl()}/auth/verify-email`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          email: formData.email,
-          code: verificationCode,
-        }),
-      });
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(data.message || 'Verification failed');
-      }
-
-      // Redirect to login
-      router.push('/admin/login?verified=true');
-    } catch (err: any) {
-      setError(err.message || 'Verification failed');
-    } finally {
-      setVerifying(false);
-    }
-  };
-
-  const handleResendCode = async () => {
-    setError('');
-    try {
-      const response = await fetch(`${getApiUrl()}/auth/resend-code`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email: formData.email }),
-      });
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(data.message || 'Failed to resend code');
-      }
-
-      alert('Verification code sent to your email');
-    } catch (err: any) {
-      setError(err.message || 'Failed to resend code');
-    }
-  };
-
-  if (step === 'verify') {
+  if (success) {
     return (
       <div className={styles.container}>
         <div className={styles.card}>
-          <h1 className={styles.title}>Verify Your Email</h1>
+          <h1 className={styles.title}>Account Created</h1>
           <p className={styles.subtitle}>
-            We've sent a verification code to <strong>{formData.email}</strong>
+            Account created successfully. You can log in now.
           </p>
-
-          {error && <div className={styles.error}>{error}</div>}
-
-          <form onSubmit={handleVerify} className={styles.form}>
-            <div className={styles.inputGroup}>
-              <label htmlFor="code">Verification Code</label>
-              <input
-                id="code"
-                type="text"
-                value={verificationCode}
-                onChange={(e) => setVerificationCode(e.target.value.replace(/\D/g, '').slice(0, 6))}
-                required
-                maxLength={6}
-                placeholder="000000"
-                className={styles.codeInput}
-                disabled={verifying}
-              />
-            </div>
-
-            <button type="submit" disabled={verifying} className={styles.submitButton}>
-              {verifying ? 'Verifying...' : 'Verify Email'}
-            </button>
-          </form>
-
-          <div className={styles.resend}>
-            <p>Didn't receive the code?</p>
-            <button onClick={handleResendCode} className={styles.resendButton}>
-              Resend Code
-            </button>
-          </div>
-
           <div className={styles.footer}>
-            <Link href="/admin/login" className={styles.link}>
-              Back to Login
+            <Link href="/admin/login" className={styles.linkButton}>
+              Log in
             </Link>
           </div>
         </div>
