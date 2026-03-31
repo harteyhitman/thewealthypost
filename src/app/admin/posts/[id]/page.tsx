@@ -4,21 +4,8 @@ import { useEffect, useState } from 'react';
 import { useRouter, useParams } from 'next/navigation';
 import { HiUpload, HiX, HiPhotograph } from 'react-icons/hi';
 import styles from './edit.module.scss';
-import { getApiUrl } from '@/libs/api';
-
-interface Post {
-  id: number;
-  slug: string;
-  title: string;
-  excerpt: string;
-  content: string;
-  image?: string;
-  author?: string;
-  date?: string;
-  tags?: string[];
-  category?: string;
-  published: boolean;
-}
+import { fetchPostById, createPost, updatePost, uploadImage, Post } from '@/libs/api';
+import { supabase } from '@/libs/supabaseClient';
 
 export default function EditPost() {
   const router = useRouter();
@@ -53,33 +40,23 @@ export default function EditPost() {
     }
   }, [postId]);
 
-  const checkAuth = () => {
-    const token = localStorage.getItem('admin_token');
-    if (!token) {
+  const checkAuth = async () => {
+    const { data: { session } } = await supabase.auth.getSession();
+    if (!session) {
       router.push('/admin/login');
     }
   };
 
   const fetchPost = async () => {
     try {
-      const token = localStorage.getItem('admin_token');
-      const response = await fetch(`${getApiUrl()}/posts/${postId}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-
-      if (response.status === 401) {
-        router.push('/admin/login');
-        return;
-      }
-
-      const data = await response.json();
-      setPost(data);
-      if (data.image) {
-        // Ensure image path starts with /
-        const imagePath = data.image.startsWith('/') ? data.image : `/${data.image}`;
-        setImagePreview(imagePath);
+      const data = await fetchPostById(postId);
+      if (data) {
+        setPost(data);
+        if (data.image) {
+          setImagePreview(data.image);
+        }
+      } else {
+        setError('Post not found');
       }
     } catch (err: any) {
       setError(err.message || 'Failed to fetch post');
@@ -103,48 +80,15 @@ export default function EditPost() {
       return;
     }
 
-    // Create blob URL for immediate preview
-    const blobUrl = URL.createObjectURL(file);
-    setImagePreview(blobUrl);
-
     setUploadingImage(true);
     setError('');
 
     try {
-      const token = localStorage.getItem('admin_token');
-      const formData = new FormData();
-      formData.append('image', file);
-
-      const response = await fetch(`${getApiUrl()}/posts/upload-image`, {
-        method: 'POST',
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-        body: formData,
-      });
-
-      if (response.status === 401) {
-        router.push('/admin/login');
-        return;
-      }
-
-      if (!response.ok) {
-        const data = await response.json();
-        throw new Error(data.message || 'Failed to upload image');
-      }
-
-      const data = await response.json();
-      // The backend returns path like "/blog posts images/filename.jpg"
-      const rawPath = data.path.startsWith('/') ? data.path : `/${data.path}`;
-      setPost({ ...post, image: rawPath });
-      
-      // Keep using blob URL for immediate preview (it works instantly)
-      // Don't revoke it yet - keep it for the preview
-      // The server path will be used when the post is saved/reloaded
+      const publicUrl = await uploadImage(file);
+      setImagePreview(publicUrl);
+      setPost({ ...post, image: publicUrl });
     } catch (err: any) {
       setError(err.message || 'Failed to upload image');
-      // On error, keep the blob preview but clean it up after a delay
-      setTimeout(() => URL.revokeObjectURL(blobUrl), 5000);
     } finally {
       setUploadingImage(false);
     }
@@ -183,29 +127,16 @@ export default function EditPost() {
     setError('');
 
     try {
-      const token = localStorage.getItem('admin_token');
-      const url = isNew
-        ? `${getApiUrl()}/posts`
-        : `${getApiUrl()}/posts/${postId}`;
-      const method = isNew ? 'POST' : 'PATCH';
-
-      const response = await fetch(url, {
-        method,
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify(post),
-      });
-
-      if (response.status === 401) {
-        router.push('/admin/login');
-        return;
+      // Create a copy of post without id if it's new
+      const postData = { ...post };
+      if (isNew) {
+        delete (postData as any).id;
       }
 
-      if (!response.ok) {
-        const data = await response.json();
-        throw new Error(data.message || 'Failed to save post');
+      if (isNew) {
+        await createPost(postData);
+      } else {
+        await updatePost(postId, postData);
       }
 
       router.push('/admin/dashboard');

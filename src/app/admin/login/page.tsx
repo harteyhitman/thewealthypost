@@ -5,44 +5,87 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import styles from './login.module.scss';
 import { HiEye, HiEyeOff } from 'react-icons/hi';
-import { getApiUrl } from '@/libs/api';
+import { supabase } from '@/libs/supabaseClient';
 
 export default function AdminLogin() {
   const router = useRouter();
-  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  const [loginMethod, setLoginMethod] = useState<'password' | 'otp'>('password');
+  const [otpSent, setOtpSent] = useState(false);
+  const [otpCode, setOtpCode] = useState('');
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handlePasswordLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
     setLoading(true);
 
     try {
-      const response = await fetch(`${getApiUrl()}/auth/login`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ username, password }),
+      const { data, error: authError } = await supabase.auth.signInWithPassword({
+        email,
+        password,
       });
 
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(data.message || 'Login failed');
+      if (authError) {
+        throw authError;
       }
 
-      // Store token
-      localStorage.setItem('admin_token', data.access_token);
-      localStorage.setItem('admin_user', JSON.stringify(data.admin));
-
-      // Redirect to dashboard
       router.push('/admin/dashboard');
     } catch (err: any) {
       setError(err.message || 'Invalid credentials');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleSendOtp = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError('');
+    setLoading(true);
+
+    try {
+      const { error: otpError } = await supabase.auth.signInWithOtp({
+        email,
+        options: {
+          shouldCreateUser: false,
+          emailRedirectTo: `${window.location.origin}/admin/dashboard`,
+        },
+      });
+
+      if (otpError) {
+        throw otpError;
+      }
+
+      setOtpSent(true);
+    } catch (err: any) {
+      setError(err.message || 'Failed to send login code');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleVerifyOtp = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError('');
+    setLoading(true);
+
+    try {
+      const { data, error: verifyError } = await supabase.auth.verifyOtp({
+        email,
+        token: otpCode,
+        type: 'email', // Changed from magiclink to email for code verification
+      });
+
+      if (verifyError) {
+        throw verifyError;
+      }
+
+      router.push('/admin/dashboard');
+    } catch (err: any) {
+      setError(err.message || 'Invalid or expired code');
     } finally {
       setLoading(false);
     }
@@ -54,47 +97,120 @@ export default function AdminLogin() {
         <h1 className={styles.title}>Admin Login</h1>
         <p className={styles.subtitle}>The Wealthy Post Admin Dashboard</p>
 
+        <div className={styles.methodToggle}>
+          <button
+            className={`${styles.toggleBtn} ${loginMethod === 'password' ? styles.active : ''}`}
+            onClick={() => {
+              setLoginMethod('password');
+              setOtpSent(false);
+              setError('');
+            }}
+            disabled={loading}
+          >
+            Password
+          </button>
+          <button
+            className={`${styles.toggleBtn} ${loginMethod === 'otp' ? styles.active : ''}`}
+            onClick={() => {
+              setLoginMethod('otp');
+              setOtpSent(false);
+              setError('');
+            }}
+            disabled={loading}
+          >
+            Email Code
+          </button>
+        </div>
+
         {error && <div className={styles.error}>{error}</div>}
 
-        <form onSubmit={handleSubmit} className={styles.form}>
-          <div className={styles.inputGroup}>
-            <label htmlFor="username">Username</label>
-            <input
-              id="username"
-              type="text"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-              required
-              disabled={loading}
-            />
-          </div>
-
-          <div className={styles.inputGroup}>
-            <label htmlFor="password">Password</label>
-            <div className={styles.passwordWrapper}>
+        {loginMethod === 'password' ? (
+          <form onSubmit={handlePasswordLogin} className={styles.form}>
+            <div className={styles.inputGroup}>
+              <label htmlFor="email">Email</label>
               <input
-                id="password"
-                type={showPassword ? 'text' : 'password'}
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                id="email"
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 required
                 disabled={loading}
+                placeholder="admin@example.com"
               />
-              <button
-                type="button"
-                onClick={() => setShowPassword(!showPassword)}
-                className={styles.passwordToggle}
-                disabled={loading}
-              >
-                {showPassword ? <HiEyeOff /> : <HiEye />}
-              </button>
             </div>
-          </div>
 
-          <button type="submit" disabled={loading} className={styles.submitButton}>
-            {loading ? 'Logging in...' : 'Login'}
-          </button>
-        </form>
+            <div className={styles.inputGroup}>
+              <label htmlFor="password">Password</label>
+              <div className={styles.passwordWrapper}>
+                <input
+                  id="password"
+                  type={showPassword ? 'text' : 'password'}
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                  disabled={loading}
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className={styles.passwordToggle}
+                  disabled={loading}
+                >
+                  {showPassword ? <HiEyeOff /> : <HiEye />}
+                </button>
+              </div>
+            </div>
+
+            <button type="submit" disabled={loading} className={styles.submitButton}>
+              {loading ? 'Logging in...' : 'Login'}
+            </button>
+          </form>
+        ) : !otpSent ? (
+          <form onSubmit={handleSendOtp} className={styles.form}>
+            <div className={styles.inputGroup}>
+              <label htmlFor="email">Email</label>
+              <input
+                id="email"
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                disabled={loading}
+                placeholder="admin@example.com"
+              />
+            </div>
+            <button type="submit" disabled={loading} className={styles.submitButton}>
+              {loading ? 'Sending code...' : 'Send Login Code'}
+            </button>
+          </form>
+        ) : (
+          <form onSubmit={handleVerifyOtp} className={styles.form}>
+            <div className={styles.inputGroup}>
+              <label htmlFor="otpCode">Verification Code</label>
+              <input
+                id="otpCode"
+                type="text"
+                value={otpCode}
+                onChange={(e) => setOtpCode(e.target.value)}
+                required
+                disabled={loading}
+                placeholder="123456"
+                maxLength={6}
+              />
+            </div>
+            <button type="submit" disabled={loading} className={styles.submitButton}>
+              {loading ? 'Verifying...' : 'Verify & Login'}
+            </button>
+            <button
+              type="button"
+              onClick={() => setOtpSent(false)}
+              className={styles.resendBtn}
+              disabled={loading}
+            >
+              Change Email
+            </button>
+          </form>
+        )}
 
         <div className={styles.footer}>
           <p>

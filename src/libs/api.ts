@@ -1,25 +1,4 @@
-// utils/api.ts
-
-/**
- * Get API base URL
- * - Uses NEXT_PUBLIC_API_URL if set
- * - Falls back to localhost in development
- * - Falls back to production backend during build
- */
-export const getApiUrl = (): string => {
-  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
-
-  if (apiUrl) {
-    return apiUrl.replace(/\/$/, '');
-  }
-
-  if (process.env.NODE_ENV === 'development') {
-    return 'http://localhost:3001';
-  }
-
-  // Build-time / production fallback
-  return 'https://thewealthypost-backend.onrender.com';
-};
+import { supabase } from './supabaseClient';
 
 /* ============================================================
    Types
@@ -37,67 +16,44 @@ export interface Post {
   tags?: string[];
   category?: string;
   published: boolean;
-  createdAt?: string;
-  updatedAt?: string;
+  created_at?: string;
+  updated_at?: string;
 }
 
 /* ============================================================
-   Fetch helper (SSR + Client safe)
-============================================================ */
-
-const fetchWithTimeout = async (
-  url: string,
-  timeout = 5000,
-): Promise<Response> => {
-  // AbortController is available in modern Node & browsers
-  const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), timeout);
-
-  try {
-    return await fetch(url, {
-      signal: controller.signal,
-
-      // Server-side only options (Next.js)
-      ...(typeof window === 'undefined'
-        ? {
-            cache: 'no-store',
-            next: { revalidate: 0 },
-          }
-        : {}),
-    });
-  } catch (error: any) {
-    if (error.name === 'AbortError') {
-      throw new Error(`Request timeout after ${timeout}ms`);
-    }
-    throw error;
-  } finally {
-    clearTimeout(timer);
-  }
-};
-
-/* ============================================================
-   API calls
+   API calls (Supabase)
 ============================================================ */
 
 /**
- * Fetch all posts
+ * Fetch all published posts
  */
 export async function fetchAllPosts(): Promise<Post[]> {
-  const url = `${getApiUrl()}/posts`;
+  const { data, error } = await supabase
+    .from('posts')
+    .select('*')
+    .eq('published', true)
+    .order('created_at', { ascending: false });
 
-  const response = await fetchWithTimeout(url);
-
-  if (!response.ok) {
-    throw new Error(
-      `Failed to fetch posts: ${response.status} ${response.statusText}`,
-    );
+  if (error) {
+    console.error('Error fetching posts:', error.message, error.code);
+    throw new Error(`Failed to fetch posts: ${error.message}`);
   }
 
-  const data = await response.json();
+  return data as Post[];
+}
 
-  // Defensive guard
-  if (!Array.isArray(data)) {
-    throw new Error('Invalid posts response format');
+/**
+ * Fetch all posts (including unpublished) for admin
+ */
+export async function fetchAllPostsAdmin(): Promise<Post[]> {
+  const { data, error } = await supabase
+    .from('posts')
+    .select('*')
+    .order('created_at', { ascending: false });
+
+  if (error) {
+    console.error('Error fetching posts for admin:', error.message, error.code);
+    throw new Error(`Failed to fetch posts: ${error.message}`);
   }
 
   return data as Post[];
@@ -109,20 +65,119 @@ export async function fetchAllPosts(): Promise<Post[]> {
 export async function fetchPostBySlug(
   slug: string,
 ): Promise<Post | null> {
-  const url = `${getApiUrl()}/posts/slug/${slug}`;
+  const { data, error } = await supabase
+    .from('posts')
+    .select('*')
+    .eq('slug', slug)
+    .single();
 
-  const response = await fetchWithTimeout(url);
-
-  if (!response.ok) {
-    return null;
-  }
-
-  const data = await response.json();
-
-  // Defensive guard
-  if (!data || typeof data !== 'object') {
+  if (error) {
+    if (error.code === 'PGRST116') {
+      // Record not found
+      return null;
+    }
+    console.error(`Error fetching post by slug ${slug}:`, error.message, error.code);
     return null;
   }
 
   return data as Post;
+}
+
+/**
+ * Fetch a single post by ID
+ */
+export async function fetchPostById(
+  id: number | string,
+): Promise<Post | null> {
+  const { data, error } = await supabase
+    .from('posts')
+    .select('*')
+    .eq('id', id)
+    .single();
+
+  if (error) {
+    console.error(`Error fetching post by ID ${id}:`, error.message, error.code);
+    return null;
+  }
+
+  return data as Post;
+}
+
+/**
+ * Create a new post
+ */
+export async function createPost(post: Partial<Post>): Promise<Post | null> {
+  const { data, error } = await supabase
+    .from('posts')
+    .insert([post])
+    .select()
+    .single();
+
+  if (error) {
+    console.error('Error creating post:', error.message, error);
+    throw new Error(`Failed to create post: ${error.message}`);
+  }
+
+  return data as Post;
+}
+
+/**
+ * Update an existing post
+ */
+export async function updatePost(id: number | string, post: Partial<Post>): Promise<Post | null> {
+  const { data, error } = await supabase
+    .from('posts')
+    .update(post)
+    .eq('id', id)
+    .select()
+    .single();
+
+  if (error) {
+    console.error(`Error updating post ${id}:`, error.message, error);
+    throw new Error(`Failed to update post: ${error.message}`);
+  }
+
+  return data as Post;
+}
+
+/**
+ * Delete a post
+ */
+export async function deletePost(id: number | string): Promise<boolean> {
+  const { error } = await supabase
+    .from('posts')
+    .delete()
+    .eq('id', id);
+
+  if (error) {
+    console.error(`Error deleting post ${id}:`, error.message, error);
+    throw new Error(`Failed to delete post: ${error.message}`);
+  }
+
+  return true;
+}
+
+/**
+ * Upload an image to Supabase Storage
+ */
+export async function uploadImage(file: File): Promise<string> {
+  const fileExt = file.name.split('.').pop();
+  const fileName = `${Math.random()}-${Math.floor(Date.now() / 1000)}.${fileExt}`;
+  const filePath = fileName;
+
+  const { data, error } = await supabase.storage
+    .from('blog-posts')
+    .upload(filePath, file);
+
+  if (error) {
+    console.error('Error uploading image:', error.message, error);
+    throw new Error(`Failed to upload image: ${error.message}`);
+  }
+
+  // Get public URL
+  const { data: { publicUrl } } = supabase.storage
+    .from('blog-posts')
+    .getPublicUrl(filePath);
+
+  return publicUrl;
 }

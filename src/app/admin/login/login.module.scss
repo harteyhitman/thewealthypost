@@ -33,6 +33,43 @@
   text-align: center;
 }
 
+.methodToggle {
+  display: flex;
+  gap: $space-2;
+  margin-bottom: $space-8;
+  padding: $space-1;
+  background: #f5f5f5;
+  border-radius: $radius-lg;
+
+  .toggleBtn {
+    flex: 1;
+    padding: $space-2;
+    border: none;
+    background: transparent;
+    color: $text-secondary;
+    font-size: $text-sm;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: $radius-md;
+    transition: all $transition-base;
+
+    &.active {
+      background: $white;
+      color: var(--color-primary);
+      box-shadow: $shadow-sm;
+    }
+
+    &:hover:not(.active) {
+      background: rgba(0, 0, 0, 0.05);
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+      opacity: 0.6;
+    }
+  }
+}
+
 .form {
   display: flex;
   flex-direction: column;
@@ -168,6 +205,26 @@
 
   &:disabled {
     opacity: 0.7;
+    cursor: not-allowed;
+  }
+}
+
+.resendBtn {
+  margin-top: $space-2;
+  background: transparent;
+  border: none;
+  color: $text-secondary;
+  font-size: $text-sm;
+  cursor: pointer;
+  text-decoration: underline;
+  transition: all $transition-base;
+
+  &:hover {
+    color: var(--color-primary);
+  }
+
+  &:disabled {
+    opacity: 0.5;
     cursor: not-allowed;
   }
 }

@@ -4,17 +4,8 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import styles from './dashboard.module.scss';
-import { getApiUrl } from '@/libs/api';
-
-interface Post {
-  id: number;
-  slug: string;
-  title: string;
-  excerpt: string;
-  published: boolean;
-  createdAt: string;
-  category?: string;
-}
+import { fetchAllPostsAdmin, deletePost, Post } from '@/libs/api';
+import { supabase } from '@/libs/supabaseClient';
 
 export default function AdminDashboard() {
   const router = useRouter();
@@ -27,29 +18,16 @@ export default function AdminDashboard() {
     fetchPosts();
   }, []);
 
-  const checkAuth = () => {
-    const token = localStorage.getItem('admin_token');
-    if (!token) {
+  const checkAuth = async () => {
+    const { data: { session } } = await supabase.auth.getSession();
+    if (!session) {
       router.push('/admin/login');
     }
   };
 
   const fetchPosts = async () => {
     try {
-      const token = localStorage.getItem('admin_token');
-      const response = await fetch(`${getApiUrl()}/posts/admin`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-
-      if (response.status === 401) {
-        localStorage.removeItem('admin_token');
-        router.push('/admin/login');
-        return;
-      }
-
-      const data = await response.json();
+      const data = await fetchAllPostsAdmin();
       setPosts(data);
     } catch (err: any) {
       setError(err.message || 'Failed to fetch posts');
@@ -62,25 +40,15 @@ export default function AdminDashboard() {
     if (!confirm('Are you sure you want to delete this post?')) return;
 
     try {
-      const token = localStorage.getItem('admin_token');
-      const response = await fetch(`${getApiUrl()}/posts/${id}`, {
-        method: 'DELETE',
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-
-      if (response.ok) {
-        fetchPosts();
-      }
+      await deletePost(id);
+      fetchPosts();
     } catch (err: any) {
-      alert('Failed to delete post');
+      alert('Failed to delete post: ' + err.message);
     }
   };
 
-  const handleLogout = () => {
-    localStorage.removeItem('admin_token');
-    localStorage.removeItem('admin_user');
+  const handleLogout = async () => {
+    await supabase.auth.signOut();
     router.push('/admin/login');
   };
 
@@ -131,7 +99,7 @@ export default function AdminDashboard() {
                       {post.published ? 'Published' : 'Draft'}
                     </span>
                   </td>
-                  <td>{new Date(post.createdAt).toLocaleDateString()}</td>
+                  <td>{post.created_at ? new Date(post.created_at).toLocaleDateString() : '-'}</td>
                   <td>
                     <div className={styles.actions}>
                       <Link href={`/admin/posts/${post.id}`} className={styles.editButton}>
