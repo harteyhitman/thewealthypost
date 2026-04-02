@@ -8,3 +8,27 @@ if (!supabaseUrl || !supabaseAnonKey) {
 }
 
 export const supabase = createClient(supabaseUrl, supabaseAnonKey);
+
+/**
+ * Get the correct redirect URL for Supabase Auth based on the environment.
+ * Priority: NEXT_PUBLIC_SITE_URL > NEXT_PUBLIC_VERCEL_URL > window.location.origin
+ */
+export const getRedirectUrl = () => {
+  // If explicitly set in environment
+  if (process.env.NEXT_PUBLIC_SITE_URL) {
+    return process.env.NEXT_PUBLIC_SITE_URL;
+  }
+
+  // If running on Vercel
+  if (process.env.NEXT_PUBLIC_VERCEL_URL) {
+    return `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`;
+  }
+
+  // Fallback to current origin in browser
+  if (typeof window !== 'undefined') {
+    return window.location.origin;
+  }
+
+  // Absolute fallback for server-side if needed
+  return 'http://localhost:3000';
+};

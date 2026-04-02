@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import styles from './login.module.scss';
 import { HiEye, HiEyeOff } from 'react-icons/hi';
-import { supabase } from '@/libs/supabaseClient';
+import { supabase, getRedirectUrl } from '@/libs/supabaseClient';
 
 export default function AdminLogin() {
   const router = useRouter();
@@ -51,7 +51,7 @@ export default function AdminLogin() {
         email,
         options: {
           shouldCreateUser: false,
-          emailRedirectTo: `${window.location.origin}/admin/dashboard`,
+          emailRedirectTo: `${getRedirectUrl()}/admin/dashboard`,
         },
       });
 

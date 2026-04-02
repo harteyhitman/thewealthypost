@@ -48,12 +48,24 @@ CREATE POLICY "Allow authenticated users to manage all posts"
 2. Create a new bucket named `blog-posts`.
 3. Set the bucket to **Public** (or configure appropriate RLS policies).
 
-## 3. Authentication
+## 3. Authentication & URL Configuration
 
 Supabase Auth will replace the custom admin authentication.
-1. Go to **Authentication** -> **Users**.
-2. Add a new user (the admin email).
-3. The frontend will now use Supabase Auth for login.
+
+### Important: Set Site URL & Redirect URLs
+To ensure that verification emails and login links redirect to your Vercel site instead of `localhost:3000`, you **must** configure these settings in your Supabase Dashboard:
+
+1.  Go to **Authentication** -> **URL Configuration**.
+2.  **Site URL**: Set this to your production URL (e.g., `https://thewealthypost-01.vercel.app`).
+3.  **Redirect URLs**: Add your Vercel URLs to the list of allowed redirect URLs:
+    - `https://thewealthypost-01.vercel.app/**`
+    - `http://localhost:3000/**` (for local development)
+4.  Click **Save**.
+
+### User Setup
+1.  Go to **Authentication** -> **Users**.
+2.  Add a new user (the admin email).
+3.  The frontend will now use Supabase Auth for login.
 
 ## 4. Environment Variables
 
@@ -62,4 +74,7 @@ Update your `.env.local` in `thewealthypost`:
 ```env
 NEXT_PUBLIC_SUPABASE_URL=your-project-url
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
+NEXT_PUBLIC_SITE_URL=https://thewealthypost-01.vercel.app
 ```
+
+On Vercel, make sure to add these environment variables in your project settings.
