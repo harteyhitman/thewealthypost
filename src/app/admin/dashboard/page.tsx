@@ -91,16 +91,16 @@ export default function AdminDashboard() {
             <tbody>
               {posts.map((post) => (
                 <tr key={post.id}>
-                  <td>{post.id}</td>
-                  <td>{post.title}</td>
-                  <td>{post.category || '-'}</td>
-                  <td>
+                  <td data-label="ID">{post.id}</td>
+                  <td data-label="Title">{post.title}</td>
+                  <td data-label="Category">{post.category || '-'}</td>
+                  <td data-label="Status">
                     <span className={post.published ? styles.published : styles.draft}>
                       {post.published ? 'Published' : 'Draft'}
                     </span>
                   </td>
-                  <td>{post.created_at ? new Date(post.created_at).toLocaleDateString() : '-'}</td>
-                  <td>
+                  <td data-label="Created">{post.created_at ? new Date(post.created_at).toLocaleDateString() : '-'}</td>
+                  <td data-label="Actions">
                     <div className={styles.actions}>
                       <Link href={`/admin/posts/${post.id}`} className={styles.editButton}>
                         Edit

@@ -85,9 +85,15 @@
   display: flex;
   justify-content: center;
   align-items: stretch;
-  width: 1300px;
+  width: 100%;
+  max-width: 1300px;
   flex-wrap: wrap;
   gap: 2rem;
+
+  @media (max-width: 1300px) {
+    width: 100%;
+    padding: 0 1rem;
+  }
 
   @media (max-width: 768px) {
     flex-direction: column;
